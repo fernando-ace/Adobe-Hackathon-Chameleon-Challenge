@@ -96,6 +96,27 @@ class EngineContractTests(unittest.TestCase):
                     normalized_delta.append(abs(element[field] - before[field]) / canvas_size)
             self.assertLess(sum(normalized_delta) / max(1, len(normalized_delta)), 0.04)
 
+    def test_larger_canvas_preserves_primary_type_and_does_not_add_clipping(self):
+        for task in _official_tasks():
+            source, target = task["source"], task["target_canvas"]
+            small = resize(source, target)
+            small_family = get_last_diagnostics()["layout_family"]
+            small_dna = analyze_design(source, target)
+            small_report = score_design(small_dna, small, small_family)
+            small_by_id = {element["id"]: element for element in small["elements"]}
+            headlines = [fact for fact in small_dna.facts if fact.type == "text" and fact.role == "headline"]
+
+            for scale in (1.03, 1.25):
+                larger_target = {key: round(value * scale) for key, value in target.items()}
+                larger = resize(source, larger_target)
+                family = get_last_diagnostics()["layout_family"]
+                self.assertFalse(get_last_diagnostics()["fallback_used"])
+                report = score_design(analyze_design(source, larger_target), larger, family)
+                self.assertLessEqual(report.clipped_text_count, small_report.clipped_text_count)
+                larger_by_id = {element["id"]: element for element in larger["elements"]}
+                for fact in headlines:
+                    self.assertGreaterEqual(larger_by_id[fact.id]["font_size"], small_by_id[fact.id]["font_size"] * 0.9)
+
     def test_official_outputs_render(self):
         for task in _official_tasks():
             output = resize(task["source"], task["target_canvas"])
