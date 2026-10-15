@@ -1,99 +1,70 @@
-# CHAMELEON — starter repo
+# Chameleon — responsive campaign design engine
 
-This is the scaffolding for your engine. It handles input loading, output
-writing, rendering, and Docker packaging — so the only file you need to
-edit is **`engine/resize.py`**.
+Chameleon takes a finished design and a target canvas, then returns the same elements composed for the new format. It keeps every source ID, element, text string, font family, asset reference, and non-layout property. It can move and resize elements and adjust text font sizes; it never generates or replaces image pixels.
 
-```
-input:  a task JSON (source design + target canvas)
-              |
-              v
-        engine/resize.py   <-- YOU IMPLEMENT THIS
-              |
-              v
-output: <task>_output.json  (schema-valid resized design)
-        <task>_output.png   (rendered preview)
-```
+The public Stage 1 entry point remains `resize(source, target_canvas) -> dict` in `engine/resize.py`. This implementation is deterministic and runs locally without inference services.
 
-Both the JSON and the PNG are what get evaluated — see `RULES.md`.
+## Current architecture
 
-## Repo layout
+1. **Design DNA:** `engine/chameleon/analyzer.py` derives normalized geometry, visible image bounds, asset size/luminance, semantic-role confidence, source composition, groups, anchors, reading order, spacing, alignment, and relationship cues.
+2. **Semantic roles:** `semantics.py` uses type, text length/size, position, opacity, area, z-order, rotation, and group context to estimate roles such as background, logo, headline, body, badge, CTA, ribbon, and decoration. These are fallible signals, not labels supplied by Adobe.
+3. **Relationship graph:** `relationships.py` records proximity, alignment, containment, same-row/column, group membership, and source overlaps. Existing intentional layering is allowed during collision scoring.
+4. **Responsive planning:** `planner.py` creates source-preserving, poster-stack, split, mirrored split, banner, and mirrored-banner candidates. It uses the target aspect ratio and inferred roles, preserving image proportions and grouped pieces.
+5. **Typography and image analysis:** `typography.py` measures text with the bundled brand fonts and Skia glyph widths, using the renderer's word-wrap behavior to fit the largest size that fits. `visual_analysis.py` samples text/background contrast over the target background image; this is a lightweight proxy, not a full composite renderer or accessibility certification. `analyzer.py` records image size, alpha bounds, and average linear luminance without editing source assets.
+6. **Candidate judge:** `scoring.py` separates canvas legality, image fidelity, typography, collisions, group cohesion, canvas use, target adaptation, and sampled contrast. The score is an internal heuristic and is not Adobe's hidden score.
+7. **Repair and validation:** `repair.py` moves lower-priority units in response to diagnosed overlaps or rotated overflow and keeps only score improvements. `validator.py` checks the final output contract. `resize.py` falls back to a contained, bounded transformation if analysis or planning fails.
 
-```
-engine/
-  resize.py        <- implement your approach here
-  main.py           <- orchestrator (input -> resize() -> output). Don't need to edit this.
-renderer/           <- the real renderer (transformer-convertor + cr-renderer), already vendored
-brand_kit/
-  assets/           <- image files referenced by asset_id in the sample designs
-  fonts/            <- font files matching the schema's font_family values
-input/               <- drop task JSON files here for local testing (3 samples included)
-output/              <- results land here
-chameleon_design_schema_v0.9.json   <- full field-by-field spec for the design format
-Dockerfile
-RULES.md
+Depending on target aspect ratio, the engine generates 12 or 18 deterministic candidates and repairs the two highest-ranked. Candidate count and diagnostics are available through `get_last_diagnostics()` for local evaluation; the challenge entry-point return value remains the design JSON.
+
+## Setup
+
+Python 3.10 or later is required. Python 3.11 is the development version used for validation.
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
-## Quick start (no Docker needed for iterating on `resize()`)
+The renderer dependency is pinned to the commit captured in [`docs/baseline.md`](docs/baseline.md). All required fonts and the real renderer are supplied locally or installed at build time; the engine does not make runtime network requests.
 
-```bash
-pip install -r requirements.txt
-python -m engine.main
+## Run the official samples
+
+```powershell
+.\.venv\Scripts\python.exe -m engine.main
 ```
 
-This processes every `*.json` file in `input/` (the 3 sample designs are
-already there — one per difficulty level) and writes an `_output.json` and
-`_output.png` for each into `output/`.
+The three tasks in `input/` produce JSON and renderer-backed PNG previews in `output/`. The upstream, untouched output is preserved in `evidence/baseline/`; current visual evidence and benchmark results are under `evidence/`.
 
-The included baseline is a **uniform stretch** — deliberately the wrong
-approach (see the main brief: "a naive program stretches the picture; a
-good one moves the furniture"). It's there so the pipeline runs on day
-one. Run it once, look at `output/*_output.png`, and you'll see exactly
-why it's not good enough — that's the point. Replace the body of
-`resize()` in `engine/resize.py`, not just its constants.
+## Tests and benchmarks
 
-## What the self-check does (and doesn't do)
-
-`main.py` runs a quick structural check after every task — same element
-`id`s as the source, required fields present, nothing off-canvas. **This
-is not the official scorer.** It exists to catch obvious mistakes before
-you waste a submission on them. See `RULES.md` for what's actually
-checked and graded.
-
-A self-check warning does not fail the run — your JSON and PNG are still
-written either way. Read the warning; decide whether it's a real problem
-or, like the Level 2 sample's intentionally corner-bleeding decorative
-circle, an expected one.
-
-## The renderer
-
-`main.py` calls `renderer/converter/convert.py`'s `render_design_to_png()`
-(a vendored copy of `transformer-convertor`, wrapping `cr-renderer`) to
-produce each task's PNG — already wired in, no setup needed. It reads
-fonts/assets from `brand_kit/` and writes a real rendered preview, not a
-placeholder. If you ever see plain labeled boxes instead of real text and
-images in `output/*.png`, that means the import in `main.py` failed (e.g.
-`cr-renderer` didn't install — check `requirements.txt` installed cleanly)
-and it silently fell back to the box-and-label placeholder; don't judge
-your layout quality by that fallback.
-
-## Docker (how you'll actually be run)
-
-```bash
-docker build --platform linux/amd64 -t my-chameleon-engine .
-docker run --rm --network none \
-  -v $(pwd)/input:/app/input \
-  -v $(pwd)/output:/app/output \
-  my-chameleon-engine
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m tools.benchmark
 ```
 
-`--network none` matches how stage-one scoring runs: everything your
-engine needs must be installed at **build** time (add it to
-`requirements.txt`), not fetched at run time. If you're using a locally
-hosted model, bake its weights into the image during the build step.
+The test suite checks official examples, ID/count/content/font preservation, geometry, image ratios, rendering, determinism, error fallback, repair, 24 generated adversarial designs, and 15 mutations. The benchmark writes `evidence/benchmark/report.md`, detailed JSON diagnostics, rendered comparisons, and `evidence/gallery/index.html`.
 
-## See also
+All proxy metrics are labeled as internal and should not be interpreted as Adobe scores. Synthetic cases are test fixtures, not unseen-design evidence.
 
-- `chameleon_design_schema_v0.9.json` — full input/output field spec
-- `RULES.md` — what's checked, what's graded, and what disqualifies a submission
-- FAQ — for anything not covered above
+## Docker
+
+Build and run the same offline container shape used by the starter:
+
+```powershell
+docker build --platform linux/amd64 -t chameleon-engine .
+docker run --rm --network none `
+  -v "${PWD}/input:/app/input" `
+  -v "${PWD}/output:/app/output" `
+  chameleon-engine
+```
+
+The engine needs no network after the image is built. Container validation is still pending because the Docker Desktop Linux service is unavailable in the current host session; see [`docs/baseline.md`](docs/baseline.md).
+
+## Evidence and limitations
+
+- [`docs/baseline.md`](docs/baseline.md): untouched starter run and visual findings.
+- [`docs/research-notes.md`](docs/research-notes.md): source-backed research, hypotheses, implemented behavior, and measured limits.
+- [`evidence/gallery/index.html`](evidence/gallery/index.html): rendered source/baseline/current comparisons.
+- [`evidence/benchmark/report.md`](evidence/benchmark/report.md): current internal proxy and stress metrics.
+
+The supplied examples and generated corpus are small compared with the hidden evaluation set. Semantic inference and image saliency are heuristic; the contrast estimate samples the background image without compositing every foreground layer. Very wide formats can preserve required content but still force tiny supporting text. The Level 3 sample remains particularly dense at 728×90. No Adobe Express add-on or finale prototype has been started because Stage 1 has not cleared the full quality gate.

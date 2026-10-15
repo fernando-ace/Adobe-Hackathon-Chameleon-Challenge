@@ -1,0 +1,714 @@
+{
+  "label": "internal proxy; not Adobe's hidden score",
+  "official_count": 3,
+  "stress_count": 24,
+  "mutation_count": 15,
+  "stress_structural_validity_rate": 1.0,
+  "stress_off_canvas_cases": 0,
+  "stress_image_ratio_failures": 0,
+  "stress_text_clipping_cases": 0,
+  "stress_collision_free_rate": 1.0,
+  "stress_median_runtime_seconds": 0.668285,
+  "stress_p95_runtime_seconds": 2.5034,
+  "stress_determinism_rate": 1.0,
+  "mutation_structural_validity_rate": 1.0,
+  "mutation_image_ratio_failures": 0,
+  "mutation_text_clipping_cases": 0,
+  "official": [
+    {
+      "input": "chameleon_sample_level1_warmup",
+      "difficulty": "level_1_warmup",
+      "source_canvas": {
+        "width": 1080,
+        "height": 1080
+      },
+      "target_canvas": {
+        "width": 1080,
+        "height": 1350
+      },
+      "element_count": 4,
+      "baseline": {
+        "score": 68.0,
+        "components": {
+          "canvas_legality": 100.0,
+          "image_fidelity": 68.0,
+          "typography": 100.0,
+          "collision_avoidance": 100.0,
+          "group_coherence": 100.0,
+          "canvas_use": 100.0,
+          "target_adaptation": 100.0,
+          "sampled_contrast": 100.0,
+          "visual_hierarchy": 100.0
+        },
+        "issues": [
+          "logo: image aspect ratio changed by 20.0%"
+        ],
+        "hard_valid": false,
+        "off_canvas_count": 0,
+        "image_ratio_failures": 1,
+        "clipped_text_count": 0,
+        "accidental_collision_count": 0
+      },
+      "current": {
+        "score": 100.0,
+        "components": {
+          "canvas_legality": 100.0,
+          "image_fidelity": 100.0,
+          "typography": 100.0,
+          "collision_avoidance": 100.0,
+          "group_coherence": 100.0,
+          "canvas_use": 100.0,
+          "target_adaptation": 100.0,
+          "sampled_contrast": 100.0,
+          "visual_hierarchy": 100.0
+        },
+        "issues": [],
+        "hard_valid": true,
+        "off_canvas_count": 0,
+        "image_ratio_failures": 0,
+        "clipped_text_count": 0,
+        "accidental_collision_count": 0
+      },
+      "layout_family": "stack",
+      "candidate_count": 12,
+      "repair_count": 0,
+      "runtime_seconds": 0.82184,
+      "renderer_warnings": [],
+      "source_renderer_warnings": []
+    },
+    {
+      "input": "chameleon_sample_level2_core",
+      "difficulty": "level_2_core",
+      "source_canvas": {
+        "width": 1080,
+        "height": 1080
+      },
+      "target_canvas": {
+        "width": 1600,
+        "height": 400
+      },
+      "element_count": 11,
+      "baseline": {
+        "score": 0.0,
+        "components": {
+          "canvas_legality": 90.37,
+          "image_fidelity": 0.0,
+          "typography": 100.0,
+          "collision_avoidance": 96.81,
+          "group_coherence": 100.0,
+          "canvas_use": 100.0,
+          "target_adaptation": 74.0,
+          "sampled_contrast": 100.0,
+          "visual_hierarchy": 100.0
+        },
+        "issues": [
+          "deco_circle_1: rotated bounds exceed target canvas",
+          "logo: image aspect ratio changed by 300.0%",
+          "product: image aspect ratio changed by 300.0%",
+          "subhead/cta_label: new overlap (34% of smaller element)"
+        ],
+        "hard_valid": false,
+        "off_canvas_count": 1,
+        "image_ratio_failures": 2,
+        "clipped_text_count": 0,
+        "accidental_collision_count": 1
+      },
+      "current": {
+        "score": 100.0,
+        "components": {
+          "canvas_legality": 100.0,
+          "image_fidelity": 100.0,
+          "typography": 100.0,
+          "collision_avoidance": 100.0,
+          "group_coherence": 100.0,
+          "canvas_use": 100.0,
+          "target_adaptation": 100.0,
+          "sampled_contrast": 100.0,
+          "visual_hierarchy": 100.0
+        },
+        "issues": [],
+        "hard_valid": true,
+        "off_canvas_count": 0,
+        "image_ratio_failures": 0,
+        "clipped_text_count": 0,
+        "accidental_collision_count": 0
+      },
+      "layout_family": "banner",
+      "candidate_count": 18,
+      "repair_count": 0,
+      "runtime_seconds": 3.84837,
+      "renderer_warnings": [],
+      "source_renderer_warnings": []
+    },
+    {
+      "input": "chameleon_sample_level3_advanced",
+      "difficulty": "level_3_advanced",
+      "source_canvas": {
+        "width": 1080,
+        "height": 1350
+      },
+      "target_canvas": {
+        "width": 728,
+        "height": 90
+      },
+      "element_count": 17,
+      "baseline": {
+        "score": 0.0,
+        "components": {
+          "canvas_legality": 87.95,
+          "image_fidelity": 0.0,
+          "typography": 48.51,
+          "collision_avoidance": 100.0,
+          "group_coherence": 100.0,
+          "canvas_use": 100.0,
+          "target_adaptation": 74.0,
+          "sampled_contrast": 100.0,
+          "visual_hierarchy": 100.0
+        },
+        "issues": [
+          "logo: image aspect ratio changed by 911.1%",
+          "product: image aspect ratio changed by 911.1%",
+          "headline: small type at 2.7px",
+          "subhead: small type at 1.5px",
+          "badge1_label: small type at 1.0px",
+          "badge2_label: small type at 1.0px",
+          "badge3_label: small type at 1.0px",
+          "cta_label: small type at 1.5px",
+          "ribbon_bg: rotated bounds exceed target canvas",
+          "ribbon_label: rotated bounds exceed target canvas",
+          "ribbon_label: small type at 1.3px",
+          "holiday_watermark: image aspect ratio changed by 911.1%",
+          "legal_text: small type at 1.0px"
+        ],
+        "hard_valid": false,
+        "off_canvas_count": 2,
+        "image_ratio_failures": 3,
+        "clipped_text_count": 0,
+        "accidental_collision_count": 0
+      },
+      "current": {
+        "score": 98.62,
+        "components": {
+          "canvas_legality": 100.0,
+          "image_fidelity": 100.0,
+          "typography": 98.99,
+          "collision_avoidance": 100.0,
+          "group_coherence": 100.0,
+          "canvas_use": 100.0,
+          "target_adaptation": 100.0,
+          "sampled_contrast": 100.0,
+          "visual_hierarchy": 99.62
+        },
+        "issues": [
+          "cta_label: small type at 6.3px",
+          "cta_label/ribbon_label: hierarchy type sizes are inverted"
+        ],
+        "hard_valid": true,
+        "off_canvas_count": 0,
+        "image_ratio_failures": 0,
+        "clipped_text_count": 0,
+        "accidental_collision_count": 0
+      },
+      "layout_family": "banner",
+      "candidate_count": 18,
+      "repair_count": 1,
+      "runtime_seconds": 2.15066,
+      "renderer_warnings": [
+        "Missing asset 'solstice_holiday_badge_2025.png' for element 'holiday_watermark' - rendered a placeholder."
+      ],
+      "source_renderer_warnings": [
+        "Missing asset 'solstice_holiday_badge_2025.png' for element 'holiday_watermark' - rendered a placeholder."
+      ]
+    }
+  ],
+  "stress": [
+    {
+      "name": "synthetic_000",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 4.72324,
+      "issues": []
+    },
+    {
+      "name": "synthetic_001",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.09955,
+      "issues": []
+    },
+    {
+      "name": "synthetic_002",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.36061,
+      "issues": []
+    },
+    {
+      "name": "synthetic_003",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.3833,
+      "issues": []
+    },
+    {
+      "name": "synthetic_004",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.41864,
+      "issues": []
+    },
+    {
+      "name": "synthetic_005",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.77204,
+      "issues": []
+    },
+    {
+      "name": "synthetic_006",
+      "layout_family": "banner",
+      "proxy_score": 97.29,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.50867,
+      "issues": []
+    },
+    {
+      "name": "synthetic_007",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.27221,
+      "issues": []
+    },
+    {
+      "name": "synthetic_008",
+      "layout_family": "split",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.68208,
+      "issues": []
+    },
+    {
+      "name": "synthetic_009",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.94575,
+      "issues": []
+    },
+    {
+      "name": "synthetic_010",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.65449,
+      "issues": []
+    },
+    {
+      "name": "synthetic_011",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.32682,
+      "issues": []
+    },
+    {
+      "name": "synthetic_012",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.34065,
+      "issues": []
+    },
+    {
+      "name": "synthetic_013",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.12297,
+      "issues": []
+    },
+    {
+      "name": "synthetic_014",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.95682,
+      "issues": []
+    },
+    {
+      "name": "synthetic_015",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 2.5034,
+      "issues": []
+    },
+    {
+      "name": "synthetic_016",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.96184,
+      "issues": []
+    },
+    {
+      "name": "synthetic_017",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.60429,
+      "issues": []
+    },
+    {
+      "name": "synthetic_018",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.84937,
+      "issues": []
+    },
+    {
+      "name": "synthetic_019",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.31843,
+      "issues": []
+    },
+    {
+      "name": "synthetic_020",
+      "layout_family": "stack",
+      "proxy_score": 95.77,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.26043,
+      "issues": []
+    },
+    {
+      "name": "synthetic_021",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.81046,
+      "issues": []
+    },
+    {
+      "name": "synthetic_022",
+      "layout_family": "banner",
+      "proxy_score": 98.53,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.97894,
+      "issues": []
+    },
+    {
+      "name": "synthetic_023",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.61836,
+      "issues": []
+    }
+  ],
+  "mutations": [
+    {
+      "name": "warmup_01_headline_2x",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.10284,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_headline_4x",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.29638,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_728x90",
+      "layout_family": "banner",
+      "proxy_score": 99.73,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.20452,
+      "issues": [
+        "cta: low sampled text/background contrast (4.27:1)"
+      ]
+    },
+    {
+      "name": "warmup_01_480x1200",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.22733,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_1920x1080",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.87837,
+      "issues": []
+    },
+    {
+      "name": "core_01_headline_2x",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 2.6889,
+      "issues": []
+    },
+    {
+      "name": "core_01_headline_4x",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 2.15498,
+      "issues": []
+    },
+    {
+      "name": "core_01_728x90",
+      "layout_family": "banner",
+      "proxy_score": 98.99,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.26889,
+      "issues": [
+        "cta_label: small type at 6.3px"
+      ]
+    },
+    {
+      "name": "core_01_480x1200",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.76435,
+      "issues": []
+    },
+    {
+      "name": "core_01_1920x1080",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.59291,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_headline_2x",
+      "layout_family": "banner",
+      "proxy_score": 97.04,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.41575,
+      "issues": [
+        "headline: small type at 8.9px",
+        "cta_label: small type at 6.3px",
+        "cta_label/ribbon_label: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "advanced_01_headline_4x",
+      "layout_family": "banner",
+      "proxy_score": 91.22,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 3.21332,
+      "issues": [
+        "headline: small type at 6.1px",
+        "cta_label: small type at 6.3px",
+        "headline/subhead: hierarchy type sizes are inverted",
+        "headline/ribbon_label: hierarchy type sizes are inverted",
+        "headline/legal_text: hierarchy type sizes are inverted",
+        "cta_label/ribbon_label: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "advanced_01_728x90",
+      "layout_family": "banner",
+      "proxy_score": 98.62,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.7129,
+      "issues": [
+        "cta_label: small type at 6.3px",
+        "cta_label/ribbon_label: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "advanced_01_480x1200",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.48202,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_1920x1080",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.8442,
+      "issues": []
+    }
+  ]
+}

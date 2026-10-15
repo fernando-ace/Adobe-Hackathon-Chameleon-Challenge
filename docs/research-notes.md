@@ -1,0 +1,25 @@
+# Research notes: responsive graphic layout
+
+Research was kept focused on constraints we can use in a small, deterministic, offline engine. Sources are linked below so the team can trace each design choice.
+
+## Findings and design decisions
+
+| Research insight | Working hypothesis | Implemented behavior | Measured result so far |
+|---|---|---|---|
+| LayoutGAN models geometric relationships among element types and treats alignment as a key layout signal. Its paper uses self-attention and a differentiable wireframe discriminator to learn from many layouts. [Li et al., ICLR 2019](https://arxiv.org/abs/1901.06767) | Relationship structure and alignment are useful even when a learned model is unavailable or unjustified. Three supplied examples do not support training a general model, and Stage 1 must run offline. | `DesignDNA` retains normalized geometry, inferred roles, groups, pairwise relations, source composition, image metadata, and transformation severity. Candidate families are deterministic. | On the three supplied samples, role/group analysis completes without fallback. The 4:1 sample now selects a banner family. This is a small fixture result, not evidence of hidden-design generalization. |
+| Constrained graphic layout research treats alignment, overlap avoidance, and user-specified relations as explicit constraints around layout generation. [Kikuchi et al., ACM Multimedia 2021](https://arxiv.org/abs/2108.00871) | A feasible candidate should satisfy hard requirements first; aesthetics should rank only legal outputs. Repairs should target diagnosed violations rather than random coordinate noise. | Candidate scoring separates bounds, image ratio, text fitting, collisions, group cohesion, target adaptation, and canvas use. A deterministic repair loop moves lower-priority units when it finds a new collision or rotated overflow. | All three official examples currently return valid geometry with IDs/count/text/font families preserved and image ratios within the threshold. The 24-case synthetic stress set also passes the current unit-contract checks. |
+| Responsive visual design cannot be assessed by geometry alone: the rendered result, text wrapping, and local contrast affect whether content is readable. WCAG 2.2 sets 4.5:1 for ordinary text and 3:1 for large text as web-accessibility criteria; it also allows local background shading/halos where images vary. [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/), [W3C technique G145](https://www.w3.org/WAI/WCAG22/Techniques/general/G145) | Use the exact bundled fonts and renderer wrapping for fit checks. Sample the target background under text; use WCAG ratios only as a readability reference, not as the hackathon's scoring rubric. | Text is measured with the local `cr-renderer` font manager and Skia glyph widths. Candidate scoring samples a 3×3 grid from the fitted background image under each text box and records contrast penalties. Text content and font family are not edited. | The sample-based contrast measure is in the internal proxy and covered by the final benchmark. It does not composite every lower-z image or shape, so it is only a heuristic. Level 3 remains dense at 728×90 and tiny supporting type is a known weakness. |
+
+## Current hypotheses to test
+
+1. Source-preserving fitting should win when the aspect ratio changes only slightly; a responsive family should win when the target is a banner or a tall story.
+2. Shared `group_id`, containment, z-order, and source overlap are stronger evidence of intentional relationships than simple proximity alone.
+3. Actual renderer measurements will avoid many false text-fit decisions, but they do not decide whether a compact design is aesthetically strong.
+4. Image analysis should guide placement and scale only; source asset pixels and references remain unchanged.
+
+## What this research does not establish
+
+- The internal proxy score is not Adobe's evaluator.
+- The sample set is too small to validate role inference or layout quality on unseen brands.
+- WCAG criteria apply to web content conformance; they are not stated here as a challenge requirement.
+- No learned layout model has been added. A model would need a permitted local weight distribution and a measured improvement over the deterministic baseline before reconsideration.
