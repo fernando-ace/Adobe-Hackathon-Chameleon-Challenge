@@ -105,12 +105,15 @@ def main() -> int:
         stress_deterministic += int(_canonical(output) == _canonical(repeat))
 
     mutations = []
+    mutation_deterministic = 0
     for name, source, target in make_mutations(tasks):
         started = time.perf_counter()
         output = resize(source, target)
         elapsed = time.perf_counter() - started
         diag = get_last_diagnostics()
         mutations.append(_record_case(name, source, target, output, diag.get("layout_family", ""), elapsed))
+        repeat = resize(source, target)
+        mutation_deterministic += int(_canonical(output) == _canonical(repeat))
 
     runtimes = [r["runtime_seconds"] for r in stress_rows]
     sorted_times = sorted(runtimes)
@@ -128,8 +131,11 @@ def main() -> int:
         "stress_p95_runtime_seconds": sorted_times[min(len(sorted_times) - 1, int(len(sorted_times) * 0.95))] if sorted_times else 0,
         "stress_determinism_rate": stress_deterministic / max(1, len(stress_rows)),
         "mutation_structural_validity_rate": sum(r["hard_valid"] for r in mutations) / max(1, len(mutations)),
+        "mutation_off_canvas_cases": sum(r["off_canvas_count"] > 0 for r in mutations),
         "mutation_image_ratio_failures": sum(r["image_ratio_failures"] for r in mutations),
         "mutation_text_clipping_cases": sum(r["clipped_text_count"] > 0 for r in mutations),
+        "mutation_collision_free_rate": sum(r["accidental_collision_count"] == 0 for r in mutations) / max(1, len(mutations)),
+        "mutation_determinism_rate": mutation_deterministic / max(1, len(mutations)),
         "official": official_rows,
         "stress": stress_rows,
         "mutations": mutations,
@@ -142,6 +148,12 @@ def main() -> int:
              f"- Text-clipping cases: {summary['stress_text_clipping_cases']}", f"- Collision-free rate: {summary['stress_collision_free_rate']:.1%}",
              f"- Determinism rate: {summary['stress_determinism_rate']:.1%}",
              f"- Stress runtime median / p95: {summary['stress_median_runtime_seconds']:.4f}s / {summary['stress_p95_runtime_seconds']:.4f}s", "",
+             f"- Mutation structural validity: {summary['mutation_structural_validity_rate']:.1%}",
+             f"- Mutation off-canvas cases: {summary['mutation_off_canvas_cases']}",
+             f"- Mutation image-ratio failures: {summary['mutation_image_ratio_failures']}",
+             f"- Mutation text-clipping cases: {summary['mutation_text_clipping_cases']}",
+             f"- Mutation collision-free rate: {summary['mutation_collision_free_rate']:.1%}",
+             f"- Mutation determinism rate: {summary['mutation_determinism_rate']:.1%}", "",
              "| Official sample | Baseline proxy | Current proxy | Layout | Candidates | Repairs |", "|---|---:|---:|---|---:|---:|"]
     for row in official_rows:
         lines.append(f"| {row['input']} | {row['baseline']['score']:.2f} | {row['current']['score']:.2f} | {row['layout_family']} | {row['candidate_count']} | {row['repair_count']} |")

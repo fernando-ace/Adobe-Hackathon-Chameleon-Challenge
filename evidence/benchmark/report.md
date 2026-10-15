@@ -11,7 +11,14 @@ This score is an internal proxy, not Adobe's hidden evaluator.
 - Text-clipping cases: 0
 - Collision-free rate: 100.0%
 - Determinism rate: 100.0%
-- Stress runtime median / p95: 0.1406s / 1.0537s
+- Stress runtime median / p95: 0.2520s / 1.2900s
+
+- Mutation structural validity: 100.0%
+- Mutation off-canvas cases: 0
+- Mutation image-ratio failures: 0
+- Mutation text-clipping cases: 0
+- Mutation collision-free rate: 100.0%
+- Mutation determinism rate: 100.0%
 
 | Official sample | Baseline proxy | Current proxy | Layout | Candidates | Repairs |
 |---|---:|---:|---|---:|---:|
