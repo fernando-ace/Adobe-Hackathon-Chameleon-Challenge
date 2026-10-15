@@ -82,13 +82,13 @@ npm run start
 
 The add-on host uses `https://localhost:5241`; the local engine API uses `https://localhost:18765`. Adobe's CLI requires a locally trusted HTTPS certificate for sideloading. The development certificate and key are intentionally excluded under `chameleon-express/.local-dev/`; they are not part of the repository.
 
-Finale research, current integration boundaries, demo flow, and pitch are documented in [`docs/finale/`](docs/finale/).
+Finale research and current integration boundaries are documented in [`docs/finale-research.md`](docs/finale-research.md); the demo flow and pitch are in [`docs/finale/`](docs/finale/).
 
 ## Evidence and limitations
 
 - [`docs/baseline.md`](docs/baseline.md): untouched starter run and visual findings.
 - [`docs/research-notes.md`](docs/research-notes.md): Stage 1 source-backed research, hypotheses, implemented behavior, and measured limits.
-- [`docs/finale/express-api-research.md`](docs/finale/express-api-research.md): official Adobe Express API findings and prototype validation limits.
+- [`docs/finale-research.md`](docs/finale-research.md): official Adobe Express API findings, integration boundaries, and current validation limits.
 - [`docs/failure-taxonomy.md`](docs/failure-taxonomy.md): current recurring failures, regression evidence, and residual issues.
 - [`evidence/gallery/index.html`](evidence/gallery/index.html): rendered source/baseline/current comparisons.
 - [`evidence/benchmark/report.md`](evidence/benchmark/report.md): current internal proxy and stress metrics.

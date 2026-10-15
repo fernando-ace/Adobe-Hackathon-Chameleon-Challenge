@@ -1,6 +1,6 @@
 # Adobe Express add-on research
 
-Research checked against Adobe's official developer documentation on 2026-10-15.
+Research checked against Adobe's official developer documentation on 2026-10-15. The requested top-level synthesis is in [`docs/finale-research.md`](../finale-research.md).
 
 ## Findings, hypotheses, and implementation
 
@@ -18,7 +18,7 @@ Research checked against Adobe's official developer documentation on 2026-10-15.
 - The selected output is appended as a new page; the existing page is not replaced.
 - Text and shapes are separate editable objects. Image content is fitted to the returned geometry and imported as separate image objects. Exact source font licensing, rounded-corner styling, and all renderer-specific effects are not guaranteed in the Express document.
 - Element locking preserves the selected element's rectangle for each generated format on subsequent local regeneration. It is a Chameleon placement constraint, not an Adobe Express native lock-state integration.
-- Chrome browser access works without a remote-debugging popup. The local add-on preview generated all six formats and exercised headline locking. Opening Adobe Express redirects to Adobe sign-in in this profile; no authenticated Express document was available for a live Apply test.
+- Chrome remote debugging is available without a remote-debugging popup. The local add-on preview generated all six formats and exercised headline locking. An Adobe account is now signed in, but the latest Express attempts remain on the app's internal loading shell; no authenticated document Apply test has completed.
 
 ## Prototype validation so far
 
