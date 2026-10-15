@@ -8,8 +8,8 @@
   "stress_image_ratio_failures": 0,
   "stress_text_clipping_cases": 0,
   "stress_collision_free_rate": 1.0,
-  "stress_median_runtime_seconds": 0.531905,
-  "stress_p95_runtime_seconds": 1.51361,
+  "stress_median_runtime_seconds": 0.287565,
+  "stress_p95_runtime_seconds": 0.97969,
   "stress_determinism_rate": 1.0,
   "mutation_structural_validity_rate": 1.0,
   "mutation_image_ratio_failures": 0,
@@ -72,7 +72,7 @@
       "layout_family": "stack",
       "candidate_count": 12,
       "repair_count": 0,
-      "runtime_seconds": 0.03491,
+      "runtime_seconds": 0.04405,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -134,7 +134,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "runtime_seconds": 0.07804,
+      "runtime_seconds": 0.07124,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -185,22 +185,19 @@
         "accidental_collision_count": 0
       },
       "current": {
-        "score": 98.62,
+        "score": 100.0,
         "components": {
           "canvas_legality": 100.0,
           "image_fidelity": 100.0,
-          "typography": 98.99,
+          "typography": 100.0,
           "collision_avoidance": 100.0,
           "group_coherence": 100.0,
           "canvas_use": 100.0,
           "target_adaptation": 100.0,
           "sampled_contrast": 100.0,
-          "visual_hierarchy": 99.62
+          "visual_hierarchy": 100.0
         },
-        "issues": [
-          "cta_label: small type at 6.3px",
-          "cta_label/ribbon_label: hierarchy type sizes are inverted"
-        ],
+        "issues": [],
         "hard_valid": true,
         "off_canvas_count": 0,
         "image_ratio_failures": 0,
@@ -210,7 +207,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 1,
-      "runtime_seconds": 0.16748,
+      "runtime_seconds": 0.1663,
       "renderer_warnings": [
         "Missing asset 'solstice_holiday_badge_2025.png' for element 'holiday_watermark' - rendered a placeholder."
       ],
@@ -229,7 +226,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 3.44318,
+      "runtime_seconds": 0.46018,
       "issues": []
     },
     {
@@ -241,7 +238,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.0927,
+      "runtime_seconds": 0.1192,
       "issues": []
     },
     {
@@ -253,7 +250,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.51361,
+      "runtime_seconds": 0.34503,
       "issues": []
     },
     {
@@ -265,7 +262,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.09496,
+      "runtime_seconds": 0.59142,
       "issues": []
     },
     {
@@ -277,7 +274,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.34411,
+      "runtime_seconds": 0.25704,
       "issues": []
     },
     {
@@ -289,7 +286,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.91241,
+      "runtime_seconds": 0.55469,
       "issues": []
     },
     {
@@ -301,7 +298,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.50915,
+      "runtime_seconds": 0.77087,
       "issues": []
     },
     {
@@ -313,7 +310,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.53233,
+      "runtime_seconds": 0.28371,
       "issues": []
     },
     {
@@ -325,7 +322,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.43934,
+      "runtime_seconds": 0.28027,
       "issues": []
     },
     {
@@ -337,7 +334,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.09979,
+      "runtime_seconds": 0.97969,
       "issues": []
     },
     {
@@ -349,7 +346,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.3158,
+      "runtime_seconds": 0.66435,
       "issues": []
     },
     {
@@ -361,7 +358,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.79327,
+      "runtime_seconds": 0.21227,
       "issues": []
     },
     {
@@ -373,7 +370,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.60294,
+      "runtime_seconds": 0.18916,
       "issues": []
     },
     {
@@ -385,7 +382,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.61614,
+      "runtime_seconds": 0.17405,
       "issues": []
     },
     {
@@ -397,7 +394,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.39274,
+      "runtime_seconds": 0.46256,
       "issues": []
     },
     {
@@ -409,7 +406,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.14744,
+      "runtime_seconds": 1.29317,
       "issues": []
     },
     {
@@ -421,7 +418,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.49047,
+      "runtime_seconds": 0.29142,
       "issues": []
     },
     {
@@ -433,7 +430,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.12168,
+      "runtime_seconds": 0.15879,
       "issues": []
     },
     {
@@ -445,7 +442,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.53148,
+      "runtime_seconds": 0.60494,
       "issues": []
     },
     {
@@ -457,7 +454,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.49268,
+      "runtime_seconds": 0.35729,
       "issues": []
     },
     {
@@ -469,7 +466,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09995,
+      "runtime_seconds": 0.0852,
       "issues": []
     },
     {
@@ -481,7 +478,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.37739,
+      "runtime_seconds": 0.17901,
       "issues": []
     },
     {
@@ -493,7 +490,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.26393,
+      "runtime_seconds": 0.2143,
       "issues": []
     },
     {
@@ -505,7 +502,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.19311,
+      "runtime_seconds": 0.14796,
       "issues": []
     }
   ],
@@ -519,7 +516,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.04006,
+      "runtime_seconds": 0.07537,
       "issues": []
     },
     {
@@ -531,7 +528,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07055,
+      "runtime_seconds": 0.06025,
       "issues": []
     },
     {
@@ -543,7 +540,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.16027,
+      "runtime_seconds": 0.05759,
       "issues": [
         "cta: low sampled text/background contrast (4.27:1)"
       ]
@@ -557,7 +554,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08083,
+      "runtime_seconds": 0.171,
       "issues": []
     },
     {
@@ -569,7 +566,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.43759,
+      "runtime_seconds": 0.22455,
       "issues": []
     },
     {
@@ -581,7 +578,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.37491,
+      "runtime_seconds": 0.34521,
       "issues": []
     },
     {
@@ -593,22 +590,20 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09048,
+      "runtime_seconds": 0.08085,
       "issues": []
     },
     {
       "name": "core_01_728x90",
       "layout_family": "banner",
-      "proxy_score": 98.99,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08217,
-      "issues": [
-        "cta_label: small type at 6.3px"
-      ]
+      "runtime_seconds": 0.08498,
+      "issues": []
     },
     {
       "name": "core_01_480x1200",
@@ -619,7 +614,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.05484,
+      "runtime_seconds": 0.07096,
       "issues": []
     },
     {
@@ -631,58 +626,55 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.28368,
+      "runtime_seconds": 0.07948,
       "issues": []
     },
     {
       "name": "advanced_01_headline_2x",
       "layout_family": "banner",
-      "proxy_score": 97.04,
+      "proxy_score": 98.42,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.20388,
+      "runtime_seconds": 0.28861,
       "issues": [
-        "headline: small type at 8.9px",
-        "cta_label: small type at 6.3px",
-        "cta_label/ribbon_label: hierarchy type sizes are inverted"
+        "headline: small type at 8.9px"
       ]
     },
     {
       "name": "advanced_01_headline_4x",
       "layout_family": "banner",
-      "proxy_score": 91.22,
+      "proxy_score": 87.83,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.31821,
+      "runtime_seconds": 0.35073,
       "issues": [
         "headline: small type at 6.1px",
-        "cta_label: small type at 6.3px",
         "headline/subhead: hierarchy type sizes are inverted",
+        "headline/badge1_label: hierarchy type sizes are inverted",
+        "headline/badge2_label: hierarchy type sizes are inverted",
+        "headline/badge3_label: hierarchy type sizes are inverted",
+        "headline/cta_label: hierarchy type sizes are inverted",
         "headline/ribbon_label: hierarchy type sizes are inverted",
-        "headline/legal_text: hierarchy type sizes are inverted",
-        "cta_label/ribbon_label: hierarchy type sizes are inverted"
+        "headline/legal_text: hierarchy type sizes are inverted"
       ]
     },
     {
       "name": "advanced_01_728x90",
       "layout_family": "banner",
-      "proxy_score": 98.62,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.35385,
-      "issues": [
-        "cta_label: small type at 6.3px",
-        "cta_label/ribbon_label: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.27368,
+      "issues": []
     },
     {
       "name": "advanced_01_480x1200",
@@ -693,7 +685,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.22943,
+      "runtime_seconds": 0.13978,
       "issues": []
     },
     {
@@ -705,7 +697,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.36863,
+      "runtime_seconds": 0.36368,
       "issues": []
     }
   ]

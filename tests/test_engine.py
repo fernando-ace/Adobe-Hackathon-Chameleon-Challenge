@@ -97,6 +97,15 @@ class EngineContractTests(unittest.TestCase):
                 else:
                     self.assertEqual(warnings, [])
 
+    def test_compact_banner_reserves_readable_action_row(self):
+        task = next(task for task in _official_tasks() if task["difficulty"] == "level_3_advanced")
+        output = resize(task["source"], task["target_canvas"])
+        elements = {element["id"]: element for element in output["elements"]}
+        self.assertGreaterEqual(elements["cta_label"]["font_size"], 8.0)
+        for element_id in ("badge1_label", "badge2_label", "badge3_label"):
+            self.assertGreaterEqual(elements[element_id]["font_size"], 8.0)
+        self.assertEqual(get_last_diagnostics()["issues"], [])
+
     def test_semantics_detect_background_and_group_pair(self):
         source = _official_tasks()[1]["source"]
         dna = analyze_design(source, {"width": 1600, "height": 400})

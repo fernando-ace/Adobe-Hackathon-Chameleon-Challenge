@@ -209,13 +209,15 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             cell_w = max(1.0, min(cw * (0.16 if compact else 0.19), (available - gap * (len(badge_groups) - 1)) / len(badge_groups)))
             for i, gid in enumerate(badge_groups):
                 x = mx + i * (cell_w + gap)
-                _apply_rect(dna, by_id, dna.groups[gid][0], (x, group_y, cell_w, max(1.0, ch * (0.16 if compact else 0.13))), assigned)
+                badge_h = ch * (0.21 if compact else 0.13)
+                badge_y = ch * 0.79 if compact else group_y
+                _apply_rect(dna, by_id, dna.groups[gid][0], (x, badge_y, cell_w, max(1.0, badge_h)), assigned)
         cta_y = group_y if not badge_groups else group_y + ch * (0.19 if compact else 0.14)
         for gid in cta_groups:
             x = cw * (0.57 if compact else 0.07)
-            w = cw * (0.14 if compact else 0.27)
-            y = group_y if compact else min(ch - ch * 0.24, cta_y)
-            h = max(1.0, ch * (0.16 if compact else 0.13))
+            w = cw * 0.27
+            y = ch * 0.79 if compact else min(ch - ch * 0.24, cta_y)
+            h = max(1.0, ch * (0.21 if compact else 0.13))
             _apply_rect(dna, by_id, dna.groups[gid][0], (x, y, w, h), assigned)
         for gid in other_groups:
             # Unclassified grouped ornaments retain a visible compact treatment.
