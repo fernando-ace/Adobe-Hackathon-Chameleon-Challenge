@@ -1,0 +1,22 @@
+{
+    "testId": "b043352a-c570-4000-a653-78b963cd609e",
+    "name": "Chameleon Express",
+    "version": "1.0.0",
+    "manifestVersion": 2,
+    "requirements": {
+        "apps": [
+            {
+                "name": "Express",
+                "apiVersion": 1
+            }
+        ]
+    },
+    "entryPoints": [
+        {
+            "type": "panel",
+            "id": "panel1",
+            "main": "index.html",
+            "documentSandbox": "code.js"
+        }
+    ]
+}
