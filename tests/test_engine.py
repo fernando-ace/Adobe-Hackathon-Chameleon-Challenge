@@ -113,9 +113,13 @@ class EngineContractTests(unittest.TestCase):
         task = next(task for task in _official_tasks() if task["difficulty"] == "level_3_advanced")
         output = resize(task["source"], task["target_canvas"])
         elements = {element["id"]: element for element in output["elements"]}
+        self.assertGreaterEqual(elements["headline"]["font_size"], 13.0)
         self.assertGreaterEqual(elements["cta_label"]["font_size"], 8.0)
         for element_id in ("badge1_label", "badge2_label", "badge3_label"):
             self.assertGreaterEqual(elements[element_id]["font_size"], 8.0)
+        product = elements["product"]
+        target = task["target_canvas"]
+        self.assertGreaterEqual(product["width"] * product["height"] / (target["width"] * target["height"]), 0.055)
         self.assertEqual(get_last_diagnostics()["issues"], [])
 
     def test_semantics_detect_background_and_group_pair(self):
