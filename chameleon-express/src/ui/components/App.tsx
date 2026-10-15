@@ -12,8 +12,8 @@ const API = "https://localhost:18765";
 type Format = { id: string; name: string; detail: string; width: number; height: number };
 type Sample = { id: string; name: string; canvas: { width: number; height: number }; element_count: number };
 type Element = Record<string, unknown> & { id: string; type: string; x: number; y: number; width: number; height: number; content?: string; asset_id?: string };
-type Layout = { format: Format; design: { canvas: { width: number; height: number }; elements: Element[] }; preview: string; family: string; placements: Array<{ id: string; role: string; reason: string }> };
-type Generation = { layouts: Layout[]; elementAssets: Record<string, string>; source: { canvas: { width: number; height: number }; elements: Element[] } };
+type Layout = { format: Format; design: { canvas: { width: number; height: number }; elements: Element[] }; preview: string; elementAssets: Record<string, string>; family: string; placements: Array<{ id: string; role: string; reason: string }> };
+type Generation = { layouts: Layout[]; source: { canvas: { width: number; height: number }; elements: Element[] } };
 type Props = { addOnUISdk?: AddOnSDKAPI; sandboxProxy?: DocumentSandboxApi; sdkError?: string };
 
 const FALLBACK_FORMATS: Format[] = [
@@ -114,7 +114,7 @@ const App = ({ addOnUISdk, sandboxProxy, sdkError }: Props) => {
         if (!active || !sandboxProxy) return;
         setApplying(true); setError(""); setNotice("");
         try {
-            const message = await sandboxProxy.applyLayout({ layout: active.design, elementAssets: generation?.elementAssets ?? {}, title: active.format.name });
+            const message = await sandboxProxy.applyLayout({ layout: active.design, elementAssets: active.elementAssets ?? {}, title: active.format.name });
             setNotice(message || `${active.format.name} was added as an editable page.`);
         } catch (caught) {
             setError(caught instanceof Error ? caught.message : "Adobe Express could not apply this layout.");
