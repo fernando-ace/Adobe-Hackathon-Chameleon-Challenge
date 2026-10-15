@@ -427,10 +427,11 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             cell = min(cw * 0.24, (cw - 2 * mx - gap * (len(badge_groups) - 1)) / len(badge_groups))
             for i, gid in enumerate(badge_groups):
                 _apply_rect(dna, by_id, dna.groups[gid][0], (mx + i * (cell + gap), ch * 0.74, cell, ch * 0.10), assigned)
+        action_y = 0.82 if heroes or bodies or subs else 0.72
         for i, gid in enumerate(cta_groups):
-            _apply_rect(dna, by_id, dna.groups[gid][0], (cw * 0.34, ch * (0.82 if heroes or bodies or subs else 0.58), cw * 0.32, ch * 0.10), assigned)
+            _apply_rect(dna, by_id, dna.groups[gid][0], (cw * 0.34, ch * action_y, cw * 0.32, ch * 0.10), assigned)
         for f in standalone_ctas:
-            _apply_rect(dna, by_id, f.id, (cw * 0.30, ch * (0.82 if heroes or bodies or subs else 0.58), cw * 0.40, ch * 0.10), assigned)
+            _apply_rect(dna, by_id, f.id, (cw * 0.30, ch * action_y, cw * 0.40, ch * 0.10), assigned)
         for f in legals:
             _apply_rect(dna, by_id, f.id, (mx, ch * 0.93, cw - 2 * mx, ch * 0.05), assigned)
 

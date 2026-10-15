@@ -143,6 +143,15 @@ class EngineContractTests(unittest.TestCase):
         self.assertGreaterEqual(product["width"] * product["height"] / (target["width"] * target["height"]), 0.055)
         self.assertEqual(get_last_diagnostics()["issues"], [])
 
+    def test_sparse_portrait_stack_uses_lower_action_band(self):
+        task = next(task for task in _official_tasks() if task["difficulty"] == "level_1_warmup")
+        output = resize(task["source"], task["target_canvas"])
+        cta = next(element for element in output["elements"] if element["id"] == "cta")
+        center_y = (cta["y"] + cta["height"] / 2) / task["target_canvas"]["height"]
+        self.assertGreaterEqual(center_y, 0.70)
+        self.assertLess(center_y, 0.86)
+        self.assertEqual(get_last_diagnostics()["issues"], [])
+
     def test_semantics_detect_background_and_group_pair(self):
         source = _official_tasks()[1]["source"]
         dna = analyze_design(source, {"width": 1600, "height": 400})
