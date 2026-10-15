@@ -7,7 +7,7 @@
 - Development branch: `chameleon-2026-submission`
 - Baseline code was run before any engine edits. The original engine is the uniform x/y stretch in `engine/resize.py`.
 - Runtime: Python 3.11.9 on Windows x64. Dependencies installed in `.venv/`; `cr-renderer` resolved to `a17e1fb9a732959dd6c21ae168d5ee09d74bd64f`.
-- CPU: Intel Core Ultra 9 185H, 16 cores / 22 logical processors. Docker CLI/buildx are installed, but the Docker Desktop Linux daemon did not start in this session, so container validation is pending.
+- CPU: Intel Core Ultra 9 185H, 16 cores / 22 logical processors. Docker CLI/buildx are installed. The initial Docker Desktop startup failed; recovery and the later successful container validation are recorded below.
 
 ## Run
 
@@ -43,4 +43,4 @@ The six untouched outputs in `evidence/baseline/` are the source of truth for ba
 
 ## Environment follow-up
 
-`docker --version` and `docker buildx version` work, but no container build or offline run has passed. On 2026-10-15, `docker info` could not connect to `npipe:////./pipe/dockerDesktopLinuxEngine`. Docker Desktop's local diagnostic (ID `316C4AAB-61F2-4485-ADD1-0108FC3B3194`; not uploaded) reported that backend startup failed while removing `%LOCALAPPDATA%\Docker\run\dockerInference`: “The file cannot be accessed by the system.” Inspection found a broken Docker runtime symbolic link last modified 2026-09-28; the Docker Desktop service was stopped, and its Windows backend/diagnostic pipes were absent. The stale link remains, so clear that runtime entry and retry Docker Desktop, then verify the engine before running the documented `--network none` container command. Node 22.17.1 and npm 10.9.2 are present for a later finale prototype. The `py` launcher is not installed; use `python` or `.venv\Scripts\python.exe`.
+The initial Docker check on 2026-10-15 could not connect to `npipe:////./pipe/dockerDesktopLinuxEngine`. Docker Desktop's local diagnostic (ID `316C4AAB-61F2-4485-ADD1-0108FC3B3194`; not uploaded) reported that backend startup failed while removing `%LOCALAPPDATA%\Docker\run\dockerInference`: “The file cannot be accessed by the system.” After that socket was cleared, startup exposed a second orphaned socket at `%LOCALAPPDATA%\docker-secrets-engine\engine.sock`. Both parents contained only runtime sockets marked as reparse points; direct deletion returned Windows error 1920. Renaming the two runtime directories aside let Docker Desktop recreate them. Docker engine 29.5.3 then answered `docker info`, ran `hello-world`, and built and ran the challenge image offline. See [`evidence/docker/validation.md`](../evidence/docker/validation.md) for the full validation. Node 22.17.1 and npm 10.9.2 are present for the finale prototype. The `py` launcher is not installed; use `python` or `.venv\Scripts\python.exe`.

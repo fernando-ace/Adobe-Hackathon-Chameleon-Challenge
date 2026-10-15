@@ -19,4 +19,4 @@ This is the current diagnostic snapshot from `evidence/benchmark/report.json`. T
 
 For a recurring failure, save a deterministic input, identify whether the cause is source data, role inference, candidate placement, text fitting, scoring, or rendering, then fix the general rule. Run the focused regression, the full test suite, the official renderer, and the full benchmark before recording the updated evidence.
 
-The latest full benchmark records 100% structural validity and determinism, zero off-canvas cases, clipping cases, image-ratio failures, and collisions across both suites. Docker and offline-container validation remain pending; see [baseline.md](baseline.md).
+The latest full benchmark records 100% structural validity and determinism, zero off-canvas cases, clipping cases, image-ratio failures, and collisions across both suites. Docker build and offline execution passed for all three official samples; see [the Docker validation record](../evidence/docker/validation.md).
