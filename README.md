@@ -80,7 +80,7 @@ npm run build
 npm run start
 ```
 
-The add-on host uses `https://localhost:5241`; the local engine API uses `https://localhost:18765`. Adobe's CLI requires a locally trusted HTTPS certificate for sideloading. The development certificate and key are intentionally excluded under `chameleon-express/.local-dev/`; they are not part of the repository.
+The add-on host uses `https://localhost:5241`; the local engine API uses `https://localhost:18765`. Adobe's CLI requires a locally trusted HTTPS certificate for sideloading. The development certificate and key are intentionally excluded under `chameleon-express/.local-dev/`; they are not part of the repository. The CLI package is preserved at [`evidence/finale/chameleon-express-add-on.zip`](evidence/finale/chameleon-express-add-on.zip); it is a local test package, not a published or Adobe-reviewed listing.
 
 Finale research and current integration boundaries are documented in [`docs/finale-research.md`](docs/finale-research.md); the demo flow and pitch are in [`docs/finale/`](docs/finale/).
 
