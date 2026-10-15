@@ -1,12 +1,14 @@
 # Offline Docker validation
 
-Validated 2026-10-15 with Docker Desktop engine 29.5.3.
+Revalidated 2026-10-15 with Docker Desktop engine 29.5.3.
 
-Build:
+Build for the challenge architecture:
 
 ```powershell
 docker build --platform linux/amd64 -t chameleon-engine .
 ```
+
+The build succeeded. `Dockerfile` leaves platform selection to the command-line flag, avoiding Docker's redundant `FROM --platform` warning.
 
 Offline run:
 
@@ -17,14 +19,12 @@ docker run --rm --network none `
   chameleon-engine
 ```
 
-All three official tasks completed with `OK` and rendered PNGs:
+All three official samples completed with `OK`, and the repository validator reported zero issues for every output:
 
-- Level 1: 0.14 s
-- Level 2: 0.19 s
-- Level 3: 0.23 s
+- Level 1: 0.13 s; PNG 110,453 bytes
+- Level 2: 0.23 s; PNG 72,503 bytes
+- Level 3: 0.25 s; PNG 41,146 bytes
 
-The generated JSON retained each source element ID and count, text content, and font family. Output geometry stayed within each target canvas. Contain-fit images retained their source frame ratios; cover-fit backgrounds use a target-sized frame by design. PNG previews were produced for every level. Docker emitted a non-fatal Fontconfig warning about the distribution's `05-reset-dirs-sample.conf` and its exporter warns that the Dockerfile pins `FROM --platform=linux/amd64` while the build also selects that platform.
-
-Revalidated on 2026-10-15 with Docker Desktop engine 29.5.3: the `linux/amd64` image built successfully, then all three official samples ran with `--network none`. Runtime was 0.28 s (Level 1), 0.18 s (Level 2), and 0.23 s (Level 3). The repository validator reported zero issues for each container output, and each output had a non-empty renderer PNG. The build emitted Docker's non-fatal `FromPlatformFlagConstDisallowed` warning because both the Dockerfile and CLI specify `linux/amd64`; the offline run emitted the known Fontconfig `reset-dirs` warning.
+The generated JSON retained source element IDs and counts, text content, and font families. Output geometry stayed within each target canvas. Contain-fit images retained their source frame ratios; cover-fit backgrounds use a target-sized frame by design. The only warning on the offline run was Fontconfig's non-fatal `05-reset-dirs-sample.conf` warning.
 
 To recover Docker Desktop after an unclean shutdown, this host had orphaned Windows socket reparse points in both `%LOCALAPPDATA%\Docker\run` and `%LOCALAPPDATA%\docker-secrets-engine`. Direct socket deletion failed with Windows error 1920. Renaming the socket-only runtime directories aside let Docker recreate them; Docker then answered `docker info` and ran the offline image. The preserved directories are outside the repository.
