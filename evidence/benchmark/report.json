@@ -8,8 +8,8 @@
   "stress_image_ratio_failures": 0,
   "stress_text_clipping_cases": 0,
   "stress_collision_free_rate": 1.0,
-  "stress_median_runtime_seconds": 0.20144,
-  "stress_p95_runtime_seconds": 1.16524,
+  "stress_median_runtime_seconds": 0.14057,
+  "stress_p95_runtime_seconds": 1.05367,
   "stress_determinism_rate": 1.0,
   "mutation_structural_validity_rate": 1.0,
   "mutation_image_ratio_failures": 0,
@@ -72,7 +72,7 @@
       "layout_family": "stack",
       "candidate_count": 12,
       "repair_count": 0,
-      "runtime_seconds": 0.03086,
+      "runtime_seconds": 0.0313,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -134,7 +134,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "runtime_seconds": 0.0684,
+      "runtime_seconds": 0.06946,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -207,7 +207,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "runtime_seconds": 0.1621,
+      "runtime_seconds": 0.18177,
       "renderer_warnings": [
         "Missing asset 'solstice_holiday_badge_2025.png' for element 'holiday_watermark' - rendered a placeholder."
       ],
@@ -226,7 +226,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.16318,
+      "runtime_seconds": 0.16047,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_22/body: hierarchy type sizes are inverted",
@@ -245,7 +245,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07057,
+      "runtime_seconds": 0.07103,
       "issues": []
     },
     {
@@ -257,7 +257,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.1908,
+      "runtime_seconds": 0.10493,
       "issues": []
     },
     {
@@ -269,7 +269,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.15364,
+      "runtime_seconds": 0.17096,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -277,13 +277,13 @@
     {
       "name": "synthetic_004",
       "layout_family": "banner",
-      "proxy_score": 100.0,
+      "proxy_score": 99.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.26199,
+      "runtime_seconds": 0.12029,
       "issues": []
     },
     {
@@ -295,7 +295,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.60708,
+      "runtime_seconds": 0.62403,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_22/body: hierarchy type sizes are inverted",
@@ -316,7 +316,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.30086,
+      "runtime_seconds": 0.15823,
       "issues": [
         "copy_22/body: hierarchy type sizes are inverted",
         "copy_28/body: hierarchy type sizes are inverted"
@@ -331,7 +331,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.62656,
+      "runtime_seconds": 0.4906,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_25/body: hierarchy type sizes are inverted",
@@ -349,7 +349,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.15097,
+      "runtime_seconds": 0.22032,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -363,7 +363,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.04624,
+      "runtime_seconds": 0.14462,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -377,7 +377,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.82691,
+      "runtime_seconds": 0.80446,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_22/body: hierarchy type sizes are inverted",
@@ -396,7 +396,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09077,
+      "runtime_seconds": 0.07268,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -410,7 +410,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.26443,
+      "runtime_seconds": 0.13652,
       "issues": []
     },
     {
@@ -422,7 +422,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.12999,
+      "runtime_seconds": 0.12856,
       "issues": []
     },
     {
@@ -434,7 +434,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.16524,
+      "runtime_seconds": 1.05367,
       "issues": []
     },
     {
@@ -446,7 +446,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.58161,
+      "runtime_seconds": 0.4958,
       "issues": []
     },
     {
@@ -458,7 +458,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.32289,
+      "runtime_seconds": 0.20642,
       "issues": [
         "copy_22/body: hierarchy type sizes are inverted",
         "copy_25/body: hierarchy type sizes are inverted",
@@ -477,7 +477,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.12812,
+      "runtime_seconds": 0.11055,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -491,7 +491,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.42568,
+      "runtime_seconds": 0.54654,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -505,7 +505,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.7704,
+      "runtime_seconds": 0.76878,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_25/body: hierarchy type sizes are inverted",
@@ -524,7 +524,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.04202,
+      "runtime_seconds": 0.03512,
       "issues": []
     },
     {
@@ -536,19 +536,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.2659,
+      "runtime_seconds": 0.25853,
       "issues": []
     },
     {
       "name": "synthetic_022",
       "layout_family": "banner",
-      "proxy_score": 98.53,
+      "proxy_score": 98.11,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11077,
+      "runtime_seconds": 0.11019,
       "issues": []
     },
     {
@@ -560,7 +560,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.20195,
+      "runtime_seconds": 0.18002,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_22/body: hierarchy type sizes are inverted",
@@ -577,7 +577,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.25315,
+      "runtime_seconds": 0.11424,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -591,7 +591,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.9834,
+      "runtime_seconds": 0.87831,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_22/body: hierarchy type sizes are inverted",
@@ -612,7 +612,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.06805,
+      "runtime_seconds": 0.34071,
       "issues": []
     },
     {
@@ -624,7 +624,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.96995,
+      "runtime_seconds": 0.60172,
       "issues": [
         "copy_22/body: hierarchy type sizes are inverted",
         "copy_25/body: hierarchy type sizes are inverted",
@@ -645,7 +645,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.54021,
+      "runtime_seconds": 1.20801,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_22/body: hierarchy type sizes are inverted",
@@ -665,7 +665,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.1238,
+      "runtime_seconds": 1.23888,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_25/body: hierarchy type sizes are inverted",
@@ -685,19 +685,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.26773,
+      "runtime_seconds": 0.15919,
       "issues": []
     },
     {
       "name": "synthetic_031",
       "layout_family": "banner",
-      "proxy_score": 99.55,
+      "proxy_score": 99.05,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.13195,
+      "runtime_seconds": 0.11872,
       "issues": []
     },
     {
@@ -709,7 +709,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.2152,
+      "runtime_seconds": 0.11126,
       "issues": []
     },
     {
@@ -721,7 +721,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.06094,
+      "runtime_seconds": 0.07237,
       "issues": []
     },
     {
@@ -733,7 +733,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11408,
+      "runtime_seconds": 0.09938,
       "issues": []
     },
     {
@@ -745,7 +745,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.10319,
+      "runtime_seconds": 0.0891,
       "issues": []
     },
     {
@@ -757,7 +757,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.47045,
+      "runtime_seconds": 0.30133,
       "issues": []
     },
     {
@@ -769,7 +769,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18716,
+      "runtime_seconds": 0.09605,
       "issues": []
     },
     {
@@ -781,7 +781,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.10488,
+      "runtime_seconds": 0.11394,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_22/body: hierarchy type sizes are inverted",
@@ -800,7 +800,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18767,
+      "runtime_seconds": 0.19044,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -808,13 +808,13 @@
     {
       "name": "synthetic_040",
       "layout_family": "banner",
-      "proxy_score": 99.55,
+      "proxy_score": 99.05,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.26346,
+      "runtime_seconds": 0.12845,
       "issues": []
     },
     {
@@ -826,7 +826,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.28995,
+      "runtime_seconds": 0.45176,
       "issues": []
     },
     {
@@ -838,7 +838,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.1505,
+      "runtime_seconds": 0.05544,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -852,7 +852,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08181,
+      "runtime_seconds": 0.07612,
       "issues": []
     },
     {
@@ -864,7 +864,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11002,
+      "runtime_seconds": 0.06897,
       "issues": []
     },
     {
@@ -876,7 +876,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.38764,
+      "runtime_seconds": 0.39918,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -890,7 +890,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08816,
+      "runtime_seconds": 0.08369,
       "issues": []
     },
     {
@@ -902,7 +902,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.10773,
+      "runtime_seconds": 0.06824,
       "issues": []
     },
     {
@@ -914,7 +914,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.29371,
+      "runtime_seconds": 0.14769,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -928,7 +928,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.40635,
+      "runtime_seconds": 1.27328,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted",
         "copy_22/body: hierarchy type sizes are inverted",
@@ -949,7 +949,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.20093,
+      "runtime_seconds": 0.10903,
       "issues": []
     },
     {
@@ -961,7 +961,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.16457,
+      "runtime_seconds": 0.28157,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -975,7 +975,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08028,
+      "runtime_seconds": 0.0699,
       "issues": []
     },
     {
@@ -987,7 +987,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11071,
+      "runtime_seconds": 0.0904,
       "issues": []
     },
     {
@@ -999,7 +999,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.32513,
+      "runtime_seconds": 0.24288,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -1013,7 +1013,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.15514,
+      "runtime_seconds": 0.05653,
       "issues": []
     },
     {
@@ -1025,7 +1025,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11598,
+      "runtime_seconds": 0.08701,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -1039,7 +1039,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.25773,
+      "runtime_seconds": 0.18865,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -1053,7 +1053,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.69718,
+      "runtime_seconds": 0.40084,
       "issues": [
         "copy_25/body: hierarchy type sizes are inverted",
         "copy_28/body: hierarchy type sizes are inverted",
@@ -1071,7 +1071,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.24843,
+      "runtime_seconds": 0.11453,
       "issues": []
     },
     {
@@ -1083,7 +1083,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.15143,
+      "runtime_seconds": 0.05716,
       "issues": []
     },
     {
@@ -1095,7 +1095,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18794,
+      "runtime_seconds": 0.07583,
       "issues": [
         "copy_7/body: hierarchy type sizes are inverted"
       ]
@@ -1109,7 +1109,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.13358,
+      "runtime_seconds": 0.067,
       "issues": []
     },
     {
@@ -1121,7 +1121,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.45221,
+      "runtime_seconds": 0.29236,
       "issues": []
     }
   ],
@@ -1135,7 +1135,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08819,
+      "runtime_seconds": 0.09126,
       "issues": []
     },
     {
@@ -1147,7 +1147,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08709,
+      "runtime_seconds": 0.04217,
       "issues": []
     },
     {
@@ -1159,7 +1159,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.03505,
+      "runtime_seconds": 0.0238,
       "issues": []
     },
     {
@@ -1171,7 +1171,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.0254,
+      "runtime_seconds": 0.0347,
       "issues": []
     },
     {
@@ -1183,7 +1183,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.20447,
+      "runtime_seconds": 0.03722,
       "issues": []
     },
     {
@@ -1195,7 +1195,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.05405,
+      "runtime_seconds": 0.03017,
       "issues": [
         "mutation_support_copy/cta: hierarchy type sizes are inverted"
       ]
@@ -1209,7 +1209,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.20361,
+      "runtime_seconds": 0.0231,
       "issues": []
     },
     {
@@ -1221,7 +1221,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.05619,
+      "runtime_seconds": 0.02693,
       "issues": []
     },
     {
@@ -1233,7 +1233,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.03403,
+      "runtime_seconds": 0.03235,
       "issues": []
     },
     {
@@ -1245,7 +1245,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.14299,
+      "runtime_seconds": 0.03868,
       "issues": []
     },
     {
@@ -1257,7 +1257,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.47242,
+      "runtime_seconds": 0.12875,
       "issues": []
     },
     {
@@ -1269,7 +1269,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.13837,
+      "runtime_seconds": 0.07768,
       "issues": []
     },
     {
@@ -1281,7 +1281,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.2297,
+      "runtime_seconds": 0.10825,
       "issues": []
     },
     {
@@ -1293,7 +1293,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18988,
+      "runtime_seconds": 0.0795,
       "issues": []
     },
     {
@@ -1305,7 +1305,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09389,
+      "runtime_seconds": 0.07926,
       "issues": []
     },
     {
@@ -1317,7 +1317,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.39995,
+      "runtime_seconds": 0.17232,
       "issues": []
     },
     {
@@ -1329,7 +1329,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09539,
+      "runtime_seconds": 0.07055,
       "issues": []
     },
     {
@@ -1341,7 +1341,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09561,
+      "runtime_seconds": 0.06052,
       "issues": []
     },
     {
@@ -1353,7 +1353,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.06878,
+      "runtime_seconds": 0.06326,
       "issues": []
     },
     {
@@ -1365,7 +1365,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.20405,
+      "runtime_seconds": 0.09708,
       "issues": []
     },
     {
@@ -1377,7 +1377,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.10142,
+      "runtime_seconds": 0.07505,
       "issues": [
         "mutation_support_copy/subhead: hierarchy type sizes are inverted"
       ]
@@ -1391,7 +1391,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.19425,
+      "runtime_seconds": 0.06931,
       "issues": []
     },
     {
@@ -1403,7 +1403,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.083,
+      "runtime_seconds": 0.06099,
       "issues": []
     },
     {
@@ -1415,7 +1415,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.16055,
+      "runtime_seconds": 0.06927,
       "issues": []
     },
     {
@@ -1427,7 +1427,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.17534,
+      "runtime_seconds": 0.06912,
       "issues": []
     },
     {
@@ -1439,7 +1439,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.36271,
+      "runtime_seconds": 0.18935,
       "issues": []
     },
     {
@@ -1451,7 +1451,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09037,
+      "runtime_seconds": 0.10331,
       "issues": []
     },
     {
@@ -1463,7 +1463,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.2592,
+      "runtime_seconds": 0.13042,
       "issues": []
     },
     {
@@ -1475,7 +1475,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.25166,
+      "runtime_seconds": 0.11525,
       "issues": []
     },
     {
@@ -1487,7 +1487,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.30457,
+      "runtime_seconds": 0.1564,
       "issues": []
     },
     {
@@ -1499,7 +1499,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.40817,
+      "runtime_seconds": 0.29742,
       "issues": [
         "headline: small type at 8.9px"
       ]
@@ -1507,22 +1507,19 @@
     {
       "name": "advanced_01_headline_4x",
       "layout_family": "banner",
-      "proxy_score": 87.83,
+      "proxy_score": 93.31,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.39302,
+      "runtime_seconds": 0.26064,
       "issues": [
-        "headline: small type at 6.1px",
+        "headline: small type at 6.7px",
         "headline/subhead: hierarchy type sizes are inverted",
         "headline/badge1_label: hierarchy type sizes are inverted",
         "headline/badge2_label: hierarchy type sizes are inverted",
-        "headline/badge3_label: hierarchy type sizes are inverted",
-        "headline/cta_label: hierarchy type sizes are inverted",
-        "headline/ribbon_label: hierarchy type sizes are inverted",
-        "headline/legal_text: hierarchy type sizes are inverted"
+        "headline/badge3_label: hierarchy type sizes are inverted"
       ]
     },
     {
@@ -1534,7 +1531,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.40014,
+      "runtime_seconds": 0.19053,
       "issues": []
     },
     {
@@ -1546,7 +1543,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.19409,
+      "runtime_seconds": 0.33947,
       "issues": []
     },
     {
@@ -1558,22 +1555,22 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.19196,
+      "runtime_seconds": 0.23545,
       "issues": []
     },
     {
       "name": "advanced_01_add_copy",
       "layout_family": "banner",
-      "proxy_score": 84.41,
+      "proxy_score": 90.24,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.35271,
+      "runtime_seconds": 0.22187,
       "issues": [
         "headline: small type at 9.8px",
-        "subhead: small type at 5.0px",
+        "subhead: small type at 5.7px",
         "subhead/badge1_label: hierarchy type sizes are inverted",
         "subhead/badge2_label: hierarchy type sizes are inverted",
         "subhead/badge3_label: hierarchy type sizes are inverted",
@@ -1590,7 +1587,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.17959,
+      "runtime_seconds": 0.18753,
       "issues": []
     },
     {
@@ -1602,7 +1599,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.23987,
+      "runtime_seconds": 0.18624,
       "issues": []
     },
     {
@@ -1614,7 +1611,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.30654,
+      "runtime_seconds": 0.18058,
       "issues": []
     },
     {
@@ -1626,7 +1623,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.28095,
+      "runtime_seconds": 0.15744,
       "issues": []
     },
     {
@@ -1638,7 +1635,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.50203,
+      "runtime_seconds": 0.28138,
       "issues": []
     },
     {
@@ -1650,7 +1647,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.35807,
+      "runtime_seconds": 0.20209,
       "issues": []
     },
     {
@@ -1662,7 +1659,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.3509,
+      "runtime_seconds": 0.17556,
       "issues": []
     },
     {
@@ -1674,7 +1671,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.31615,
+      "runtime_seconds": 0.13714,
       "issues": []
     },
     {
@@ -1686,7 +1683,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.3384,
+      "runtime_seconds": 0.22084,
       "issues": []
     }
   ]

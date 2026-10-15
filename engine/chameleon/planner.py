@@ -212,18 +212,18 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
     if banner:
         hero_left = family == "banner_mirror"
         compact = ch < 150
-        hero_x = mx if hero_left else cw * (0.85 if compact else 0.79)
-        hero_w = max(1.0, cw * (0.115 if compact else 0.18))
-        hero_y, hero_h = ch * (0.14 if compact else 0.30), ch * (0.72 if compact else 0.60)
+        hero_x = mx if hero_left else cw * (0.88 if compact else 0.79)
+        hero_w = max(1.0, cw * (0.105 if compact else 0.18))
+        hero_y, hero_h = ch * (0.29 if compact else 0.30), ch * (0.69 if compact else 0.60)
         image_facts = sorted(heroes, key=lambda f: (-f.importance, -f.area_fraction))
         for index, fact in enumerate(image_facts):
             if index == 0:
                 _apply_rect(dna, by_id, fact.id, (hero_x, hero_y, hero_w, hero_h), assigned)
             elif fact.asset_size is None and compact:
                 # A missing optional image is rendered as a placeholder by the
-                # official renderer; keep the reference visible without hiding
-                # the live product or text in a very short banner.
-                _apply_rect(dna, by_id, fact.id, (cw * 0.89, ch * 0.86, cw * 0.09, ch * 0.12), assigned)
+                # official renderer; place it in the gap beside the copy and
+                # product so neither source text nor the focal image is hidden.
+                _apply_rect(dna, by_id, fact.id, (cw * 0.83, ch * 0.55, cw * 0.055, ch * 0.14), assigned)
             else:
                 # A supporting/secondary image sits beside the primary focal image if space allows.
                 x = cw * 0.72 if compact and not hero_left else max(mx, hero_x - hero_w * (index + 1) * 0.92) if not hero_left else min(cw - mx - hero_w, hero_x + hero_w * (index + 1) * 0.92)
@@ -232,11 +232,14 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
         copy_x = mx if not hero_left else min(cw * 0.65, hero_x + hero_w + mx * 0.35)
         copy_w = max(1.0, (hero_x - copy_x - mx * 0.55) if not hero_left else (cw - copy_x - mx))
         if compact:
-            copy_x, copy_w = mx, cw * 0.63
+            # A short banner needs a single broad reading column. Keeping the
+            # product in a narrow right rail lets long source copy fit at a
+            # useful size while preserving the same elements and wording.
+            copy_x, copy_w = mx, cw * 0.74
         if logos:
-            logo_x = (cw * 0.73 if compact else cw * 0.72) if not hero_left else cw * 0.14
+            logo_x = (cw * 0.88 if compact else cw * 0.72) if not hero_left else cw * 0.14
             logo_y = ch * 0.025
-            logo_w = cw * (0.11 if compact else 0.21)
+            logo_w = cw * (0.095 if compact else 0.21)
             for f in logos:
                 logo_h = ch * (0.25 if compact else 0.20)
                 _apply_rect(dna, by_id, f.id, (logo_x, logo_y, logo_w, max(1, logo_h)), assigned)
@@ -292,9 +295,9 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
                 lane_step = min(0.20, 0.32 / max(1, len(other_groups) - 1)) if len(other_groups) > 1 else 0.0
                 if is_ribbon:
                     if len(other_groups) == 1:
-                        rect = (cw * 0.72, ch * 0.42, cw * 0.12, ch * 0.16)
+                        rect = (cw * 0.80, ch * 0.31, cw * 0.08, ch * 0.16)
                     else:
-                        rect = (cw * 0.56, ch * (0.30 + lane_step * index), cw * 0.14, ch * 0.16)
+                        rect = (cw * 0.78, ch * (0.25 + lane_step * index), cw * 0.08, ch * 0.16)
                 else:
                     rect = (cw * 0.72, ch * (0.42 + lane_step * index), cw * 0.12, ch * 0.16)
             elif is_ribbon:
