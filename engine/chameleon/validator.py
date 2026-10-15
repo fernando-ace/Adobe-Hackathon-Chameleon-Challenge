@@ -46,7 +46,25 @@ def validate_output(source: dict[str, Any], target: dict[str, Any], output: dict
             continue
         x, y, w, h = (float(element[k]) for k in ("x", "y", "width", "height"))
         if w < 0 or h < 0 or x < -0.5 or y < -0.5 or x + w > width + 0.5 or y + h > height + 0.5:
-            issues.append(f"{eid}: invalid or off-canvas geometry")
+            original = src_by_id.get(eid)
+            source_canvas = source.get("canvas", {})
+            inherited_bleed = False
+            note = str(original.get("_note", "")).casefold() if original is not None else ""
+            if original is not None and ("intentional" in note or "bleed" in note):
+                ox, oy = float(original.get("x", 0)), float(original.get("y", 0))
+                ow, oh = float(original.get("width", 0)), float(original.get("height", 0))
+                source_width = max(1.0, float(source_canvas.get("width", width)))
+                source_height = max(1.0, float(source_canvas.get("height", height)))
+                current_edges = (max(0.0, -x), max(0.0, -y), max(0.0, x + w - width), max(0.0, y + h - height))
+                source_edges = (max(0.0, -ox), max(0.0, -oy), max(0.0, ox + ow - source_width), max(0.0, oy + oh - source_height))
+                inherited_bleed = any(edge > 0 for edge in source_edges) and all(
+                    current / target_size <= prior / source_size + 0.01
+                    for current, prior, target_size, source_size in zip(
+                        current_edges, source_edges, (width, height, width, height), (source_width, source_height, source_width, source_height)
+                    )
+                )
+            if not inherited_bleed:
+                issues.append(f"{eid}: invalid or off-canvas geometry")
         for key in _REQUIRED.get(str(element.get("type")), ()):
             if key not in element:
                 issues.append(f"{eid}: missing type-specific field {key}")

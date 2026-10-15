@@ -21,6 +21,67 @@ def get_last_diagnostics() -> dict[str, Any]:
     return deepcopy(_LAST_DIAGNOSTICS)
 
 
+def _placement_reason(family: str, role: str) -> str:
+    if family in {"identity", "source_fit"}:
+        return "preserve the source composition and fit it to the target"
+    if role == "background":
+        return "cover the full target as the visual backdrop"
+    if family in {"banner", "banner_mirror"}:
+        side = "left" if family == "banner_mirror" else "right"
+        if role == "logo":
+            return f"anchor the brand above the {side}-side hero area"
+        if role == "hero_image":
+            return f"balance the narrative copy on the {side} side"
+        if role in {"headline", "subheadline", "body_copy"}:
+            return "form the primary narrative column"
+        if role in {"cta_text", "badge_text", "ribbon_text"}:
+            return "keep the action or campaign marker grouped near the narrative"
+        return "occupy a supporting position in the banner composition"
+    if family in {"split", "split_mirror"}:
+        if role == "hero_image":
+            return "occupy the visual column opposite the narrative"
+        if role in {"headline", "subheadline", "body_copy", "cta_text"}:
+            return "form the narrative and action column"
+        if role == "logo":
+            return "anchor the brand at the edge of the narrative column"
+        return "support the primary two-column composition"
+    if role == "logo":
+        return "anchor the brand at the top of the vertical composition"
+    if role == "headline":
+        return "lead the vertical narrative stack"
+    if role in {"cta_text", "badge_text", "ribbon_text"}:
+        return "group the action or campaign marker in the lower support area"
+    return "follow the vertical narrative and supporting-content flow"
+
+
+def _placement_trace(dna: Any, design: dict[str, Any], family: str) -> list[dict[str, Any]]:
+    output = {str(element.get("id", "")): element for element in design.get("elements", [])}
+    cw, ch = max(1.0, float(dna.target_canvas["width"])), max(1.0, float(dna.target_canvas["height"]))
+    trace = []
+    for fact in dna.facts:
+        element = output.get(fact.id)
+        if element is None:
+            continue
+        trace.append({
+            "id": fact.id,
+            "role": fact.role,
+            "confidence": round(float(fact.confidence), 3),
+            "group_id": fact.group_id,
+            "source_rect_normalized": [
+                round(float(fact.element.get("x", 0)) / max(1.0, float(dna.source["canvas"]["width"])), 4),
+                round(float(fact.element.get("y", 0)) / max(1.0, float(dna.source["canvas"]["height"])), 4),
+                round(float(fact.element.get("width", 0)) / max(1.0, float(dna.source["canvas"]["width"])), 4),
+                round(float(fact.element.get("height", 0)) / max(1.0, float(dna.source["canvas"]["height"])), 4),
+            ],
+            "output_rect_normalized": [
+                round(float(element.get("x", 0)) / cw, 4), round(float(element.get("y", 0)) / ch, 4),
+                round(float(element.get("width", 0)) / cw, 4), round(float(element.get("height", 0)) / ch, 4),
+            ],
+            "reason": _placement_reason(family, fact.role),
+        })
+    return trace
+
+
 def _safe_fallback(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, Any]:
     sw, sh = max(1.0, float(source["canvas"]["width"])), max(1.0, float(source["canvas"]["height"]))
     tw, th = float(target_canvas["width"]), float(target_canvas["height"])
@@ -68,6 +129,34 @@ def resize(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, A
     Geometry and text font size are the only element fields this engine edits.
     """
     global _LAST_DIAGNOSTICS
+    source_canvas = source.get("canvas", {})
+    if (source_canvas.get("width") == target_canvas.get("width") and
+            source_canvas.get("height") == target_canvas.get("height")):
+        identity = {
+            "canvas": deepcopy(target_canvas),
+            "elements": deepcopy(source.get("elements", [])),
+        }
+        issues = validate_output(source, target_canvas, identity)
+        documented_bleed_ids = {
+            str(element.get("id", ""))
+            for element in source.get("elements", [])
+            if "intentional" in str(element.get("_note", "")).casefold()
+            or "bleed" in str(element.get("_note", "")).casefold()
+        }
+        only_documented_bleed = all(
+            issue.split(":", 1)[0] in documented_bleed_ids and "off-canvas geometry" in issue
+            for issue in issues
+        )
+        if not issues or only_documented_bleed:
+            _LAST_DIAGNOSTICS = {
+                "layout_family": "identity",
+                "candidate_count": 1,
+                "repair_count": 0,
+                "issues": issues,
+                "hard_valid": not issues,
+                "fallback_used": False,
+            }
+            return identity
     try:
         dna = analyze_design(source, target_canvas)
         candidates = generate_candidates(dna)
@@ -95,9 +184,20 @@ def resize(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, A
             "repair_count": selected.get("repairs", 0),
             "proxy_score": report.score,
             "score_components": report.components,
+            "candidate_rankings": [
+                {
+                    "family": item["family"],
+                    "variant": item["variant"],
+                    "score": ranked.score,
+                    "hard_valid": ranked.hard_valid,
+                    "issues": ranked.issues,
+                }
+                for ranked, item, _ in sorted(reports, key=lambda row: (row[0].score, row[0].hard_valid), reverse=True)
+            ],
             "issues": report.issues,
             "hard_valid": report.hard_valid,
             "fallback_used": False,
+            "placements": _placement_trace(dna, selected["design"], selected["family"]),
             "analysis": {
                 "composition": dna.composition,
                 "transformation": dna.transformation,

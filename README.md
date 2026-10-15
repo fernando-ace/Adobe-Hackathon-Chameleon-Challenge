@@ -12,7 +12,7 @@ The public Stage 1 entry point remains `resize(source, target_canvas) -> dict` i
 4. **Responsive planning:** `planner.py` creates source-preserving, poster-stack, split, mirrored split, banner, and mirrored-banner candidates. It uses the target aspect ratio and inferred roles, preserving image proportions and grouped pieces.
 5. **Typography and image analysis:** `typography.py` measures text with the bundled brand fonts and Skia glyph widths, using the renderer's word-wrap behavior to fit the largest size that fits. `visual_analysis.py` samples text/background contrast over the target background image; this is a lightweight proxy, not a full composite renderer or accessibility certification. `analyzer.py` records image size, alpha bounds, and average linear luminance without editing source assets.
 6. **Candidate judge:** `scoring.py` separates canvas legality, image fidelity, typography, collisions, group cohesion, canvas use, target adaptation, and sampled contrast. The score is an internal heuristic and is not Adobe's hidden score.
-7. **Repair and validation:** `repair.py` moves lower-priority units in response to diagnosed overlaps or rotated overflow and keeps only score improvements. `validator.py` checks the final output contract. `resize.py` falls back to a contained, bounded transformation if analysis or planning fails.
+7. **Repair and validation:** `repair.py` moves lower-priority units in response to diagnosed overlaps or rotated overflow and keeps only score improvements. `validator.py` checks the final output contract. `resize.py` falls back to a contained, bounded transformation if analysis or planning fails. Diagnostics include per-element source/output rectangles, inferred roles, placement reasons, and candidate rankings.
 
 Depending on target aspect ratio, the engine generates 12 or 18 deterministic candidates and repairs the two highest-ranked. Candidate count and diagnostics are available through `get_last_diagnostics()` for local evaluation; the challenge entry-point return value remains the design JSON.
 
@@ -43,6 +43,8 @@ The three tasks in `input/` produce JSON and renderer-backed PNG previews in `ou
 ```
 
 The test suite checks official examples, ID/count/content/font preservation, geometry, image ratios, rendering, determinism, error fallback, repair, 24 generated adversarial designs, and 15 mutations. The benchmark writes `evidence/benchmark/report.md`, detailed JSON diagnostics, rendered comparisons, and `evidence/gallery/index.html`.
+
+The [engineering walkthrough](docs/engineering-walkthrough.md) explains the deterministic and heuristic parts, constraint handling, candidate selection, repairs, placement explanations, and current tradeoffs.
 
 All proxy metrics are labeled as internal and should not be interpreted as Adobe scores. Synthetic cases are test fixtures, not unseen-design evidence.
 

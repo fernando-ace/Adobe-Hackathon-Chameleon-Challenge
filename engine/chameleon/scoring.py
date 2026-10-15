@@ -83,7 +83,17 @@ def score_design(dna: DesignDNA, design: dict[str, Any], family: str = "") -> Sc
             overflow_penalty += 70
         bx, by, bw, bh = _rotated_bounds(e)
         out = max(0.0, -bx) + max(0.0, -by) + max(0.0, bx + bw - cw) + max(0.0, by + bh - ch)
-        if out > 0.5:
+        sx, sy, sw, sh = _rotated_bounds(fact.element)
+        source_canvas = dna.source["canvas"]
+        source_out = (max(0.0, -sx) + max(0.0, -sy) +
+                      max(0.0, sx + sw - float(source_canvas["width"])) +
+                      max(0.0, sy + sh - float(source_canvas["height"])))
+        note = str(fact.element.get("_note", "")).casefold()
+        inherited_bleed = (
+            source_out > 0.5 and ("intentional" in note or "bleed" in note) and
+            out / max(cw, ch) <= source_out / max(float(source_canvas["width"]), float(source_canvas["height"])) + 0.01
+        )
+        if out > 0.5 and not inherited_bleed:
             off_canvas += 1
             overflow_penalty += min(30.0, 5.0 + out / max(cw, ch) * 40)
             issues.append(f"{fact.id}: rotated bounds exceed target canvas")
@@ -125,9 +135,16 @@ def score_design(dna: DesignDNA, design: dict[str, Any], family: str = "") -> Sc
     # overlap, they are grouped, one is the full-bleed background, or a low-z
     # decorative shape sits behind another element.
     intentional_pairs = set()
+    source_overlap_ratio = {}
     for rel in dna.relationships:
-        if rel.kind == "overlaps" and rel.intentional:
-            intentional_pairs.add(frozenset((rel.source_id, rel.target_id)))
+        if rel.kind == "overlaps":
+            pair = frozenset((rel.source_id, rel.target_id))
+            if rel.intentional:
+                intentional_pairs.add(pair)
+            else:
+                source_a, source_b = dna.by_id.get(rel.source_id), dna.by_id.get(rel.target_id)
+                if source_a is not None and source_b is not None:
+                    source_overlap_ratio[pair] = _overlap_ratio(source_a.element, source_b.element)
     for i, a in enumerate(elements):
         aid = str(a.get("id", ""))
         af = dna.by_id.get(aid)
@@ -145,7 +162,8 @@ def score_design(dna: DesignDNA, design: dict[str, Any], family: str = "") -> Sc
             if (af.role == "decoration" and int(a.get("z_index", 0)) < int(b.get("z_index", 0))) or (bf.role == "decoration" and int(b.get("z_index", 0)) < int(a.get("z_index", 0))):
                 continue
             overlap = _overlap_ratio(a, b)
-            if overlap > 0.025:
+            prior_overlap = source_overlap_ratio.get(frozenset((aid, bid)), 0.0)
+            if overlap > max(0.025, prior_overlap + 0.015):
                 collisions += 1
                 severity = min(1.0, overlap)
                 collision_penalty += 12.0 * severity * max(0.45, af.importance, bf.importance)

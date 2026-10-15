@@ -55,6 +55,9 @@ class EngineContractTests(unittest.TestCase):
             self.assertFalse(diagnostics["fallback_used"], diagnostics)
             self.assertGreaterEqual(diagnostics["candidate_count"], 12)
             self.assertTrue(diagnostics["hard_valid"], diagnostics)
+            self.assertEqual(len(diagnostics["placements"]), len(source["elements"]))
+            self.assertTrue(all("reason" in placement and len(placement["output_rect_normalized"]) == 4 for placement in diagnostics["placements"]))
+            self.assertGreaterEqual(len(diagnostics["candidate_rankings"]), 12)
             self.assertEqual(json.dumps(source, sort_keys=True), before, "resize mutated source data")
             self.assert_contract(source, task["target_canvas"], output)
             second = resize(source, task["target_canvas"])
@@ -62,6 +65,24 @@ class EngineContractTests(unittest.TestCase):
             dna = analyze_design(source, task["target_canvas"])
             report = score_design(dna, output, diagnostics["layout_family"])
             self.assertTrue(report.hard_valid, report.issues)
+
+    def test_metamorphic_identity_and_small_aspect_change(self):
+        for task in _official_tasks():
+            source = task["source"]
+            width, height = source["canvas"]["width"], source["canvas"]["height"]
+            identity = resize(source, {"width": width, "height": height})
+            self.assertEqual(identity["elements"], source["elements"])
+            self.assertEqual(get_last_diagnostics()["layout_family"], "identity")
+
+            nearby = resize(source, {"width": round(width * 1.03), "height": height})
+            self.assertFalse(get_last_diagnostics()["fallback_used"])
+            original = {element["id"]: element for element in source["elements"]}
+            normalized_delta = []
+            for element in nearby["elements"]:
+                before = original[element["id"]]
+                for field, canvas_size in (("x", width), ("width", width), ("y", height), ("height", height)):
+                    normalized_delta.append(abs(element[field] - before[field]) / canvas_size)
+            self.assertLess(sum(normalized_delta) / max(1, len(normalized_delta)), 0.04)
 
     def test_official_outputs_render(self):
         for task in _official_tasks():
