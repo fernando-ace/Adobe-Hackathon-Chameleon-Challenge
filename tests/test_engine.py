@@ -34,11 +34,23 @@ class EngineContractTests(unittest.TestCase):
             self.assertTrue(all(isinstance(element.get(k), (int, float)) for k in ("x", "y", "width", "height")))
             self.assertGreater(element["width"], 0)
             self.assertGreater(element["height"], 0)
-            self.assertGreaterEqual(element["x"], -0.5)
-            self.assertGreaterEqual(element["y"], -0.5)
-            self.assertLessEqual(element["x"] + element["width"], target["width"] + 0.5)
-            self.assertLessEqual(element["y"] + element["height"], target["height"] + 0.5)
             before = original[element["id"]]
+            current_edges = (max(0, -element["x"]), max(0, -element["y"]),
+                             max(0, element["x"] + element["width"] - target["width"]),
+                             max(0, element["y"] + element["height"] - target["height"]))
+            if any(edge > 0.5 for edge in current_edges):
+                note = str(before.get("_note", "")).casefold()
+                self.assertTrue("intentional" in note or "bleed" in note, element["id"])
+                source_canvas = source["canvas"]
+                source_edges = (max(0, -before["x"]), max(0, -before["y"]),
+                                max(0, before["x"] + before["width"] - source_canvas["width"]),
+                                max(0, before["y"] + before["height"] - source_canvas["height"]))
+                self.assertTrue(all(current / target_size <= prior / source_size + 0.01
+                                    for current, prior, target_size, source_size in zip(
+                                        current_edges, source_edges,
+                                        (target["width"], target["height"], target["width"], target["height"]),
+                                        (source_canvas["width"], source_canvas["height"], source_canvas["width"], source_canvas["height"]),
+                                    )), element["id"])
             if before["type"] == "text":
                 self.assertEqual(element["content"], before["content"])
                 self.assertEqual(element["font_family"], before["font_family"])
@@ -136,26 +148,47 @@ class EngineContractTests(unittest.TestCase):
         self.assertEqual(output["canvas"], {"width": 500, "height": 300})
 
     def test_stress_corpus_is_schema_shaped_and_survives(self):
-        corpus = make_stress_corpus(24)
-        self.assertEqual(len(corpus), 24)
+        corpus = make_stress_corpus()
+        self.assertEqual(len(corpus), 64)
+        has_rotation = has_transparency = has_logo = has_missing_asset = has_40_plus = False
         for _name, source, target in corpus:
+            ids = [element["id"] for element in source["elements"]]
+            self.assertEqual(len(ids), len(set(ids)))
+            group_counts = {}
+            for element in source["elements"]:
+                if element.get("group_id"):
+                    group_counts[element["group_id"]] = group_counts.get(element["group_id"], 0) + 1
+            self.assertTrue(all(count >= 2 for count in group_counts.values()))
+            has_rotation |= any(float(element.get("rotation", 0)) != 0 for element in source["elements"])
+            has_transparency |= any(float(element.get("opacity", 1)) < 1 for element in source["elements"])
+            has_logo |= any(element.get("id") == "logo" for element in source["elements"])
+            has_missing_asset |= any(element.get("asset_id") == "missing_stress_asset.png" for element in source["elements"])
+            has_40_plus |= len(source["elements"]) >= 40
             output = resize(source, target)
             self.assert_contract(source, target, output)
             self.assertFalse(get_last_diagnostics()["fallback_used"], get_last_diagnostics())
             self.assertTrue(get_last_diagnostics()["hard_valid"], get_last_diagnostics())
+            self.assertFalse(any("new overlap" in issue for issue in get_last_diagnostics()["issues"]), _name)
+        self.assertTrue(all((has_rotation, has_transparency, has_logo, has_missing_asset, has_40_plus)))
 
     def test_mutations_preserve_contract_without_fallback(self):
         cases = make_mutations(_official_tasks())
-        self.assertEqual(len(cases), 15)
-        for _name, source, target in cases:
+        self.assertEqual(len(cases), 45)
+        for name, source, target in cases:
             output = resize(source, target)
             self.assert_contract(source, target, output)
             self.assertFalse(get_last_diagnostics()["fallback_used"], get_last_diagnostics())
+            self.assertFalse(any("new overlap" in issue for issue in get_last_diagnostics()["issues"]), name)
 
     def test_stress_generator_handles_small_and_large_counts(self):
         for count in (2, 3, 5, 8, 15, 20, 30, 40):
             source, target = make_design(100 + count, count)
             self.assertEqual(len(source["elements"]), count)
+            group_counts = {}
+            for element in source["elements"]:
+                if element.get("group_id"):
+                    group_counts[element["group_id"]] = group_counts.get(element["group_id"], 0) + 1
+            self.assertTrue(all(size >= 2 for size in group_counts.values()))
             output = resize(source, target)
             self.assert_contract(source, target, output)
             self.assertTrue(get_last_diagnostics()["hard_valid"], get_last_diagnostics())

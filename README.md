@@ -42,7 +42,7 @@ The three tasks in `input/` produce JSON and renderer-backed PNG previews in `ou
 .\.venv\Scripts\python.exe -m tools.benchmark
 ```
 
-The test suite checks official examples, ID/count/content/font preservation, geometry, image ratios, rendering, determinism, error fallback, repair, 24 generated adversarial designs, and 15 mutations. The benchmark writes `evidence/benchmark/report.md`, detailed JSON diagnostics, rendered comparisons, and `evidence/gallery/index.html`.
+The test suite checks official examples, ID/count/content/font preservation, geometry, image ratios, rendering, determinism, error fallback, repair, 64 generated adversarial designs (up to 45 elements each), and 45 official-sample mutations. The benchmark writes `evidence/benchmark/report.md`, detailed JSON diagnostics, rendered comparisons, and `evidence/gallery/index.html`.
 
 The [engineering walkthrough](docs/engineering-walkthrough.md) explains the deterministic and heuristic parts, constraint handling, candidate selection, repairs, placement explanations, and current tradeoffs.
 

@@ -1,15 +1,15 @@
 {
   "label": "internal proxy; not Adobe's hidden score",
   "official_count": 3,
-  "stress_count": 24,
-  "mutation_count": 15,
+  "stress_count": 64,
+  "mutation_count": 45,
   "stress_structural_validity_rate": 1.0,
   "stress_off_canvas_cases": 0,
   "stress_image_ratio_failures": 0,
   "stress_text_clipping_cases": 0,
   "stress_collision_free_rate": 1.0,
-  "stress_median_runtime_seconds": 0.287565,
-  "stress_p95_runtime_seconds": 0.97969,
+  "stress_median_runtime_seconds": 0.20144,
+  "stress_p95_runtime_seconds": 1.16524,
   "stress_determinism_rate": 1.0,
   "mutation_structural_validity_rate": 1.0,
   "mutation_image_ratio_failures": 0,
@@ -72,7 +72,7 @@
       "layout_family": "stack",
       "candidate_count": 12,
       "repair_count": 0,
-      "runtime_seconds": 0.04405,
+      "runtime_seconds": 0.03086,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -134,7 +134,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "runtime_seconds": 0.07124,
+      "runtime_seconds": 0.0684,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -206,8 +206,8 @@
       },
       "layout_family": "banner",
       "candidate_count": 18,
-      "repair_count": 1,
-      "runtime_seconds": 0.1663,
+      "repair_count": 0,
+      "runtime_seconds": 0.1621,
       "renderer_warnings": [
         "Missing asset 'solstice_holiday_badge_2025.png' for element 'holiday_watermark' - rendered a placeholder."
       ],
@@ -220,14 +220,21 @@
     {
       "name": "synthetic_000",
       "layout_family": "source_fit",
-      "proxy_score": 99.68,
+      "proxy_score": 98.56,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.46018,
-      "issues": []
+      "runtime_seconds": 0.16318,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_001",
@@ -238,7 +245,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.1192,
+      "runtime_seconds": 0.07057,
       "issues": []
     },
     {
@@ -250,20 +257,22 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.34503,
+      "runtime_seconds": 0.1908,
       "issues": []
     },
     {
       "name": "synthetic_003",
       "layout_family": "banner",
-      "proxy_score": 100.0,
+      "proxy_score": 99.76,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.59142,
-      "issues": []
+      "runtime_seconds": 0.15364,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_004",
@@ -274,92 +283,123 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.25704,
+      "runtime_seconds": 0.26199,
       "issues": []
     },
     {
       "name": "synthetic_005",
       "layout_family": "stack",
-      "proxy_score": 100.0,
+      "proxy_score": 98.09,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.55469,
-      "issues": []
+      "runtime_seconds": 0.60708,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted",
+        "copy_40/body: hierarchy type sizes are inverted",
+        "copy_43/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_006",
-      "layout_family": "banner",
-      "proxy_score": 97.29,
+      "layout_family": "source_fit",
+      "proxy_score": 84.05,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.77087,
-      "issues": []
+      "runtime_seconds": 0.30086,
+      "issues": [
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_007",
       "layout_family": "source_fit",
-      "proxy_score": 100.0,
+      "proxy_score": 98.8,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.28371,
-      "issues": []
+      "runtime_seconds": 0.62656,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_008",
       "layout_family": "source_fit",
-      "proxy_score": 100.0,
+      "proxy_score": 99.76,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.28027,
-      "issues": []
+      "runtime_seconds": 0.15097,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_009",
       "layout_family": "stack",
-      "proxy_score": 100.0,
+      "proxy_score": 99.76,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.97969,
-      "issues": []
+      "runtime_seconds": 0.04624,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_010",
-      "layout_family": "stack",
-      "proxy_score": 100.0,
+      "layout_family": "source_fit",
+      "proxy_score": 98.56,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.66435,
-      "issues": []
+      "runtime_seconds": 0.82691,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_011",
       "layout_family": "source_fit",
-      "proxy_score": 100.0,
+      "proxy_score": 99.76,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.21227,
-      "issues": []
+      "runtime_seconds": 0.09077,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_012",
@@ -370,7 +410,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18916,
+      "runtime_seconds": 0.26443,
       "issues": []
     },
     {
@@ -382,80 +422,98 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.17405,
+      "runtime_seconds": 0.12999,
       "issues": []
     },
     {
       "name": "synthetic_014",
       "layout_family": "stack",
-      "proxy_score": 100.0,
+      "proxy_score": 76.63,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.46256,
+      "runtime_seconds": 1.16524,
       "issues": []
     },
     {
       "name": "synthetic_015",
-      "layout_family": "banner",
-      "proxy_score": 100.0,
+      "layout_family": "stack",
+      "proxy_score": 76.22,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.29317,
+      "runtime_seconds": 0.58161,
       "issues": []
     },
     {
       "name": "synthetic_016",
       "layout_family": "source_fit",
-      "proxy_score": 100.0,
+      "proxy_score": 98.56,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.29142,
-      "issues": []
+      "runtime_seconds": 0.32289,
+      "issues": [
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_017",
       "layout_family": "source_fit",
-      "proxy_score": 100.0,
+      "proxy_score": 99.76,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.15879,
-      "issues": []
+      "runtime_seconds": 0.12812,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_018",
       "layout_family": "stack",
-      "proxy_score": 100.0,
+      "proxy_score": 99.76,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.60494,
-      "issues": []
+      "runtime_seconds": 0.42568,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_019",
       "layout_family": "stack",
-      "proxy_score": 100.0,
+      "proxy_score": 98.56,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.35729,
-      "issues": []
+      "runtime_seconds": 0.7704,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted",
+        "copy_40/body: hierarchy type sizes are inverted"
+      ]
     },
     {
       "name": "synthetic_020",
@@ -466,7 +524,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.0852,
+      "runtime_seconds": 0.04202,
       "issues": []
     },
     {
@@ -478,7 +536,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.17901,
+      "runtime_seconds": 0.2659,
       "issues": []
     },
     {
@@ -490,11 +548,220 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.2143,
+      "runtime_seconds": 0.11077,
       "issues": []
     },
     {
       "name": "synthetic_023",
+      "layout_family": "source_fit",
+      "proxy_score": 97.52,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.20195,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_024",
+      "layout_family": "banner",
+      "proxy_score": 99.76,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.25315,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_025",
+      "layout_family": "stack",
+      "proxy_score": 98.09,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.9834,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted",
+        "copy_40/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_026",
+      "layout_family": "stack",
+      "proxy_score": 76.63,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.06805,
+      "issues": []
+    },
+    {
+      "name": "synthetic_027",
+      "layout_family": "stack",
+      "proxy_score": 98.09,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.96995,
+      "issues": [
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted",
+        "copy_40/body: hierarchy type sizes are inverted",
+        "copy_43/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_028",
+      "layout_family": "source_fit",
+      "proxy_score": 95.83,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.54021,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted",
+        "copy_40/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_029",
+      "layout_family": "stack",
+      "proxy_score": 98.32,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.1238,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted",
+        "copy_40/body: hierarchy type sizes are inverted",
+        "copy_43/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_030",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.26773,
+      "issues": []
+    },
+    {
+      "name": "synthetic_031",
+      "layout_family": "banner",
+      "proxy_score": 99.55,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.13195,
+      "issues": []
+    },
+    {
+      "name": "synthetic_032",
+      "layout_family": "stack",
+      "proxy_score": 95.92,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.2152,
+      "issues": []
+    },
+    {
+      "name": "synthetic_033",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.06094,
+      "issues": []
+    },
+    {
+      "name": "synthetic_034",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.11408,
+      "issues": []
+    },
+    {
+      "name": "synthetic_035",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.10319,
+      "issues": []
+    },
+    {
+      "name": "synthetic_036",
+      "layout_family": "stack",
+      "proxy_score": 95.92,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.47045,
+      "issues": []
+    },
+    {
+      "name": "synthetic_037",
       "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
@@ -502,7 +769,359 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.14796,
+      "runtime_seconds": 0.18716,
+      "issues": []
+    },
+    {
+      "name": "synthetic_038",
+      "layout_family": "stack",
+      "proxy_score": 98.56,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.10488,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_039",
+      "layout_family": "source_fit",
+      "proxy_score": 69.9,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.18767,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_040",
+      "layout_family": "banner",
+      "proxy_score": 99.55,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.26346,
+      "issues": []
+    },
+    {
+      "name": "synthetic_041",
+      "layout_family": "stack",
+      "proxy_score": 76.22,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.28995,
+      "issues": []
+    },
+    {
+      "name": "synthetic_042",
+      "layout_family": "source_fit",
+      "proxy_score": 81.76,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.1505,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_043",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.08181,
+      "issues": []
+    },
+    {
+      "name": "synthetic_044",
+      "layout_family": "stack",
+      "proxy_score": 99.85,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.11002,
+      "issues": []
+    },
+    {
+      "name": "synthetic_045",
+      "layout_family": "stack",
+      "proxy_score": 99.76,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.38764,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_046",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.08816,
+      "issues": []
+    },
+    {
+      "name": "synthetic_047",
+      "layout_family": "stack",
+      "proxy_score": 95.77,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.10773,
+      "issues": []
+    },
+    {
+      "name": "synthetic_048",
+      "layout_family": "banner",
+      "proxy_score": 99.76,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.29371,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_049",
+      "layout_family": "source_fit",
+      "proxy_score": 80.08,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 1.40635,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted",
+        "copy_22/body: hierarchy type sizes are inverted",
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted",
+        "copy_43/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_050",
+      "layout_family": "stack",
+      "proxy_score": 89.41,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.20093,
+      "issues": []
+    },
+    {
+      "name": "synthetic_051",
+      "layout_family": "banner",
+      "proxy_score": 99.76,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.16457,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_052",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.08028,
+      "issues": []
+    },
+    {
+      "name": "synthetic_053",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.11071,
+      "issues": []
+    },
+    {
+      "name": "synthetic_054",
+      "layout_family": "stack",
+      "proxy_score": 99.76,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.32513,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_055",
+      "layout_family": "stack",
+      "proxy_score": 99.49,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.15514,
+      "issues": []
+    },
+    {
+      "name": "synthetic_056",
+      "layout_family": "source_fit",
+      "proxy_score": 99.76,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.11598,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_057",
+      "layout_family": "banner",
+      "proxy_score": 99.76,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.25773,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_058",
+      "layout_family": "source_fit",
+      "proxy_score": 98.8,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.69718,
+      "issues": [
+        "copy_25/body: hierarchy type sizes are inverted",
+        "copy_28/body: hierarchy type sizes are inverted",
+        "copy_31/body: hierarchy type sizes are inverted",
+        "copy_34/body: hierarchy type sizes are inverted",
+        "copy_37/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_059",
+      "layout_family": "stack",
+      "proxy_score": 89.41,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.24843,
+      "issues": []
+    },
+    {
+      "name": "synthetic_060",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.15143,
+      "issues": []
+    },
+    {
+      "name": "synthetic_061",
+      "layout_family": "stack",
+      "proxy_score": 99.76,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.18794,
+      "issues": [
+        "copy_7/body: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "synthetic_062",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.13358,
+      "issues": []
+    },
+    {
+      "name": "synthetic_063",
+      "layout_family": "source_fit",
+      "proxy_score": 96.48,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.45221,
       "issues": []
     }
   ],
@@ -516,7 +1135,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07537,
+      "runtime_seconds": 0.08819,
       "issues": []
     },
     {
@@ -528,25 +1147,11 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.06025,
+      "runtime_seconds": 0.08709,
       "issues": []
     },
     {
-      "name": "warmup_01_728x90",
-      "layout_family": "banner",
-      "proxy_score": 99.73,
-      "hard_valid": true,
-      "off_canvas_count": 0,
-      "image_ratio_failures": 0,
-      "clipped_text_count": 0,
-      "accidental_collision_count": 0,
-      "runtime_seconds": 0.05759,
-      "issues": [
-        "cta: low sampled text/background contrast (4.27:1)"
-      ]
-    },
-    {
-      "name": "warmup_01_480x1200",
+      "name": "warmup_01_hero_resize",
       "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
@@ -554,19 +1159,153 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.171,
+      "runtime_seconds": 0.03505,
       "issues": []
     },
     {
-      "name": "warmup_01_1920x1080",
-      "layout_family": "banner",
+      "name": "warmup_01_logo_move",
+      "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.22455,
+      "runtime_seconds": 0.0254,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_add_badge",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.20447,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_add_copy",
+      "layout_family": "stack",
+      "proxy_score": 97.36,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.05405,
+      "issues": [
+        "mutation_support_copy/cta: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "warmup_01_rotate_shape",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.20361,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_transparency",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.05619,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_alignment",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.03403,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_move_group",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.14299,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_wide",
+      "layout_family": "split",
+      "proxy_score": 89.36,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.47242,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_tall",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.13837,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_story",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.2297,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_near_aspect",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.18988,
+      "issues": []
+    },
+    {
+      "name": "warmup_01_missing_asset",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.09389,
       "issues": []
     },
     {
@@ -578,7 +1317,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.34521,
+      "runtime_seconds": 0.39995,
       "issues": []
     },
     {
@@ -590,11 +1329,11 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08085,
+      "runtime_seconds": 0.09539,
       "issues": []
     },
     {
-      "name": "core_01_728x90",
+      "name": "core_01_hero_resize",
       "layout_family": "banner",
       "proxy_score": 100.0,
       "hard_valid": true,
@@ -602,11 +1341,109 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08498,
+      "runtime_seconds": 0.09561,
       "issues": []
     },
     {
-      "name": "core_01_480x1200",
+      "name": "core_01_logo_move",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.06878,
+      "issues": []
+    },
+    {
+      "name": "core_01_add_badge",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.20405,
+      "issues": []
+    },
+    {
+      "name": "core_01_add_copy",
+      "layout_family": "banner",
+      "proxy_score": 99.16,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.10142,
+      "issues": [
+        "mutation_support_copy/subhead: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "core_01_rotate_shape",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.19425,
+      "issues": []
+    },
+    {
+      "name": "core_01_transparency",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.083,
+      "issues": []
+    },
+    {
+      "name": "core_01_alignment",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.16055,
+      "issues": []
+    },
+    {
+      "name": "core_01_move_group",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.17534,
+      "issues": []
+    },
+    {
+      "name": "core_01_wide",
+      "layout_family": "split",
+      "proxy_score": 92.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.36271,
+      "issues": []
+    },
+    {
+      "name": "core_01_tall",
       "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
@@ -614,11 +1451,35 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07096,
+      "runtime_seconds": 0.09037,
       "issues": []
     },
     {
-      "name": "core_01_1920x1080",
+      "name": "core_01_story",
+      "layout_family": "stack",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.2592,
+      "issues": []
+    },
+    {
+      "name": "core_01_near_aspect",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.25166,
+      "issues": []
+    },
+    {
+      "name": "core_01_missing_asset",
       "layout_family": "banner",
       "proxy_score": 100.0,
       "hard_valid": true,
@@ -626,7 +1487,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07948,
+      "runtime_seconds": 0.30457,
       "issues": []
     },
     {
@@ -638,7 +1499,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.28861,
+      "runtime_seconds": 0.40817,
       "issues": [
         "headline: small type at 8.9px"
       ]
@@ -652,7 +1513,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.35073,
+      "runtime_seconds": 0.39302,
       "issues": [
         "headline: small type at 6.1px",
         "headline/subhead: hierarchy type sizes are inverted",
@@ -665,7 +1526,7 @@
       ]
     },
     {
-      "name": "advanced_01_728x90",
+      "name": "advanced_01_hero_resize",
       "layout_family": "banner",
       "proxy_score": 100.0,
       "hard_valid": true,
@@ -673,11 +1534,115 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.27368,
+      "runtime_seconds": 0.40014,
       "issues": []
     },
     {
-      "name": "advanced_01_480x1200",
+      "name": "advanced_01_logo_move",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.19409,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_add_badge",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.19196,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_add_copy",
+      "layout_family": "banner",
+      "proxy_score": 84.41,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.35271,
+      "issues": [
+        "headline: small type at 9.8px",
+        "subhead: small type at 5.0px",
+        "subhead/badge1_label: hierarchy type sizes are inverted",
+        "subhead/badge2_label: hierarchy type sizes are inverted",
+        "subhead/badge3_label: hierarchy type sizes are inverted",
+        "subhead/ribbon_label: hierarchy type sizes are inverted",
+        "subhead/legal_text: hierarchy type sizes are inverted"
+      ]
+    },
+    {
+      "name": "advanced_01_rotate_shape",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.17959,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_transparency",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.23987,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_alignment",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.30654,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_move_group",
+      "layout_family": "banner",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.28095,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_wide",
+      "layout_family": "source_fit",
+      "proxy_score": 70.79,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.50203,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_tall",
       "layout_family": "source_fit",
       "proxy_score": 100.0,
       "hard_valid": true,
@@ -685,11 +1650,35 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.13978,
+      "runtime_seconds": 0.35807,
       "issues": []
     },
     {
-      "name": "advanced_01_1920x1080",
+      "name": "advanced_01_story",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.3509,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_near_aspect",
+      "layout_family": "source_fit",
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0,
+      "runtime_seconds": 0.31615,
+      "issues": []
+    },
+    {
+      "name": "advanced_01_missing_asset",
       "layout_family": "banner",
       "proxy_score": 100.0,
       "hard_valid": true,
@@ -697,7 +1686,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.36368,
+      "runtime_seconds": 0.3384,
       "issues": []
     }
   ]

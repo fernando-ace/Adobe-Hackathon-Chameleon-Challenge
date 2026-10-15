@@ -13,7 +13,7 @@ from engine.chameleon.analyzer import analyze_design
 from engine.chameleon.scoring import score_design
 from engine.resize import get_last_diagnostics, resize
 from renderer.converter.convert import render_design_to_png
-from tools.stress_corpus import make_mutations, make_stress_corpus
+from tools.stress_corpus import STRESS_CASES, make_mutations, make_stress_corpus
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -94,7 +94,7 @@ def main() -> int:
 
     stress_rows = []
     stress_deterministic = 0
-    for name, source, target in make_stress_corpus(24):
+    for name, source, target in make_stress_corpus():
         started = time.perf_counter()
         output = resize(source, target)
         elapsed = time.perf_counter() - started
@@ -136,7 +136,7 @@ def main() -> int:
     }
     (BENCH / "report.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     lines = ["# Internal benchmark report", "", "This score is an internal proxy, not Adobe's hidden evaluator.", "",
-             f"- Official samples: {len(official_rows)}", f"- Synthetic stress cases: {len(stress_rows)}",
+             f"- Official samples: {len(official_rows)}", f"- Synthetic stress cases: {len(stress_rows)} (default {STRESS_CASES})",
              f"- Mutations: {len(mutations)}", f"- Stress structural validity: {summary['stress_structural_validity_rate']:.1%}",
              f"- Stress off-canvas cases: {summary['stress_off_canvas_cases']}", f"- Image-ratio failures: {summary['stress_image_ratio_failures']}",
              f"- Text-clipping cases: {summary['stress_text_clipping_cases']}", f"- Collision-free rate: {summary['stress_collision_free_rate']:.1%}",

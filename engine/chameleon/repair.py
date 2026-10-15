@@ -32,20 +32,36 @@ def _candidate_moves(dna: DesignDNA, design: dict[str, Any], element_id: str) ->
     w, h = float(dna.target_canvas["width"]), float(dna.target_canvas["height"])
     gap = max(2.0, min(w, h) * 0.04)
     trials = []
-    for dx, dy in ((gap, 0), (-gap, 0), (0, gap), (0, -gap)):
-        trial = deepcopy(design)
-        _shift_unit(dna, trial, element_id, dx, dy)
-        trials.append(trial)
+    for distance in (gap, gap * 2, gap * 4):
+        for dx, dy in ((distance, 0), (-distance, 0), (0, distance), (0, -distance)):
+            trial = deepcopy(design)
+            _shift_unit(dna, trial, element_id, dx, dy)
+            trials.append(trial)
     return trials
 
 
 def repair_candidate(
-    dna: DesignDNA, design: dict[str, Any], family: str, max_repairs: int = 6,
+    dna: DesignDNA, design: dict[str, Any], family: str, max_repairs: int | None = None,
 ) -> tuple[dict[str, Any], ScoreReport, int]:
-    """Move lower-priority units away from new collisions, keeping only gains."""
+    """Move lower-priority units away from diagnosed violations, keeping only gains."""
     current = deepcopy(design)
     report = score_design(dna, current, family)
     repairs = 0
+    if max_repairs is None:
+        max_repairs = min(32, max(6, len(dna.facts) // 2))
+
+    def rank(candidate_report: ScoreReport) -> tuple[Any, ...]:
+        return (
+            candidate_report.hard_valid,
+            candidate_report.clipped_text_count == 0,
+            -candidate_report.image_ratio_failures,
+            -candidate_report.off_canvas_count,
+            -candidate_report.clipped_text_count,
+            candidate_report.components.get("typography", 0.0),
+            -candidate_report.accidental_collision_count,
+            candidate_report.score,
+        )
+
     for _ in range(max_repairs):
         pair_ids = None
         single_id = None
@@ -71,7 +87,7 @@ def repair_candidate(
         best_design, best_report = current, report
         for trial in _candidate_moves(dna, current, mover):
             candidate_report = score_design(dna, trial, family)
-            if (candidate_report.score, candidate_report.hard_valid) > (best_report.score, best_report.hard_valid):
+            if rank(candidate_report) > rank(best_report):
                 best_design, best_report = trial, candidate_report
         if best_design is current:
             break

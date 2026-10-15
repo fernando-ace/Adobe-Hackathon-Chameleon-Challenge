@@ -160,15 +160,38 @@ def resize(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, A
     try:
         dna = analyze_design(source, target_canvas)
         candidates = generate_candidates(dna)
-        reports = [(score_design(dna, item["design"], item["family"]), item, index)
-                   for index, item in enumerate(candidates)]
-        shortlist = sorted(reports, key=lambda row: (row[0].score, row[0].hard_valid, -row[2]), reverse=True)[:2]
+        reports = [
+            (score_design(dna, item["design"], item["family"]), item, index,
+             not validate_output(source, target_canvas, item["design"]))
+            for index, item in enumerate(candidates)
+        ]
+
+        def rank_key(report: Any, design: dict[str, Any], index: int) -> tuple[Any, ...]:
+            legal_contract = not validate_output(source, target_canvas, design)
+            return (
+                legal_contract, report.hard_valid, report.clipped_text_count == 0,
+                -report.image_ratio_failures, -report.off_canvas_count,
+                -report.clipped_text_count, report.components.get("typography", 0.0),
+                -report.accidental_collision_count,
+                report.score, -index,
+            )
+
+        shortlist = sorted(
+            (row for row in reports if row[3]),
+            key=lambda row: rank_key(row[0], row[1]["design"], row[2]), reverse=True,
+        )[:2]
+        if not shortlist:
+            fallback = _safe_fallback(source, target_canvas)
+            _LAST_DIAGNOSTICS = {"fallback_used": True, "fallback_reason": "no candidate satisfied the output contract"}
+            return fallback
         refined = []
-        for initial_report, item, index in shortlist:
+        for initial_report, item, index, _contract_valid in shortlist:
             design, repaired_report, repairs = repair_candidate(dna, item["design"], item["family"])
             refined.append((repaired_report, {**item, "design": design, "repairs": repairs}, index))
         # Stable order breaks ties; candidate generation is deterministic.
-        report, selected, _ = max(refined, key=lambda row: (row[0].score, row[0].hard_valid, -row[2]))
+        report, selected, _ = max(
+            refined, key=lambda row: rank_key(row[0], row[1]["design"], row[2])
+        )
         contract_issues = validate_output(source, target_canvas, selected["design"])
         if contract_issues:
             fallback = _safe_fallback(source, target_canvas)
@@ -190,9 +213,14 @@ def resize(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, A
                     "variant": item["variant"],
                     "score": ranked.score,
                     "hard_valid": ranked.hard_valid,
+                    "contract_valid": contract_valid,
+                    "clipped_text_count": ranked.clipped_text_count,
+                    "accidental_collision_count": ranked.accidental_collision_count,
                     "issues": ranked.issues,
                 }
-                for ranked, item, _ in sorted(reports, key=lambda row: (row[0].score, row[0].hard_valid), reverse=True)
+                for ranked, item, index, contract_valid in sorted(
+                    reports, key=lambda row: rank_key(row[0], row[1]["design"], row[2]), reverse=True
+                )
             ],
             "issues": report.issues,
             "hard_valid": report.hard_valid,

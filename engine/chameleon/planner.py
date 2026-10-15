@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from math import cos, radians, sin
 from typing import Any
 
 from .model import DesignDNA, ElementFacts
@@ -119,6 +120,56 @@ def _prepare_output(dna: DesignDNA) -> dict[str, Any]:
     return output
 
 
+def _legalize_units(dna: DesignDNA, design: dict[str, Any]) -> None:
+    """Fit each placed element/group inside the canvas, including rotated bounds."""
+    cw, ch = float(dna.target_canvas["width"]), float(dna.target_canvas["height"])
+    by_id = {str(element.get("id", "")): element for element in design["elements"]}
+    units: list[list[str]] = []
+    seen: set[str] = set()
+    for ids in dna.groups.values():
+        members = [eid for eid in ids if eid in by_id and eid not in dna.background_ids]
+        if members:
+            units.append(members)
+            seen.update(members)
+    units.extend([[eid] for eid in by_id if eid not in seen and eid not in dna.background_ids])
+
+    def union_bounds(elements: list[dict[str, Any]]) -> tuple[float, float, float, float]:
+        bounds = []
+        for element in elements:
+            x, y = float(element["x"]), float(element["y"])
+            w, h = float(element["width"]), float(element["height"])
+            angle = radians(float(element.get("rotation", 0)))
+            rw = abs(w * cos(angle)) + abs(h * sin(angle))
+            rh = abs(w * sin(angle)) + abs(h * cos(angle))
+            cx, cy = x + w / 2, y + h / 2
+            bounds.append((min(x, cx - rw / 2), min(y, cy - rh / 2),
+                           max(x + w, cx + rw / 2), max(y + h, cy + rh / 2)))
+        return (min(b[0] for b in bounds), min(b[1] for b in bounds),
+                max(b[2] for b in bounds), max(b[3] for b in bounds))
+
+    for ids in units:
+        elements = [by_id[eid] for eid in ids]
+        x0, y0, x1, y1 = union_bounds(elements)
+        group_cx, group_cy = (x0 + x1) / 2, (y0 + y1) / 2
+        factor = min(1.0, cw / max(1.0, x1 - x0), ch / max(1.0, y1 - y0))
+        if factor < 1.0:
+            for element in elements:
+                cx = float(element["x"]) + float(element["width"]) / 2
+                cy = float(element["y"]) + float(element["height"]) / 2
+                element["width"] = max(1.0, float(element["width"]) * factor)
+                element["height"] = max(1.0, float(element["height"]) * factor)
+                element["x"] = group_cx + (cx - group_cx) * factor - float(element["width"]) / 2
+                element["y"] = group_cy + (cy - group_cy) * factor - float(element["height"]) / 2
+                if element.get("type") == "text":
+                    element["font_size"] = max(1.0, float(element.get("font_size", 1)) * factor)
+        x0, y0, x1, y1 = union_bounds(elements)
+        dx = -x0 if x0 < 0 else cw - x1 if x1 > cw else 0.0
+        dy = -y0 if y0 < 0 else ch - y1 if y1 > ch else 0.0
+        for element in elements:
+            element["x"] = float(element["x"]) + dx
+            element["y"] = float(element["y"]) + dy
+
+
 def _group_ids(dna: DesignDNA, role_prefix: str) -> list[str]:
     found = []
     for gid, ids in dna.groups.items():
@@ -192,13 +243,28 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
         # Strong type hierarchy in a compact copy column.
         head_y = ch * (0.14 if not compact else 0.07)
         head_h = ch * (0.24 if not compact else 0.35)
-        for f in sorted(heads, key=lambda a: -float(a.element.get("font_size", 1))):
-            _apply_rect(dna, by_id, f.id, (copy_x, head_y, copy_w, head_h), assigned)
-            head_y += head_h * 1.04
-        for f in subs + bodies:
-            h = ch * (0.16 if ch > 140 else 0.22)
-            _apply_rect(dna, by_id, f.id, (copy_x, head_y, copy_w, h), assigned)
-            head_y += h * 1.02
+        ordered_heads = sorted(heads, key=lambda a: -float(a.element.get("font_size", 1)))
+        ordered_support = sorted(subs + bodies, key=lambda a: (a.center[1], a.center[0]))
+        if len(ordered_heads) + len(ordered_support) > 2:
+            narrative = ordered_heads + ordered_support
+            bottom = (0.59 if legals else 0.76) if compact else 0.58
+            start = ch * 0.06
+            gap = ch * 0.008
+            weights = [2.0 if f.role == "headline" else 1.0 for f in narrative]
+            available = max(1.0, ch * bottom - start - gap * (len(narrative) - 1))
+            total_weight = sum(weights)
+            for fact, weight in zip(narrative, weights):
+                band_h = available * weight / total_weight
+                _apply_rect(dna, by_id, fact.id, (copy_x, start, copy_w, band_h), assigned)
+                start += band_h + gap
+        else:
+            for f in ordered_heads:
+                _apply_rect(dna, by_id, f.id, (copy_x, head_y, copy_w, head_h), assigned)
+                head_y += head_h * 1.04
+            for f in ordered_support:
+                h = ch * (0.16 if ch > 140 else 0.22)
+                _apply_rect(dna, by_id, f.id, (copy_x, head_y, copy_w, h), assigned)
+                head_y += h * 1.02
         for f in standalone_ctas:
             _apply_rect(dna, by_id, f.id, (copy_x, ch * (0.76 if compact else 0.74), min(copy_w * 0.58, cw * 0.34), ch * (0.14 if compact else 0.13)), assigned)
         # Grouped badges form a compact row above the call to action.
@@ -219,18 +285,25 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             y = ch * 0.79 if compact else min(ch - ch * 0.24, cta_y)
             h = max(1.0, ch * (0.21 if compact else 0.13))
             _apply_rect(dna, by_id, dna.groups[gid][0], (x, y, w, h), assigned)
-        for gid in other_groups:
+        for index, gid in enumerate(other_groups):
             # Unclassified grouped ornaments retain a visible compact treatment.
             is_ribbon = any(abs(float(dna.by_id[eid].element.get("rotation", 0))) >= 5 for eid in dna.groups[gid])
             if compact:
-                rect = (cw * 0.72, ch * 0.41, cw * 0.12, ch * 0.16)
+                lane_step = min(0.20, 0.32 / max(1, len(other_groups) - 1)) if len(other_groups) > 1 else 0.0
+                if is_ribbon:
+                    if len(other_groups) == 1:
+                        rect = (cw * 0.72, ch * 0.42, cw * 0.12, ch * 0.16)
+                    else:
+                        rect = (cw * 0.56, ch * (0.30 + lane_step * index), cw * 0.14, ch * 0.16)
+                else:
+                    rect = (cw * 0.72, ch * (0.42 + lane_step * index), cw * 0.12, ch * 0.16)
             elif is_ribbon:
-                rect = (cw * 0.56, ch * 0.04, cw * 0.14, ch * 0.05)
+                rect = (cw * 0.56, ch * (0.04 + 0.08 * index), cw * 0.14, ch * 0.05)
             else:
-                rect = (copy_x + copy_w * 0.62, ch * 0.61, copy_w * 0.32, ch * 0.13)
+                rect = (copy_x + copy_w * 0.62, ch * (0.61 + 0.14 * index), copy_w * 0.32, ch * 0.13)
             _apply_rect(dna, by_id, dna.groups[gid][0], rect, assigned)
         for f in legals:
-            _apply_rect(dna, by_id, f.id, (copy_x, ch * (0.64 if compact else 0.91), max(1, copy_w * 0.95), ch * (0.10 if compact else 0.07)), assigned)
+            _apply_rect(dna, by_id, f.id, (copy_x, ch * (0.68 if compact else 0.91), max(1, copy_w * 0.95), ch * (0.10 if compact else 0.07)), assigned)
     elif split:
         image_side_left = family == "split_mirror"
         hero_x = mx if image_side_left else cw * 0.58
@@ -301,6 +374,32 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             _apply_rect(dna, by_id, dna.groups[gid][0], (cw * 0.72, ch * 0.12, cw * 0.12, ch * 0.08), assigned)
         for f in legals:
             _apply_rect(dna, by_id, f.id, (mx, ch * 0.94, cw - 2 * mx, ch * 0.05), assigned)
+    elif len(facts) > 30:
+        # A dense poster gets distinct narrative, focal, badge, and action bands
+        # instead of piling all supporting copy into the same lower region.
+        for f in logos:
+            _apply_rect(dna, by_id, f.id, (cw * 0.36, ch * 0.025, cw * 0.28, ch * 0.075), assigned)
+        for i, f in enumerate(sorted(heads, key=lambda a: -float(a.element.get("font_size", 1)))):
+            _apply_rect(dna, by_id, f.id, (mx, ch * (0.11 + i * 0.13), cw - 2 * mx, ch * 0.12), assigned)
+        for i, f in enumerate(sorted(heroes, key=lambda a: -a.importance)):
+            _apply_rect(dna, by_id, f.id, (cw * (0.40 + 0.12 * i), ch * 0.27, cw * 0.20, ch * 0.14), assigned)
+        copy_facts = sorted(subs + bodies + standalone_ctas, key=lambda f: (f.center[1], f.center[0]))
+        copy_start, copy_end = ch * 0.43, ch * (0.67 if legals else 0.70)
+        copy_band = (copy_end - copy_start) / max(1, len(copy_facts))
+        for i, fact in enumerate(copy_facts):
+            _apply_rect(dna, by_id, fact.id, (mx, copy_start + i * copy_band, cw - 2 * mx, copy_band * 0.9), assigned)
+        if badge_groups:
+            gap = cw * 0.018
+            available = cw - 2 * mx
+            cell_w = (available - gap * (len(badge_groups) - 1)) / len(badge_groups)
+            for i, gid in enumerate(badge_groups):
+                _apply_rect(dna, by_id, dna.groups[gid][0], (mx + i * (cell_w + gap), ch * 0.71, cell_w, ch * 0.08), assigned)
+        for i, gid in enumerate(cta_groups):
+            _apply_rect(dna, by_id, dna.groups[gid][0], (cw * 0.34, ch * (0.82 + 0.085 * i), cw * 0.32, ch * 0.075), assigned)
+        for i, gid in enumerate(other_groups):
+            _apply_rect(dna, by_id, dna.groups[gid][0], (cw * 0.70, ch * (0.22 + i * 0.08), cw * 0.20, ch * 0.055), assigned)
+        for f in legals:
+            _apply_rect(dna, by_id, f.id, (mx, ch * 0.94, cw - 2 * mx, ch * 0.05), assigned)
     else:
         # Poster/stack family: distribute the narrative vertically with a
         # focal image between title and supporting copy.
@@ -363,5 +462,7 @@ def generate_candidates(dna: DesignDNA) -> list[dict[str, Any]]:
     for family in families:
         variants = range(3)
         for variant in variants:
-            candidates.append({"family": family, "variant": variant, "design": _layout(dna, family, variant)})
+            design = _layout(dna, family, variant)
+            _legalize_units(dna, design)
+            candidates.append({"family": family, "variant": variant, "design": design})
     return candidates

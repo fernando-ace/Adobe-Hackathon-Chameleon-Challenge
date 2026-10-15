@@ -247,5 +247,5 @@ def score_design(dna: DesignDNA, design: dict[str, Any], family: str = "") -> Sc
         "sampled_contrast": round(max(0.0, 100.0 - contrast_penalty), 2),
         "visual_hierarchy": round(max(0.0, 100.0 - hierarchy_penalty), 2),
     }
-    hard_valid = not off_canvas and not ratios and len(by_id) == len(source_ids) and not any("Stage 1 copy/font changed" in i for i in issues)
+    hard_valid = not off_canvas and not ratios and not clipped and len(by_id) == len(source_ids) and not any("Stage 1 copy/font changed" in i for i in issues)
     return ScoreReport(round(score, 2), components, issues, hard_valid, off_canvas, ratios, clipped, collisions)
