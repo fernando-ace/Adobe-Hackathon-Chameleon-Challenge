@@ -245,14 +245,14 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
                 _apply_rect(dna, by_id, f.id, (logo_x, logo_y, logo_w, max(1, logo_h)), assigned)
         # Strong type hierarchy in a compact copy column.
         head_y = ch * (0.14 if not compact else 0.07)
-        head_h = ch * (0.24 if not compact else 0.35)
         ordered_heads = sorted(heads, key=lambda a: -float(a.element.get("font_size", 1)))
         ordered_support = sorted(subs + bodies, key=lambda a: (a.center[1], a.center[0]))
+        many_narrative = compact and len(ordered_heads) + len(ordered_support) > 2
         if len(ordered_heads) + len(ordered_support) > 2:
             narrative = ordered_heads + ordered_support
-            bottom = (0.59 if legals else 0.76) if compact else 0.58
-            start = ch * 0.06
-            gap = ch * 0.008
+            bottom = (0.74 if legals else 0.76) if compact else 0.58
+            start = ch * (0.01 if compact else 0.06)
+            gap = ch * (0.003 if compact else 0.008)
             weights = [2.0 if f.role == "headline" else 1.0 for f in narrative]
             available = max(1.0, ch * bottom - start - gap * (len(narrative) - 1))
             total_weight = sum(weights)
@@ -262,8 +262,9 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
                 start += band_h + gap
         else:
             for f in ordered_heads:
-                _apply_rect(dna, by_id, f.id, (copy_x, head_y, copy_w, head_h), assigned)
-                head_y += head_h * 1.04
+                current_head_h = ch * (0.40 if compact else 0.24)
+                _apply_rect(dna, by_id, f.id, (copy_x, head_y, copy_w, current_head_h), assigned)
+                head_y += current_head_h * (1.0 if compact else 1.04)
             for f in ordered_support:
                 h = ch * (0.16 if ch > 140 else 0.22)
                 _apply_rect(dna, by_id, f.id, (copy_x, head_y, copy_w, h), assigned)
@@ -306,7 +307,9 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
                 rect = (copy_x + copy_w * 0.62, ch * (0.61 + 0.14 * index), copy_w * 0.32, ch * 0.13)
             _apply_rect(dna, by_id, dna.groups[gid][0], rect, assigned)
         for f in legals:
-            _apply_rect(dna, by_id, f.id, (copy_x, ch * (0.68 if compact else 0.91), max(1, copy_w * 0.95), ch * (0.10 if compact else 0.07)), assigned)
+            legal_y = 0.74 if many_narrative else 0.69 if compact else 0.91
+            legal_h = 0.05 if many_narrative else 0.10 if compact else 0.07
+            _apply_rect(dna, by_id, f.id, (copy_x, ch * legal_y, max(1, copy_w * 0.95), ch * legal_h), assigned)
     elif split:
         image_side_left = family == "split_mirror"
         hero_x = mx if image_side_left else cw * 0.58

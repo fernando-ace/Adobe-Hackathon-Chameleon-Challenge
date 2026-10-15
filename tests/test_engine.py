@@ -151,6 +151,7 @@ class EngineContractTests(unittest.TestCase):
         output = resize(task["source"], task["target_canvas"])
         elements = {element["id"]: element for element in output["elements"]}
         self.assertGreaterEqual(elements["headline"]["font_size"], 13.0)
+        self.assertGreaterEqual(elements["legal_text"]["font_size"], 7.5)
         self.assertGreaterEqual(elements["cta_label"]["font_size"], 8.0)
         for element_id in ("badge1_label", "badge2_label", "badge3_label"):
             self.assertGreaterEqual(elements[element_id]["font_size"], 8.0)
@@ -229,6 +230,7 @@ class EngineContractTests(unittest.TestCase):
             self.assert_contract(source, target, output)
             self.assertFalse(get_last_diagnostics()["fallback_used"], get_last_diagnostics())
             self.assertFalse(any("new overlap" in issue for issue in get_last_diagnostics()["issues"]), name)
+            self.assertFalse(any("type hierarchy regressed" in issue for issue in get_last_diagnostics()["issues"]), name)
 
     def test_stress_generator_handles_small_and_large_counts(self):
         for count in (2, 3, 5, 8, 15, 20, 30, 40):
