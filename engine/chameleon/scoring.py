@@ -193,10 +193,18 @@ def score_design(dna: DesignDNA, design: dict[str, Any], family: str = "") -> Sc
             higher, lower = (a, b) if ra > rb else (b, a)
             high_size = float(by_id[higher.id].get("font_size", 1))
             low_size = float(by_id[lower.id].get("font_size", 1))
-            if high_size < low_size * 0.82:
-                penalty = min(5.0, (low_size * 0.82 - high_size) / max(1.0, low_size) * 12)
+            source_high = float(higher.element.get("font_size", 1))
+            source_low = float(lower.element.get("font_size", 1))
+            source_ratio = source_high / max(1.0, source_low)
+            output_ratio = high_size / max(1.0, low_size)
+            # Preserve the source's own typographic relationship. Penalize a
+            # candidate only when it degrades that relationship (or crosses
+            # the default hierarchy floor), not when the source already does.
+            minimum_ratio = max(0.0, min(0.82, source_ratio) - 0.01)
+            if output_ratio < minimum_ratio:
+                penalty = min(5.0, (minimum_ratio - output_ratio) * 12)
                 hierarchy_penalty += penalty
-                issues.append(f"{higher.id}/{lower.id}: hierarchy type sizes are inverted")
+                issues.append(f"{higher.id}/{lower.id}: type hierarchy regressed from source ({source_ratio:.2f} to {output_ratio:.2f})")
 
     # Adaptation must be appropriate to the target's shape. This stops a
     # mathematically tidy but visibly crushed square/poster arrangement from

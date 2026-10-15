@@ -66,6 +66,7 @@ The engine needs no network after the image is built. Container validation is st
 
 - [`docs/baseline.md`](docs/baseline.md): untouched starter run and visual findings.
 - [`docs/research-notes.md`](docs/research-notes.md): source-backed research, hypotheses, implemented behavior, and measured limits.
+- [`docs/failure-taxonomy.md`](docs/failure-taxonomy.md): current recurring failures, regression evidence, and residual issues.
 - [`evidence/gallery/index.html`](evidence/gallery/index.html): rendered source/baseline/current comparisons.
 - [`evidence/benchmark/report.md`](evidence/benchmark/report.md): current internal proxy and stress metrics.
 

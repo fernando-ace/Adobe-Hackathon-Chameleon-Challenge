@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 import json
 from pathlib import Path
 import tempfile
@@ -116,6 +117,21 @@ class EngineContractTests(unittest.TestCase):
                 larger_by_id = {element["id"]: element for element in larger["elements"]}
                 for fact in headlines:
                     self.assertGreaterEqual(larger_by_id[fact.id]["font_size"], small_by_id[fact.id]["font_size"] * 0.9)
+
+    def test_hierarchy_scoring_respects_source_and_catches_regressions(self):
+        _name, source, _target = next(case for case in make_stress_corpus() if case[0] == "synthetic_049")
+        dna = analyze_design(source, source["canvas"])
+        facts = {fact.id: fact for fact in dna.facts}
+        self.assertEqual(facts["copy_7"].role, "subheadline")
+        self.assertEqual(facts["body"].role, "body_copy")
+
+        preserved = score_design(dna, source, "source_fit")
+        self.assertFalse(any("type hierarchy" in issue for issue in preserved.issues), preserved.issues)
+
+        regressed = deepcopy(source)
+        next(element for element in regressed["elements"] if element["id"] == "copy_7")["font_size"] = 10
+        report = score_design(dna, regressed, "source_fit")
+        self.assertTrue(any("copy_7/body: type hierarchy regressed" in issue for issue in report.issues), report.issues)
 
     def test_official_outputs_render(self):
         for task in _official_tasks():

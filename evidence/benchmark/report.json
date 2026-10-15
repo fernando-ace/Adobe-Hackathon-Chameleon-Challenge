@@ -7,14 +7,18 @@
   "stress_off_canvas_cases": 0,
   "stress_image_ratio_failures": 0,
   "stress_text_clipping_cases": 0,
+  "stress_hierarchy_regressions": 0,
+  "stress_hierarchy_regression_cases": 0,
   "stress_collision_free_rate": 1.0,
-  "stress_median_runtime_seconds": 0.13283,
-  "stress_p95_runtime_seconds": 0.81397,
+  "stress_median_runtime_seconds": 0.143795,
+  "stress_p95_runtime_seconds": 1.06316,
   "stress_determinism_rate": 1.0,
   "mutation_structural_validity_rate": 1.0,
   "mutation_off_canvas_cases": 0,
   "mutation_image_ratio_failures": 0,
   "mutation_text_clipping_cases": 0,
+  "mutation_hierarchy_regressions": 9,
+  "mutation_hierarchy_regression_cases": 2,
   "mutation_collision_free_rate": 1.0,
   "mutation_determinism_rate": 1.0,
   "official": [
@@ -75,7 +79,7 @@
       "layout_family": "stack",
       "candidate_count": 12,
       "repair_count": 0,
-      "runtime_seconds": 0.03228,
+      "runtime_seconds": 0.03541,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -137,7 +141,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "runtime_seconds": 0.07672,
+      "runtime_seconds": 0.07908,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -210,7 +214,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "runtime_seconds": 0.18833,
+      "runtime_seconds": 0.18412,
       "renderer_warnings": [
         "Missing asset 'solstice_holiday_badge_2025.png' for element 'holiday_watermark' - rendered a placeholder."
       ],
@@ -223,21 +227,14 @@
     {
       "name": "synthetic_000",
       "layout_family": "source_fit",
-      "proxy_score": 98.56,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.17659,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.17612,
+      "issues": []
     },
     {
       "name": "synthetic_001",
@@ -248,7 +245,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07638,
+      "runtime_seconds": 0.11538,
       "issues": []
     },
     {
@@ -260,22 +257,20 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.1409,
+      "runtime_seconds": 0.28708,
       "issues": []
     },
     {
       "name": "synthetic_003",
       "layout_family": "banner",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.13757,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.34138,
+      "issues": []
     },
     {
       "name": "synthetic_004",
@@ -286,123 +281,92 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.15096,
+      "runtime_seconds": 0.28668,
       "issues": []
     },
     {
       "name": "synthetic_005",
       "layout_family": "stack",
-      "proxy_score": 98.09,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.41081,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted",
-        "copy_40/body: hierarchy type sizes are inverted",
-        "copy_43/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.52656,
+      "issues": []
     },
     {
       "name": "synthetic_006",
       "layout_family": "source_fit",
-      "proxy_score": 84.05,
+      "proxy_score": 84.53,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.13736,
-      "issues": [
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.52486,
+      "issues": []
     },
     {
       "name": "synthetic_007",
       "layout_family": "source_fit",
-      "proxy_score": 98.8,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.35091,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.5401,
+      "issues": []
     },
     {
       "name": "synthetic_008",
       "layout_family": "source_fit",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09764,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.13287,
+      "issues": []
     },
     {
       "name": "synthetic_009",
       "layout_family": "stack",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.04619,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.05446,
+      "issues": []
     },
     {
       "name": "synthetic_010",
       "layout_family": "source_fit",
-      "proxy_score": 98.56,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.56157,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.64397,
+      "issues": []
     },
     {
       "name": "synthetic_011",
       "layout_family": "source_fit",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.06442,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.08587,
+      "issues": []
     },
     {
       "name": "synthetic_012",
@@ -413,7 +377,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11529,
+      "runtime_seconds": 0.14487,
       "issues": []
     },
     {
@@ -425,7 +389,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.1283,
+      "runtime_seconds": 0.12436,
       "issues": []
     },
     {
@@ -437,7 +401,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.79382,
+      "runtime_seconds": 0.87218,
       "issues": []
     },
     {
@@ -449,74 +413,56 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.7518,
+      "runtime_seconds": 0.47127,
       "issues": []
     },
     {
       "name": "synthetic_016",
       "layout_family": "source_fit",
-      "proxy_score": 98.56,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.34833,
-      "issues": [
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.1928,
+      "issues": []
     },
     {
       "name": "synthetic_017",
       "layout_family": "source_fit",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.15378,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.10217,
+      "issues": []
     },
     {
       "name": "synthetic_018",
       "layout_family": "stack",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.3012,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.26735,
+      "issues": []
     },
     {
       "name": "synthetic_019",
       "layout_family": "stack",
-      "proxy_score": 98.56,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.77178,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted",
-        "copy_40/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.49578,
+      "issues": []
     },
     {
       "name": "synthetic_020",
@@ -527,7 +473,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.03764,
+      "runtime_seconds": 0.03634,
       "issues": []
     },
     {
@@ -539,7 +485,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.4004,
+      "runtime_seconds": 0.41009,
       "issues": []
     },
     {
@@ -551,60 +497,44 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.10783,
+      "runtime_seconds": 0.10333,
       "issues": []
     },
     {
       "name": "synthetic_023",
       "layout_family": "source_fit",
-      "proxy_score": 97.52,
+      "proxy_score": 98.48,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.16549,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.1765,
+      "issues": []
     },
     {
       "name": "synthetic_024",
       "layout_family": "banner",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11776,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.11009,
+      "issues": []
     },
     {
       "name": "synthetic_025",
       "layout_family": "stack",
-      "proxy_score": 98.09,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.17012,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted",
-        "copy_40/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.92981,
+      "issues": []
     },
     {
       "name": "synthetic_026",
@@ -615,69 +545,44 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.44739,
+      "runtime_seconds": 0.32348,
       "issues": []
     },
     {
       "name": "synthetic_027",
       "layout_family": "stack",
-      "proxy_score": 98.09,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.81397,
-      "issues": [
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted",
-        "copy_40/body: hierarchy type sizes are inverted",
-        "copy_43/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 1.24107,
+      "issues": []
     },
     {
       "name": "synthetic_028",
       "layout_family": "source_fit",
-      "proxy_score": 95.83,
+      "proxy_score": 97.51,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.21613,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted",
-        "copy_40/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 1.97414,
+      "issues": []
     },
     {
       "name": "synthetic_029",
       "layout_family": "stack",
-      "proxy_score": 98.32,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.68926,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted",
-        "copy_40/body: hierarchy type sizes are inverted",
-        "copy_43/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 1.07204,
+      "issues": []
     },
     {
       "name": "synthetic_030",
@@ -688,7 +593,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.12197,
+      "runtime_seconds": 0.11299,
       "issues": []
     },
     {
@@ -700,7 +605,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11185,
+      "runtime_seconds": 0.13115,
       "issues": []
     },
     {
@@ -712,7 +617,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09385,
+      "runtime_seconds": 0.10328,
       "issues": []
     },
     {
@@ -724,7 +629,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.05594,
+      "runtime_seconds": 0.05786,
       "issues": []
     },
     {
@@ -736,7 +641,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07189,
+      "runtime_seconds": 0.08114,
       "issues": []
     },
     {
@@ -748,7 +653,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08443,
+      "runtime_seconds": 0.08092,
       "issues": []
     },
     {
@@ -760,7 +665,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.24185,
+      "runtime_seconds": 0.39557,
       "issues": []
     },
     {
@@ -772,41 +677,32 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07999,
+      "runtime_seconds": 0.0998,
       "issues": []
     },
     {
       "name": "synthetic_038",
       "layout_family": "stack",
-      "proxy_score": 98.56,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.09356,
+      "issues": []
     },
     {
       "name": "synthetic_039",
       "layout_family": "source_fit",
-      "proxy_score": 69.9,
+      "proxy_score": 70.14,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.17999,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.21824,
+      "issues": []
     },
     {
       "name": "synthetic_040",
@@ -817,7 +713,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.10916,
+      "runtime_seconds": 0.14642,
       "issues": []
     },
     {
@@ -829,22 +725,20 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.24731,
+      "runtime_seconds": 0.25934,
       "issues": []
     },
     {
       "name": "synthetic_042",
       "layout_family": "source_fit",
-      "proxy_score": 81.76,
+      "proxy_score": 82.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.05923,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.05704,
+      "issues": []
     },
     {
       "name": "synthetic_043",
@@ -855,7 +749,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07855,
+      "runtime_seconds": 0.09438,
       "issues": []
     },
     {
@@ -867,22 +761,20 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07181,
+      "runtime_seconds": 0.06618,
       "issues": []
     },
     {
       "name": "synthetic_045",
       "layout_family": "stack",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.2529,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.27795,
+      "issues": []
     },
     {
       "name": "synthetic_046",
@@ -893,7 +785,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08414,
+      "runtime_seconds": 0.08141,
       "issues": []
     },
     {
@@ -905,43 +797,32 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08194,
+      "runtime_seconds": 0.08211,
       "issues": []
     },
     {
       "name": "synthetic_048",
       "layout_family": "banner",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.14028,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.15973,
+      "issues": []
     },
     {
       "name": "synthetic_049",
       "layout_family": "source_fit",
-      "proxy_score": 80.08,
+      "proxy_score": 82.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.04599,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted",
-        "copy_22/body: hierarchy type sizes are inverted",
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted",
-        "copy_43/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 1.06316,
+      "issues": []
     },
     {
       "name": "synthetic_050",
@@ -952,22 +833,20 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09529,
+      "runtime_seconds": 0.10901,
       "issues": []
     },
     {
       "name": "synthetic_051",
       "layout_family": "banner",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.1404,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.14272,
+      "issues": []
     },
     {
       "name": "synthetic_052",
@@ -978,7 +857,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07522,
+      "runtime_seconds": 0.07584,
       "issues": []
     },
     {
@@ -990,22 +869,20 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08271,
+      "runtime_seconds": 0.07984,
       "issues": []
     },
     {
       "name": "synthetic_054",
       "layout_family": "stack",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.26578,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.29031,
+      "issues": []
     },
     {
       "name": "synthetic_055",
@@ -1016,54 +893,44 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.0557,
+      "runtime_seconds": 0.06511,
       "issues": []
     },
     {
       "name": "synthetic_056",
       "layout_family": "source_fit",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08977,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.0864,
+      "issues": []
     },
     {
       "name": "synthetic_057",
       "layout_family": "banner",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.17155,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.16255,
+      "issues": []
     },
     {
       "name": "synthetic_058",
       "layout_family": "source_fit",
-      "proxy_score": 98.8,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.36972,
-      "issues": [
-        "copy_25/body: hierarchy type sizes are inverted",
-        "copy_28/body: hierarchy type sizes are inverted",
-        "copy_31/body: hierarchy type sizes are inverted",
-        "copy_34/body: hierarchy type sizes are inverted",
-        "copy_37/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.35684,
+      "issues": []
     },
     {
       "name": "synthetic_059",
@@ -1074,7 +941,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.0924,
+      "runtime_seconds": 0.09182,
       "issues": []
     },
     {
@@ -1086,22 +953,20 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.06065,
+      "runtime_seconds": 0.05507,
       "issues": []
     },
     {
       "name": "synthetic_061",
       "layout_family": "stack",
-      "proxy_score": 99.76,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07566,
-      "issues": [
-        "copy_7/body: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.06584,
+      "issues": []
     },
     {
       "name": "synthetic_062",
@@ -1112,7 +977,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.05826,
+      "runtime_seconds": 0.05527,
       "issues": []
     },
     {
@@ -1124,7 +989,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.28513,
+      "runtime_seconds": 0.2679,
       "issues": []
     }
   ],
@@ -1138,7 +1003,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.0773,
+      "runtime_seconds": 0.07198,
       "issues": []
     },
     {
@@ -1150,7 +1015,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.04211,
+      "runtime_seconds": 0.04238,
       "issues": []
     },
     {
@@ -1162,7 +1027,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.02864,
+      "runtime_seconds": 0.02574,
       "issues": []
     },
     {
@@ -1174,7 +1039,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.02957,
+      "runtime_seconds": 0.02345,
       "issues": []
     },
     {
@@ -1186,22 +1051,20 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.03748,
+      "runtime_seconds": 0.04365,
       "issues": []
     },
     {
       "name": "warmup_01_add_copy",
       "layout_family": "stack",
-      "proxy_score": 97.36,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.03275,
-      "issues": [
-        "mutation_support_copy/cta: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.03286,
+      "issues": []
     },
     {
       "name": "warmup_01_rotate_shape",
@@ -1212,7 +1075,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.02914,
+      "runtime_seconds": 0.02406,
       "issues": []
     },
     {
@@ -1224,7 +1087,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.02926,
+      "runtime_seconds": 0.02636,
       "issues": []
     },
     {
@@ -1236,7 +1099,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.02776,
+      "runtime_seconds": 0.02417,
       "issues": []
     },
     {
@@ -1248,7 +1111,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.03718,
+      "runtime_seconds": 0.0344,
       "issues": []
     },
     {
@@ -1260,7 +1123,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.14141,
+      "runtime_seconds": 0.14966,
       "issues": []
     },
     {
@@ -1272,7 +1135,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07158,
+      "runtime_seconds": 0.06489,
       "issues": []
     },
     {
@@ -1284,7 +1147,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11696,
+      "runtime_seconds": 0.09933,
       "issues": []
     },
     {
@@ -1296,7 +1159,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07222,
+      "runtime_seconds": 0.07851,
       "issues": []
     },
     {
@@ -1308,7 +1171,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07332,
+      "runtime_seconds": 0.06592,
       "issues": []
     },
     {
@@ -1320,7 +1183,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.14774,
+      "runtime_seconds": 0.13903,
       "issues": []
     },
     {
@@ -1332,7 +1195,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07657,
+      "runtime_seconds": 0.06728,
       "issues": []
     },
     {
@@ -1344,7 +1207,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.0645,
+      "runtime_seconds": 0.05748,
       "issues": []
     },
     {
@@ -1356,7 +1219,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.06493,
+      "runtime_seconds": 0.05885,
       "issues": []
     },
     {
@@ -1368,22 +1231,20 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08322,
+      "runtime_seconds": 0.0719,
       "issues": []
     },
     {
       "name": "core_01_add_copy",
       "layout_family": "banner",
-      "proxy_score": 99.16,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.06225,
-      "issues": [
-        "mutation_support_copy/subhead: hierarchy type sizes are inverted"
-      ]
+      "runtime_seconds": 0.07062,
+      "issues": []
     },
     {
       "name": "core_01_rotate_shape",
@@ -1394,7 +1255,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.05867,
+      "runtime_seconds": 0.05752,
       "issues": []
     },
     {
@@ -1406,7 +1267,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.06343,
+      "runtime_seconds": 0.0593,
       "issues": []
     },
     {
@@ -1418,7 +1279,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.05726,
+      "runtime_seconds": 0.0718,
       "issues": []
     },
     {
@@ -1430,7 +1291,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.07656,
+      "runtime_seconds": 0.0578,
       "issues": []
     },
     {
@@ -1442,7 +1303,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.17501,
+      "runtime_seconds": 0.17233,
       "issues": []
     },
     {
@@ -1454,7 +1315,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08565,
+      "runtime_seconds": 0.12529,
       "issues": []
     },
     {
@@ -1466,7 +1327,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11571,
+      "runtime_seconds": 0.16776,
       "issues": []
     },
     {
@@ -1478,7 +1339,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09823,
+      "runtime_seconds": 0.15554,
       "issues": []
     },
     {
@@ -1490,7 +1351,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.1414,
+      "runtime_seconds": 0.22593,
       "issues": []
     },
     {
@@ -1502,7 +1363,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.25118,
+      "runtime_seconds": 0.35905,
       "issues": [
         "headline: small type at 8.9px"
       ]
@@ -1510,19 +1371,19 @@
     {
       "name": "advanced_01_headline_4x",
       "layout_family": "banner",
-      "proxy_score": 93.31,
+      "proxy_score": 93.79,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.23153,
+      "runtime_seconds": 0.2077,
       "issues": [
         "headline: small type at 6.7px",
-        "headline/subhead: hierarchy type sizes are inverted",
-        "headline/badge1_label: hierarchy type sizes are inverted",
-        "headline/badge2_label: hierarchy type sizes are inverted",
-        "headline/badge3_label: hierarchy type sizes are inverted"
+        "headline/subhead: type hierarchy regressed from source (1.82 to 0.79)",
+        "headline/badge1_label: type hierarchy regressed from source (2.67 to 0.77)",
+        "headline/badge2_label: type hierarchy regressed from source (2.67 to 0.77)",
+        "headline/badge3_label: type hierarchy regressed from source (2.67 to 0.77)"
       ]
     },
     {
@@ -1534,7 +1395,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18674,
+      "runtime_seconds": 0.16383,
       "issues": []
     },
     {
@@ -1546,7 +1407,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.19432,
+      "runtime_seconds": 0.15155,
       "issues": []
     },
     {
@@ -1558,27 +1419,27 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.2287,
+      "runtime_seconds": 0.20456,
       "issues": []
     },
     {
       "name": "advanced_01_add_copy",
       "layout_family": "banner",
-      "proxy_score": 90.24,
+      "proxy_score": 90.84,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.2041,
+      "runtime_seconds": 0.17784,
       "issues": [
         "headline: small type at 9.8px",
         "subhead: small type at 5.7px",
-        "subhead/badge1_label: hierarchy type sizes are inverted",
-        "subhead/badge2_label: hierarchy type sizes are inverted",
-        "subhead/badge3_label: hierarchy type sizes are inverted",
-        "subhead/ribbon_label: hierarchy type sizes are inverted",
-        "subhead/legal_text: hierarchy type sizes are inverted"
+        "subhead/badge1_label: type hierarchy regressed from source (1.47 to 0.67)",
+        "subhead/badge2_label: type hierarchy regressed from source (1.47 to 0.67)",
+        "subhead/badge3_label: type hierarchy regressed from source (1.47 to 0.67)",
+        "subhead/ribbon_label: type hierarchy regressed from source (1.10 to 0.72)",
+        "subhead/legal_text: type hierarchy regressed from source (1.83 to 0.73)"
       ]
     },
     {
@@ -1590,7 +1451,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18476,
+      "runtime_seconds": 0.17395,
       "issues": []
     },
     {
@@ -1602,7 +1463,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.17865,
+      "runtime_seconds": 0.15979,
       "issues": []
     },
     {
@@ -1614,7 +1475,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18763,
+      "runtime_seconds": 0.20406,
       "issues": []
     },
     {
@@ -1626,7 +1487,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18207,
+      "runtime_seconds": 0.17157,
       "issues": []
     },
     {
@@ -1638,7 +1499,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.27207,
+      "runtime_seconds": 0.26345,
       "issues": []
     },
     {
@@ -1650,7 +1511,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.1285,
+      "runtime_seconds": 0.13838,
       "issues": []
     },
     {
@@ -1662,7 +1523,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.13937,
+      "runtime_seconds": 0.15523,
       "issues": []
     },
     {
@@ -1674,7 +1535,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.15557,
+      "runtime_seconds": 0.14566,
       "issues": []
     },
     {
@@ -1686,7 +1547,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.19402,
+      "runtime_seconds": 0.20139,
       "issues": []
     }
   ]
