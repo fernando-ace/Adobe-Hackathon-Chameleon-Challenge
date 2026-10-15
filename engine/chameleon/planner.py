@@ -179,6 +179,86 @@ def _group_ids(dna: DesignDNA, role_prefix: str) -> list[str]:
     return found
 
 
+def _wide_banner(dna: DesignDNA, output: dict[str, Any], by_id: dict[str, dict[str, Any]],
+                 assigned: set[str], family: str) -> dict[str, Any]:
+    """Place wide creatives in distinct horizontal bands around a focal rail."""
+    cw, ch = float(dna.target_canvas["width"]), float(dna.target_canvas["height"])
+    left_hero = family == "banner_mirror"
+    facts = dna.facts
+    roles = lambda *names: [fact for fact in facts if fact.role in names]
+    logos = roles("logo")
+    heroes = sorted(roles("hero_image", "supporting_image"), key=lambda fact: -fact.importance)
+    headlines = sorted(roles("headline"), key=lambda fact: -float(fact.element.get("font_size", 1)))
+    narrative = sorted(roles("subheadline", "body_copy"), key=lambda fact: (fact.center[1], fact.center[0]))
+    legal = roles("legal")
+    cta_groups = _group_ids(dna, "cta")
+    badge_groups = _group_ids(dna, "badge")
+    other_groups = [gid for gid in dna.groups if gid not in cta_groups and gid not in badge_groups]
+    copy_x = cw * (0.28 if left_hero else 0.05)
+    copy_right = cw * (0.95 if left_hero else 0.72)
+    copy_w = copy_right - copy_x
+    hero_x = cw * (0.035 if left_hero else 0.80)
+    hero_w, hero_y, hero_h = cw * 0.17, ch * 0.14, ch * 0.74
+    for index, fact in enumerate(heroes):
+        if index == 0:
+            rect = (hero_x, hero_y, hero_w, hero_h)
+        else:
+            # Preserve secondary artwork in its own small anchor beside the
+            # focal rail without letting it sit over campaign copy.
+            side_x = cw * (0.22 if left_hero else 0.72)
+            rect = (side_x, ch * 0.80, cw * 0.06, ch * 0.10)
+        _apply_rect(dna, by_id, fact.id, rect, assigned)
+
+    logo_x = cw * (0.78 if left_hero else 0.05)
+    for fact in logos:
+        _apply_rect(dna, by_id, fact.id, (logo_x, ch * 0.035, cw * 0.17, ch * 0.15), assigned)
+
+    head_count = max(1, len(headlines))
+    head_band = ch * 0.25 / head_count
+    for index, fact in enumerate(headlines):
+        _apply_rect(dna, by_id, fact.id,
+                    (copy_x, ch * 0.27 + index * head_band, copy_w, head_band * 0.92), assigned)
+    narrative_count = max(1, len(narrative))
+    narrative_band = ch * 0.16 / narrative_count
+    for index, fact in enumerate(narrative):
+        _apply_rect(dna, by_id, fact.id,
+                    (copy_x, ch * 0.53 + index * narrative_band, copy_w, narrative_band * 0.88), assigned)
+
+    if badge_groups:
+        gap = cw * 0.014
+        cell_w = (copy_w - gap * (len(badge_groups) - 1)) / len(badge_groups)
+        for index, gid in enumerate(badge_groups):
+            _apply_rect(dna, by_id, dna.groups[gid][0],
+                        (copy_x + index * (cell_w + gap), ch * 0.70, cell_w, ch * 0.095), assigned)
+    cta_x, cta_w = copy_x, copy_w * 0.40
+    for gid in cta_groups:
+        _apply_rect(dna, by_id, dna.groups[gid][0], (cta_x, ch * 0.81, cta_w, ch * 0.12), assigned)
+    for fact in roles("cta_text"):
+        if fact.id not in assigned:
+            _apply_rect(dna, by_id, fact.id, (cta_x, ch * 0.81, cta_w, ch * 0.12), assigned)
+
+    for gid in other_groups:
+        members = [dna.by_id[eid] for eid in dna.groups[gid]]
+        rotated = any(abs(float(member.element.get("rotation", 0))) >= 5 for member in members)
+        x = cw * (0.62 if not left_hero else 0.25) if rotated else cw * (0.72 if not left_hero else 0.22)
+        y = ch * 0.035 if rotated else ch * 0.82
+        w, h = (cw * 0.15, ch * 0.09) if rotated else (cw * 0.06, ch * 0.10)
+        _apply_rect(dna, by_id, dna.groups[gid][0], (x, y, w, h), assigned)
+    for fact in legal:
+        _apply_rect(dna, by_id, fact.id, (copy_x, ch * 0.94, copy_w, ch * 0.05), assigned)
+
+    # Keep any semantics not covered by a named role or group in a quiet rail
+    # outside the text and hero columns.
+    for fact in facts:
+        if fact.id in assigned:
+            continue
+        e = fact.element
+        x = cw * (0.73 if not left_hero else 0.21)
+        rect = (x, ch * 0.45, cw * 0.05, ch * 0.12)
+        _apply_rect(dna, by_id, fact.id, rect, assigned)
+    return output
+
+
 def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
     if family == "source_fit":
         return _source_fit(dna, (0.88, 0.96, 1.0)[variant % 3])
@@ -210,6 +290,11 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
     banner = family in {"banner", "banner_mirror"}
     split = family in {"split", "split_mirror"}
     if banner:
+        # The 728x90 leaderboard keeps the specialized compact-row treatment
+        # below. Wide campaign canvases have enough vertical room for distinct
+        # headline, body, badge, and action bands.
+        if dna.target_aspect >= 4.5 and ch >= 300:
+            return _wide_banner(dna, output, by_id, assigned, family)
         hero_left = family == "banner_mirror"
         compact = ch < 150
         hero_x = mx if hero_left else cw * (0.88 if compact else 0.79)

@@ -160,6 +160,19 @@ class EngineContractTests(unittest.TestCase):
         self.assertGreaterEqual(product["width"] * product["height"] / (target["width"] * target["height"]), 0.055)
         self.assertEqual(get_last_diagnostics()["issues"], [])
 
+    def test_extreme_wide_banner_recomposes_without_new_collisions(self):
+        task = next(task for task in _official_tasks() if task["difficulty"] == "level_3_advanced")
+        target = {"width": 3000, "height": 600}
+        output = resize(task["source"], target)
+        diagnostics = get_last_diagnostics()
+        self.assertIn(diagnostics["layout_family"], {"banner", "banner_mirror"})
+        self.assertEqual(diagnostics["issues"], [])
+        self.assertEqual(diagnostics["score_components"]["collision_avoidance"], 100.0)
+        self.assert_contract(task["source"], target, output)
+        by_id = {element["id"]: element for element in output["elements"]}
+        self.assertLess(by_id["headline"]["x"], by_id["product"]["x"])
+        self.assertGreater(by_id["product"]["height"], target["height"] * 0.60)
+
     def test_sparse_portrait_stack_uses_lower_action_band(self):
         task = next(task for task in _official_tasks() if task["difficulty"] == "level_1_warmup")
         output = resize(task["source"], task["target_canvas"])

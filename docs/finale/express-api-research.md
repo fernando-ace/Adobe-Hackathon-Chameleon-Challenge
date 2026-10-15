@@ -18,12 +18,13 @@ Research checked against Adobe's official developer documentation on 2026-10-15.
 - The selected output is appended as a new page; the existing page is not replaced.
 - Text and shapes are separate editable objects. Image content is fitted to the returned geometry and imported as separate image objects. Exact source font licensing, rounded-corner styling, and all renderer-specific effects are not guaranteed in the Express document.
 - Element locking preserves the selected element's rectangle for each generated format on subsequent local regeneration. It is a Chameleon placement constraint, not an Adobe Express native lock-state integration.
-- Browser access is waiting on Chrome's local remote-debugging consent. The app build and local API flow pass, but browser-level layout inspection and live Express apply are still pending.
+- Chrome browser access works without a remote-debugging popup. The local add-on preview generated all six formats and exercised headline locking. Opening Adobe Express redirects to Adobe sign-in in this profile; no authenticated Express document was available for a live Apply test.
 
 ## Prototype validation so far
 
 - Adobe React/TypeScript add-on production build: passed.
 - Local API served all three source designs and six target presets.
+- Connected Chrome preview generated six Level 3 formats and displayed the wide composition as a banner layout; regenerating with the headline locked completed successfully.
 - The Level 3 design generated all six target previews using the current engine and renderer: 6 layouts, 102 returned elements, 6 fitted image assets, and 1,176,764 preview base64 characters.
 - Regeneration with the headline locked retained its exact x/y/width/height for both the square and wide-banner formats (maximum coordinate delta 0).
 - These are local prototype results, not Adobe-hosted or physical-device results.
