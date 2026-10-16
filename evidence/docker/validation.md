@@ -33,4 +33,15 @@ outputs for all three official samples. PNG SHA-256 values: Level 1
 
 The generated JSON retained source element IDs and counts, text content, and font families. Output geometry stayed within each target canvas. Contain-fit images retained their source frame ratios; cover-fit backgrounds use a target-sized frame by design. The only warning on the offline run was Fontconfig's non-fatal `05-reset-dirs-sample.conf` warning.
 
+## Clean-build check
+
+Also rebuilt with `docker build --no-cache --platform linux/amd64 -t
+chameleon-engine-clean .`. This re-resolved the `python:3.11-slim` base (digest
+`e88e9763f943ec1834f992a4b51e0f24500486803e8bc534e5767af9ea65f6ce`) and
+reinstalled OS/Python dependencies. Two runs of this clean image under
+`--network none` returned `OK`; all six JSON/PNG SHA-256 values were identical
+between runs and matched the previously validated output artifacts. Times were
+0.14–0.15 s (Level 1), 0.15–0.17 s (Level 2), and 0.24–0.25 s (Level 3).
+Only the same non-fatal Fontconfig warning appeared.
+
 To recover Docker Desktop after an unclean shutdown, this host had orphaned Windows socket reparse points in both `%LOCALAPPDATA%\Docker\run` and `%LOCALAPPDATA%\docker-secrets-engine`. Direct socket deletion failed with Windows error 1920. Renaming the socket-only runtime directories aside let Docker recreate them; Docker then answered `docker info` and ran the offline image. The preserved directories are outside the repository.
