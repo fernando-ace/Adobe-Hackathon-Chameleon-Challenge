@@ -147,6 +147,20 @@ class EngineContractTests(unittest.TestCase):
         cta = by_id["cta_background"]
         self.assertLessEqual(badge[3], float(cta["y"]))
 
+    def test_bold_event_date_is_informational_copy_not_a_standalone_cta(self):
+        fixture = json.loads((ROOT / "evidence" / "curated" / "market" / "source.json").read_text(encoding="utf-8"))
+        dna = analyze_design(fixture["source"], {"width": 300, "height": 600})
+        self.assertEqual(dna.by_id["event_eyebrow"].role, "subheadline")
+
+    def test_wide_source_recomposes_for_square_target(self):
+        fixture = json.loads((ROOT / "evidence" / "curated" / "market" / "source.json").read_text(encoding="utf-8"))
+        source = fixture["source"]
+        target = {"width": 1080, "height": 1080}
+        output = resize(source, target)
+        diagnostics = get_last_diagnostics()
+        self.assertNotEqual(diagnostics["layout_family"], "source_fit")
+        self.assert_contract(source, target, output)
+
     @staticmethod
     def _union_size(elements):
         x0 = min(float(element["x"]) for element in elements)

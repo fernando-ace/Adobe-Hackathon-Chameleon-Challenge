@@ -1,6 +1,6 @@
 # Offline Docker validation
 
-Revalidated after the tall-format CTA/badge scale cap, portrait-band spacing, and renderer-measured copy-band adjustment on 2026-10-16 with Docker Desktop 4.77.0 and engine 29.5.3.
+Revalidated after the tall-format CTA/badge scale cap, renderer-measured portrait copy bands, date-metadata inference, and source-fit adaptation scoring on 2026-10-16 with Docker Desktop 4.77.0 and engine 29.5.3.
 
 Build for the challenge architecture:
 
@@ -21,9 +21,9 @@ docker run --rm --network none `
 
 Two consecutive runs completed with `OK`, and the repository validator reported zero issues for every output:
 
-- Level 1: 0.13–0.14 s; PNG 107,497 bytes
-- Level 2: 0.17 s both runs; PNG 69,531 bytes
-- Level 3: 0.24–0.25 s; PNG 43,235 bytes
+- Level 1: 0.15–0.16 s; PNG 107,497 bytes
+- Level 2: 0.16–0.17 s; PNG 69,531 bytes
+- Level 3: 0.25–0.27 s; PNG 43,235 bytes
 
 Two consecutive `--network none` runs produced byte-identical JSON and PNG
 outputs for all three official samples. PNG SHA-256 values: Level 1

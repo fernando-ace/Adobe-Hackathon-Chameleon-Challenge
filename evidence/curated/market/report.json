@@ -1,0 +1,138 @@
+{
+  "fixture": "Solstice Weekend Market Launch",
+  "synthetic": true,
+  "source_elements": 11,
+  "outputs": [
+    {
+      "id": "square_post",
+      "target_canvas": {
+        "width": 1080,
+        "height": 1080
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "split",
+      "candidate_count": 12,
+      "repair_count": 0,
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "square_post_output.json",
+      "output_png": "square_post_output.png"
+    },
+    {
+      "id": "vertical_story",
+      "target_canvas": {
+        "width": 1080,
+        "height": 1920
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "stack",
+      "candidate_count": 6,
+      "repair_count": 0,
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "vertical_story_output.json",
+      "output_png": "vertical_story_output.png"
+    },
+    {
+      "id": "mobile_story",
+      "target_canvas": {
+        "width": 300,
+        "height": 600
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "stack",
+      "candidate_count": 6,
+      "repair_count": 0,
+      "proxy_score": 97.98,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [
+        "event_eyebrow/cta_label: type hierarchy regressed from source (0.96 to 0.64)"
+      ],
+      "output_json": "mobile_story_output.json",
+      "output_png": "mobile_story_output.png"
+    },
+    {
+      "id": "leaderboard",
+      "target_canvas": {
+        "width": 728,
+        "height": 90
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "banner",
+      "candidate_count": 18,
+      "repair_count": 0,
+      "proxy_score": 97.22,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "leaderboard_output.json",
+      "output_png": "leaderboard_output.png"
+    },
+    {
+      "id": "medium_rectangle",
+      "target_canvas": {
+        "width": 300,
+        "height": 250
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "banner",
+      "candidate_count": 18,
+      "repair_count": 0,
+      "proxy_score": 96.43,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [
+        "time_badge_label/legal_copy: type hierarchy regressed from source (1.20 to 0.61)",
+        "cta_label/legal_copy: type hierarchy regressed from source (1.67 to 0.72)"
+      ],
+      "output_json": "medium_rectangle_output.json",
+      "output_png": "medium_rectangle_output.png"
+    }
+  ],
+  "score_note": "Internal source-relative proxy only; inspect the rendered PNGs."
+}

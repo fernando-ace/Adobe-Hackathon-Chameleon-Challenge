@@ -10,8 +10,8 @@
   "stress_hierarchy_regressions": 0,
   "stress_hierarchy_regression_cases": 0,
   "stress_collision_free_rate": 1.0,
-  "stress_median_runtime_seconds": 0.316645,
-  "stress_p95_runtime_seconds": 2.02875,
+  "stress_median_runtime_seconds": 0.33699,
+  "stress_p95_runtime_seconds": 2.40213,
   "stress_determinism_rate": 1.0,
   "collision_metric_definition": "Counts only new or worsened intersections relative to the source; pre-existing overlap is not counted as a regression.",
   "mutation_structural_validity_rate": 1.0,
@@ -36,7 +36,7 @@
       },
       "element_count": 4,
       "baseline": {
-        "score": 68.0,
+        "score": 65.52,
         "components": {
           "canvas_legality": 100.0,
           "image_fidelity": 68.0,
@@ -44,7 +44,7 @@
           "collision_avoidance": 100.0,
           "group_coherence": 100.0,
           "canvas_use": 100.0,
-          "target_adaptation": 100.0,
+          "target_adaptation": 97.52,
           "sampled_contrast": 100.0,
           "visual_hierarchy": 100.0
         },
@@ -80,7 +80,7 @@
       "layout_family": "stack",
       "candidate_count": 12,
       "repair_count": 0,
-      "runtime_seconds": 0.03167,
+      "runtime_seconds": 0.03695,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -105,7 +105,7 @@
           "collision_avoidance": 100.0,
           "group_coherence": 100.0,
           "canvas_use": 100.0,
-          "target_adaptation": 74.0,
+          "target_adaptation": 56.0,
           "sampled_contrast": 100.0,
           "visual_hierarchy": 100.0
         },
@@ -142,7 +142,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "runtime_seconds": 0.07457,
+      "runtime_seconds": 0.08758,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -167,7 +167,7 @@
           "collision_avoidance": 100.0,
           "group_coherence": 100.0,
           "canvas_use": 100.0,
-          "target_adaptation": 74.0,
+          "target_adaptation": 56.0,
           "sampled_contrast": 100.0,
           "visual_hierarchy": 100.0
         },
@@ -215,7 +215,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "runtime_seconds": 0.29743,
+      "runtime_seconds": 0.72258,
       "renderer_warnings": [
         "Missing asset 'solstice_holiday_badge_2025.png' for element 'holiday_watermark' - rendered a placeholder."
       ],
@@ -227,14 +227,14 @@
   "stress": [
     {
       "name": "synthetic_000",
-      "layout_family": "source_fit",
+      "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.48696,
+      "runtime_seconds": 1.57319,
       "issues": []
     },
     {
@@ -246,19 +246,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.16954,
+      "runtime_seconds": 0.36444,
       "issues": []
     },
     {
       "name": "synthetic_002",
-      "layout_family": "source_fit",
+      "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.24382,
+      "runtime_seconds": 0.45244,
       "issues": []
     },
     {
@@ -270,7 +270,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.16393,
+      "runtime_seconds": 0.35469,
       "issues": []
     },
     {
@@ -282,7 +282,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18032,
+      "runtime_seconds": 0.47803,
       "issues": []
     },
     {
@@ -294,7 +294,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.28567,
+      "runtime_seconds": 2.40213,
       "issues": []
     },
     {
@@ -306,31 +306,31 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.32188,
+      "runtime_seconds": 0.29849,
       "issues": []
     },
     {
       "name": "synthetic_007",
-      "layout_family": "source_fit",
+      "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.68737,
+      "runtime_seconds": 0.72315,
       "issues": []
     },
     {
       "name": "synthetic_008",
       "layout_family": "source_fit",
-      "proxy_score": 100.0,
+      "proxy_score": 87.34,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.32283,
+      "runtime_seconds": 0.39029,
       "issues": []
     },
     {
@@ -342,7 +342,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.19163,
+      "runtime_seconds": 0.16191,
       "issues": []
     },
     {
@@ -354,19 +354,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 2.02875,
+      "runtime_seconds": 1.12785,
       "issues": []
     },
     {
       "name": "synthetic_011",
-      "layout_family": "source_fit",
+      "layout_family": "split",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.19534,
+      "runtime_seconds": 0.11197,
       "issues": []
     },
     {
@@ -378,7 +378,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.48783,
+      "runtime_seconds": 0.13351,
       "issues": []
     },
     {
@@ -390,7 +390,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.34172,
+      "runtime_seconds": 0.16268,
       "issues": []
     },
     {
@@ -402,7 +402,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.88148,
+      "runtime_seconds": 1.48204,
       "issues": []
     },
     {
@@ -414,31 +414,31 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.08133,
+      "runtime_seconds": 1.56032,
       "issues": []
     },
     {
       "name": "synthetic_016",
-      "layout_family": "source_fit",
+      "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.31723,
+      "runtime_seconds": 0.30176,
       "issues": []
     },
     {
       "name": "synthetic_017",
-      "layout_family": "source_fit",
+      "layout_family": "split",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.29175,
+      "runtime_seconds": 0.1343,
       "issues": []
     },
     {
@@ -450,7 +450,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.57361,
+      "runtime_seconds": 0.66216,
       "issues": []
     },
     {
@@ -462,7 +462,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.9898,
+      "runtime_seconds": 1.27541,
       "issues": []
     },
     {
@@ -474,7 +474,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.14546,
+      "runtime_seconds": 0.32046,
       "issues": []
     },
     {
@@ -486,7 +486,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.37113,
+      "runtime_seconds": 0.52566,
       "issues": []
     },
     {
@@ -498,19 +498,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.11733,
+      "runtime_seconds": 0.70573,
       "issues": []
     },
     {
       "name": "synthetic_023",
       "layout_family": "source_fit",
-      "proxy_score": 98.48,
+      "proxy_score": 87.55,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.35209,
+      "runtime_seconds": 0.3621,
       "issues": []
     },
     {
@@ -522,7 +522,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.42622,
+      "runtime_seconds": 0.16329,
       "issues": []
     },
     {
@@ -534,7 +534,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.13382,
+      "runtime_seconds": 3.00106,
       "issues": []
     },
     {
@@ -546,7 +546,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.72232,
+      "runtime_seconds": 1.11384,
       "issues": []
     },
     {
@@ -558,7 +558,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 2.3091,
+      "runtime_seconds": 1.6461,
       "issues": []
     },
     {
@@ -570,7 +570,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 2.10114,
+      "runtime_seconds": 2.89161,
       "issues": []
     },
     {
@@ -582,7 +582,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.56021,
+      "runtime_seconds": 1.8391,
       "issues": []
     },
     {
@@ -594,7 +594,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.27622,
+      "runtime_seconds": 0.24303,
       "issues": []
     },
     {
@@ -606,7 +606,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.33073,
+      "runtime_seconds": 0.19274,
       "issues": []
     },
     {
@@ -618,7 +618,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.22575,
+      "runtime_seconds": 0.2309,
       "issues": []
     },
     {
@@ -630,7 +630,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.14612,
+      "runtime_seconds": 0.08884,
       "issues": []
     },
     {
@@ -642,19 +642,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.10454,
+      "runtime_seconds": 0.19223,
       "issues": []
     },
     {
       "name": "synthetic_035",
-      "layout_family": "source_fit",
+      "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.27205,
+      "runtime_seconds": 0.13106,
       "issues": []
     },
     {
@@ -666,7 +666,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.58236,
+      "runtime_seconds": 0.5296,
       "issues": []
     },
     {
@@ -678,7 +678,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18602,
+      "runtime_seconds": 0.22694,
       "issues": []
     },
     {
@@ -690,7 +690,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.25023,
+      "runtime_seconds": 0.20322,
       "issues": []
     },
     {
@@ -702,7 +702,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.53636,
+      "runtime_seconds": 0.32983,
       "issues": []
     },
     {
@@ -714,7 +714,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.25653,
+      "runtime_seconds": 0.25498,
       "issues": []
     },
     {
@@ -726,7 +726,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.63728,
+      "runtime_seconds": 0.37407,
       "issues": []
     },
     {
@@ -738,7 +738,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.06475,
+      "runtime_seconds": 0.19462,
       "issues": []
     },
     {
@@ -750,7 +750,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.10489,
+      "runtime_seconds": 0.22029,
       "issues": []
     },
     {
@@ -762,7 +762,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.10233,
+      "runtime_seconds": 0.22441,
       "issues": []
     },
     {
@@ -774,7 +774,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.61804,
+      "runtime_seconds": 0.57901,
       "issues": []
     },
     {
@@ -786,7 +786,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18286,
+      "runtime_seconds": 0.13414,
       "issues": []
     },
     {
@@ -798,7 +798,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.26882,
+      "runtime_seconds": 0.23967,
       "issues": []
     },
     {
@@ -810,7 +810,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.4601,
+      "runtime_seconds": 0.46948,
       "issues": []
     },
     {
@@ -822,7 +822,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 2.9272,
+      "runtime_seconds": 4.62952,
       "issues": []
     },
     {
@@ -834,7 +834,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.31606,
+      "runtime_seconds": 0.1974,
       "issues": []
     },
     {
@@ -846,7 +846,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.23918,
+      "runtime_seconds": 0.71499,
       "issues": []
     },
     {
@@ -858,19 +858,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.14791,
+      "runtime_seconds": 0.17661,
       "issues": []
     },
     {
       "name": "synthetic_053",
-      "layout_family": "source_fit",
+      "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.1738,
+      "runtime_seconds": 0.34415,
       "issues": []
     },
     {
@@ -882,7 +882,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.68039,
+      "runtime_seconds": 0.49842,
       "issues": []
     },
     {
@@ -894,19 +894,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.12671,
+      "runtime_seconds": 0.28458,
       "issues": []
     },
     {
       "name": "synthetic_056",
-      "layout_family": "source_fit",
+      "layout_family": "split",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.22798,
+      "runtime_seconds": 0.2066,
       "issues": []
     },
     {
@@ -918,7 +918,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.41002,
+      "runtime_seconds": 0.66614,
       "issues": []
     },
     {
@@ -930,7 +930,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.70125,
+      "runtime_seconds": 0.8692,
       "issues": []
     },
     {
@@ -942,7 +942,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.22935,
+      "runtime_seconds": 0.24829,
       "issues": []
     },
     {
@@ -954,7 +954,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08016,
+      "runtime_seconds": 0.20292,
       "issues": []
     },
     {
@@ -966,7 +966,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.13712,
+      "runtime_seconds": 0.20861,
       "issues": []
     },
     {
@@ -978,19 +978,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18956,
+      "runtime_seconds": 0.06616,
       "issues": []
     },
     {
       "name": "synthetic_063",
       "layout_family": "source_fit",
-      "proxy_score": 96.48,
+      "proxy_score": 95.28,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.72573,
+      "runtime_seconds": 0.6807,
       "issues": []
     }
   ],
@@ -1004,7 +1004,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.28015,
+      "runtime_seconds": 0.10166,
       "issues": []
     },
     {
@@ -1016,7 +1016,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.18939,
+      "runtime_seconds": 0.07016,
       "issues": []
     },
     {
@@ -1028,7 +1028,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.12473,
+      "runtime_seconds": 0.03343,
       "issues": []
     },
     {
@@ -1040,19 +1040,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.16324,
+      "runtime_seconds": 0.03962,
       "issues": []
     },
     {
       "name": "warmup_01_add_badge",
-      "layout_family": "source_fit",
+      "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.31387,
+      "runtime_seconds": 0.14335,
       "issues": []
     },
     {
@@ -1064,7 +1064,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.22515,
+      "runtime_seconds": 0.04124,
       "issues": []
     },
     {
@@ -1076,7 +1076,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08094,
+      "runtime_seconds": 0.03511,
       "issues": []
     },
     {
@@ -1088,7 +1088,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.04815,
+      "runtime_seconds": 0.03056,
       "issues": []
     },
     {
@@ -1100,19 +1100,19 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.03308,
+      "runtime_seconds": 0.03268,
       "issues": []
     },
     {
       "name": "warmup_01_move_group",
-      "layout_family": "source_fit",
+      "layout_family": "stack",
       "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.05801,
+      "runtime_seconds": 0.04282,
       "issues": []
     },
     {
@@ -1124,7 +1124,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.59258,
+      "runtime_seconds": 0.26737,
       "issues": []
     },
     {
@@ -1136,7 +1136,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.39027,
+      "runtime_seconds": 0.09993,
       "issues": []
     },
     {
@@ -1148,7 +1148,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.36183,
+      "runtime_seconds": 0.20142,
       "issues": []
     },
     {
@@ -1160,7 +1160,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.59928,
+      "runtime_seconds": 0.09541,
       "issues": []
     },
     {
@@ -1172,7 +1172,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.2405,
+      "runtime_seconds": 0.40719,
       "issues": []
     },
     {
@@ -1184,7 +1184,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.33697,
+      "runtime_seconds": 0.36707,
       "issues": []
     },
     {
@@ -1196,7 +1196,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.22187,
+      "runtime_seconds": 0.14801,
       "issues": []
     },
     {
@@ -1208,7 +1208,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.09248,
+      "runtime_seconds": 0.1171,
       "issues": []
     },
     {
@@ -1220,7 +1220,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.25095,
+      "runtime_seconds": 0.05606,
       "issues": []
     },
     {
@@ -1232,7 +1232,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.15749,
+      "runtime_seconds": 0.09332,
       "issues": []
     },
     {
@@ -1244,7 +1244,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.24244,
+      "runtime_seconds": 0.24415,
       "issues": []
     },
     {
@@ -1256,7 +1256,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08149,
+      "runtime_seconds": 0.07416,
       "issues": []
     },
     {
@@ -1268,7 +1268,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08763,
+      "runtime_seconds": 0.06383,
       "issues": []
     },
     {
@@ -1280,7 +1280,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.08047,
+      "runtime_seconds": 0.06979,
       "issues": []
     },
     {
@@ -1292,7 +1292,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.20053,
+      "runtime_seconds": 0.06786,
       "issues": []
     },
     {
@@ -1304,7 +1304,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.3388,
+      "runtime_seconds": 0.39014,
       "issues": []
     },
     {
@@ -1316,7 +1316,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.2067,
+      "runtime_seconds": 0.09981,
       "issues": []
     },
     {
@@ -1328,7 +1328,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.21963,
+      "runtime_seconds": 0.28459,
       "issues": []
     },
     {
@@ -1340,7 +1340,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.12498,
+      "runtime_seconds": 0.15093,
       "issues": []
     },
     {
@@ -1352,7 +1352,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.20628,
+      "runtime_seconds": 0.15839,
       "issues": []
     },
     {
@@ -1364,7 +1364,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.51351,
+      "runtime_seconds": 0.4921,
       "issues": []
     },
     {
@@ -1376,7 +1376,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.38073,
+      "runtime_seconds": 0.45616,
       "issues": [
         "headline: small type at 8.5px"
       ]
@@ -1390,7 +1390,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.79873,
+      "runtime_seconds": 0.52183,
       "issues": []
     },
     {
@@ -1402,7 +1402,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.44675,
+      "runtime_seconds": 0.32276,
       "issues": []
     },
     {
@@ -1414,7 +1414,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.59261,
+      "runtime_seconds": 0.32938,
       "issues": []
     },
     {
@@ -1426,7 +1426,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.41767,
+      "runtime_seconds": 0.36103,
       "issues": [
         "subhead: small type at 7.0px"
       ]
@@ -1440,7 +1440,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.53512,
+      "runtime_seconds": 0.313,
       "issues": []
     },
     {
@@ -1452,7 +1452,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.63452,
+      "runtime_seconds": 0.53286,
       "issues": []
     },
     {
@@ -1464,7 +1464,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.42326,
+      "runtime_seconds": 0.26757,
       "issues": []
     },
     {
@@ -1476,7 +1476,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.50187,
+      "runtime_seconds": 1.03422,
       "issues": []
     },
     {
@@ -1488,31 +1488,31 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.45446,
+      "runtime_seconds": 0.77513,
       "issues": []
     },
     {
       "name": "advanced_01_tall",
       "layout_family": "source_fit",
-      "proxy_score": 100.0,
+      "proxy_score": 86.24,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.33802,
+      "runtime_seconds": 0.27738,
       "issues": []
     },
     {
       "name": "advanced_01_story",
       "layout_family": "source_fit",
-      "proxy_score": 100.0,
+      "proxy_score": 94.43,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.40836,
+      "runtime_seconds": 0.18344,
       "issues": []
     },
     {
@@ -1524,7 +1524,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.31389,
+      "runtime_seconds": 0.30658,
       "issues": []
     },
     {
@@ -1536,7 +1536,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.55525,
+      "runtime_seconds": 0.57863,
       "issues": []
     }
   ]

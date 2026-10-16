@@ -6,6 +6,17 @@ import re
 from typing import Any
 
 
+_DATE_WORDS = re.compile(
+    r"\b(?:mon(?:day)?|tue(?:s|sday)?|wed(?:nesday)?|thu(?:rs|rsday)?|fri(?:day)?|"
+    r"sat(?:urday)?|sun(?:day)?|jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|"
+    r"jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|"
+    r"dec(?:ember)?)\b",
+    re.IGNORECASE,
+)
+_CLOCK_TIME = re.compile(r"\b\d{1,2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?)\b", re.IGNORECASE)
+_NUMERIC_DATE = re.compile(r"\b\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?\b")
+
+
 def infer_roles(elements: list[dict[str, Any]], canvas: dict[str, float]) -> dict[str, tuple[str, float, float]]:
     width, height = float(canvas["width"]), float(canvas["height"])
     area = max(1.0, width * height)
@@ -41,10 +52,13 @@ def infer_roles(elements: list[dict[str, Any]], canvas: dict[str, float]) -> dic
             length = len(content)
             action_words = set(re.findall(r"[a-z]+", content.lower()))
             rel_size = size / max(1.0, largest)
+            date_time = bool(_DATE_WORDS.search(content) or _CLOCK_TIME.search(content) or _NUMERIC_DATE.search(content))
             if size <= max(14.0, largest * 0.28) and (cy > 0.78 or length > 60):
                 role, confidence, importance = "legal", 0.66, 0.25
             elif rel_size >= 0.72:
                 role, confidence, importance = "headline", 0.78, 1.0
+            elif date_time:
+                role, confidence, importance = "subheadline", 0.72, 0.62
             elif length <= 24 and element.get("font_weight") == "bold" and element.get("group_id"):
                 role, confidence, importance = "group_label", 0.68, 0.54
             elif length <= 42 and (element.get("font_weight") == "bold" or action_words & cta_verbs):

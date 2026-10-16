@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, asdict
-from math import cos, radians, sin
+from math import cos, log, radians, sin
 from typing import Any
 
 from .model import DesignDNA
@@ -222,8 +222,12 @@ def score_design(dna: DesignDNA, design: dict[str, Any], family: str = "") -> Sc
                     adaptation_penalty += min(8.0, (0.055 - area_share) * 120)
     elif dna.target_aspect < 0.72 and family.startswith("banner"):
         adaptation_penalty += 14.0
-    if family == "source_fit" and dna.transformation in {"extreme_change", "ultra_wide", "ultra_tall"}:
-        adaptation_penalty += 8.0
+    if family == "source_fit":
+        aspect_shift = abs(log(max(1e-6, dna.target_aspect) / max(1e-6, dna.source_aspect)))
+        if aspect_shift > 0.12:
+            adaptation_penalty += min(18.0, (aspect_shift - 0.12) * 24.0)
+        if dna.transformation in {"extreme_change", "ultra_wide", "ultra_tall"}:
+            adaptation_penalty += 8.0
 
     # Prefer a controlled, target-filling composition without rewarding edge crowding.
     non_background = [e for e in elements if str(e.get("id", "")) not in dna.background_ids]
