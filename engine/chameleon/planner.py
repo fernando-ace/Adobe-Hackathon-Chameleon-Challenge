@@ -529,10 +529,10 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             _apply_rect(dna, by_id, f.id, (mx, ch * (0.12 + i * (0.16 / head_n)), cw - 2 * mx, head_h), assigned)
         if heroes:
             for i, f in enumerate(sorted(heroes, key=lambda a: -a.importance)):
-                _apply_rect(dna, by_id, f.id, (cw * (0.30 + 0.12 * i), ch * 0.29, cw * (0.40 if i == 0 else 0.24), ch * (0.22 if i == 0 else 0.13)), assigned)
+                _apply_rect(dna, by_id, f.id, (cw * (0.30 + 0.12 * i), ch * 0.29, cw * (0.40 if i == 0 else 0.24), ch * (0.18 if i == 0 else 0.12)), assigned)
         copy_facts = sorted(subs + bodies, key=lambda f: (float(f.element.get("y", 0)), f.center[0]))
         if copy_facts:
-            copy_start = ch * (0.53 if heroes else 0.31)
+            copy_start = ch * (0.49 if heroes else 0.31)
             copy_band = min(ch * 0.18, max(ch * 0.08, ch * 0.14 * len(copy_facts))) / len(copy_facts)
             for i, f in enumerate(copy_facts):
                 _apply_rect(dna, by_id, f.id, (mx, copy_start + i * copy_band, cw - 2 * mx, copy_band * 0.9), assigned)
@@ -551,9 +551,9 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
                 x = mx + col * (available_w / columns)
                 y = badge_start + row * (row_h + gap_y)
                 _apply_rect(dna, by_id, dna.groups[gid][0], (x, y, available_w / columns - gap_x, row_h), assigned)
-            cta_y = max(ch * 0.84, badge_start + rows * (row_h + gap_y))
+            cta_y = max(ch * 0.77, badge_start + rows * (row_h + gap_y))
         else:
-            cta_y = max(ch * 0.78, badge_start)
+            cta_y = max(ch * 0.77, badge_start)
         for gid in cta_groups:
             _apply_rect(dna, by_id, dna.groups[gid][0], (cw * 0.10, min(ch * 0.89, cta_y), cw * 0.80, ch * 0.12), assigned)
         for f in standalone_ctas:

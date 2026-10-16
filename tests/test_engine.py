@@ -133,6 +133,19 @@ class EngineContractTests(unittest.TestCase):
             self.assertAlmostEqual(output_bounds[1] / source_bounds[1], scale, delta=0.01)
             self.assertLessEqual(scale, 1.25 + 1e-6)
 
+    def test_tall_story_bands_close_hero_copy_and_action_gaps(self):
+        fixture = json.loads((ROOT / "evidence" / "curated" / "sidecar" / "source.json").read_text(encoding="utf-8"))
+        output = resize(fixture["source"], {"width": 1080, "height": 1920})
+        by_id = {element["id"]: element for element in output["elements"]}
+        hero = by_id["hero_product"]
+        copy = by_id["supporting_copy"]
+        self.assertLessEqual(float(hero["y"]) + float(hero["height"]), float(copy["y"]))
+        self.assertLess(float(by_id["cta_background"]["y"]), 1920 * 0.84)
+
+        badge = self._union_bounds([by_id["citrus_badge_background"], by_id["plant_badge_background"]])
+        cta = by_id["cta_background"]
+        self.assertLessEqual(badge[3], float(cta["y"]))
+
     @staticmethod
     def _union_size(elements):
         x0 = min(float(element["x"]) for element in elements)
@@ -140,6 +153,14 @@ class EngineContractTests(unittest.TestCase):
         x1 = max(float(element["x"]) + float(element["width"]) for element in elements)
         y1 = max(float(element["y"]) + float(element["height"]) for element in elements)
         return x1 - x0, y1 - y0
+
+    @staticmethod
+    def _union_bounds(elements):
+        x0 = min(float(element["x"]) for element in elements)
+        y0 = min(float(element["y"]) for element in elements)
+        x1 = max(float(element["x"]) + float(element["width"]) for element in elements)
+        y1 = max(float(element["y"]) + float(element["height"]) for element in elements)
+        return x0, y0, x1, y1
 
     def test_metamorphic_identity_and_small_aspect_change(self):
         for task in _official_tasks():

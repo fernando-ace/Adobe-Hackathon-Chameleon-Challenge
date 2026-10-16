@@ -22,6 +22,8 @@ Depending on target aspect ratio, the planner emits 12 or 18 candidates from sou
 
 CTA and badge groups preserve their source proportions when the target has enough height, so rounded controls do not become vertically stretched. On taller formats their group scale is capped at 1.25× the source to avoid oversized color slabs when text size remains source-capped. Short banners use a wider CTA lane and a modestly taller label box inside the button; this grows the text area without pushing the button into the legal-copy row.
 
+Narrow story layouts use compact hero and copy bands followed by badges and actions. The hero frame ends before the supporting-copy band, and the CTA floor moves upward when the badge rows leave room. The bundled product image contains substantial transparent padding, so its visible product can still appear small even when the image frame uses its assigned space.
+
 The local proxy reports canvas legality, image fidelity, measured text fit, collisions, group cohesion, target adaptation, canvas use, sampled contrast, and source-relative hierarchy. It is a ranking aid, not Adobe's score. Existing hierarchy ratios are treated as source constraints; candidates are penalized when they materially worsen them. Overlap already present in the source is not called new unless the output worsens it; documented corner bleed is treated similarly when its normalized amount does not increase. New or worsened violations remain penalized. Candidate score, family, variant, validity, and issues are available in diagnostics. The recurring failure classes and latest residual cases are tracked in [failure taxonomy](failure-taxonomy.md).
 
 ## Repair and placement explanations
