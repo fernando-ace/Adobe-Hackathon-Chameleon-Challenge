@@ -64,6 +64,19 @@ def _apply_rect(
     if members:
         gx, gy, gw, gh = _unit_rect(dna, members)
         x, y, w, h = rect
+        if fact.role in {"cta_container", "badge_container"} and float(dna.target_canvas["height"]) >= 150:
+            # Keep button and badge groups geometrically coherent. Stretching
+            # their union to every allocated box distorts capsule shapes and
+            # the spacing between label and container. Fit the original group
+            # aspect inside the candidate's available rectangle instead.
+            group_aspect = gw / max(1.0, gh)
+            if w / max(1.0, h) > group_aspect:
+                fitted_w, fitted_h = h * group_aspect, h
+            else:
+                fitted_w, fitted_h = w, w / group_aspect
+            x += (w - fitted_w) / 2
+            y += (h - fitted_h) / 2
+            w, h = fitted_w, fitted_h
         sx, sy = w / gw, h / gh
         for member_id in members:
             original = dna.by_id[member_id].element
@@ -78,6 +91,24 @@ def _apply_rect(
             if original.get("type") == "text":
                 out["font_size"] = _fit_size(mf, (out["x"], out["y"], out["width"], out["height"]))
             assigned.add(member_id)
+        if fact.role == "cta_container" and float(dna.target_canvas["height"]) < 150:
+            # Compact ads reserve a narrow action rail. Use more of the button
+            # interior vertically for its label so it stays readable without
+            # enlarging the button into the adjacent legal-copy row.
+            shape = next((output_by_id[mid] for mid in members
+                          if dna.by_id[mid].type == "shape"), None)
+            label_id = next((mid for mid in members if dna.by_id[mid].type == "text"), None)
+            if shape is not None and label_id is not None:
+                label = output_by_id[label_id]
+                center_y = float(label["y"]) + float(label["height"]) / 2
+                label_height = min(float(shape["height"]) * 0.84, float(label["height"]) * 1.2)
+                label["y"] = center_y - label_height / 2
+                label["height"] = label_height
+                label_fact = dna.by_id[label_id]
+                label["font_size"] = _fit_size(
+                    label_fact,
+                    (float(label["x"]), float(label["y"]), float(label["width"]), label_height),
+                )
         return
     out = output_by_id[eid]
     x, y, w, h = rect
@@ -297,6 +328,7 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             return _wide_banner(dna, output, by_id, assigned, family)
         hero_left = family == "banner_mirror"
         compact = ch < 150
+        short_landscape = 360 <= ch < 500
         compact_wide_copy = False
         if compact and len(heads) == 1:
             headline = heads[0].element
@@ -416,15 +448,17 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             cell_w = max(1.0, min(cw * (0.16 if compact else 0.19), (available - gap * (len(badge_groups) - 1)) / len(badge_groups)))
             for i, gid in enumerate(badge_groups):
                 x = mx + i * (cell_w + gap)
-                badge_h = ch * (0.21 if compact else 0.13)
+                badge_h = ch * (0.21 if compact else 0.08 if short_landscape else 0.13)
                 badge_y = ch * 0.79 if compact else group_y
                 _apply_rect(dna, by_id, dna.groups[gid][0], (x, badge_y, cell_w, max(1.0, badge_h)), assigned)
-        cta_y = group_y if not badge_groups else group_y + ch * (0.19 if compact else 0.14)
+        cta_y = group_y if not badge_groups else group_y + ch * (
+            0.19 if compact else 0.10 if short_landscape else 0.14
+        )
         for gid in cta_groups:
             x = cw * (0.57 if compact else 0.07)
             w = cw * 0.27
             y = ch * 0.79 if compact else min(ch - ch * 0.24, cta_y)
-            h = max(1.0, ch * (0.21 if compact else 0.13))
+            h = max(1.0, ch * (0.21 if compact else 0.18 if short_landscape else 0.13))
             _apply_rect(dna, by_id, dna.groups[gid][0], (x, y, w, h), assigned)
         for index, gid in enumerate(other_groups):
             # Unclassified grouped ornaments retain a visible compact treatment.
@@ -513,9 +547,9 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
         else:
             cta_y = max(ch * 0.78, badge_start)
         for gid in cta_groups:
-            _apply_rect(dna, by_id, dna.groups[gid][0], (cw * 0.30, min(ch * 0.89, cta_y), cw * 0.40, ch * 0.075), assigned)
+            _apply_rect(dna, by_id, dna.groups[gid][0], (cw * 0.10, min(ch * 0.89, cta_y), cw * 0.80, ch * 0.12), assigned)
         for f in standalone_ctas:
-            _apply_rect(dna, by_id, f.id, (cw * 0.30, min(ch * 0.89, cta_y), cw * 0.40, ch * 0.075), assigned)
+            _apply_rect(dna, by_id, f.id, (cw * 0.10, min(ch * 0.89, cta_y), cw * 0.80, ch * 0.12), assigned)
         for gid in other_groups:
             _apply_rect(dna, by_id, dna.groups[gid][0], (cw * 0.72, ch * 0.12, cw * 0.12, ch * 0.08), assigned)
         for f in legals:

@@ -8,7 +8,7 @@ Stage 1 receives a finished design as structured JSON and must adapt it without 
 
 Given the same input, the engine uses the same role rules, generated families and variants, tie-breaking order, font measurements, and repair order. It makes no model or network calls. The result is reproducible.
 
-The meaning inferred from the source is heuristic. Text length, font size, z-order, shape type, position, opacity, group IDs, and geometry suggest roles such as headline, logo, badge, and hero image. Asset dimensions and pixel summaries help distinguish image roles. Those signals can be wrong; confidence and source geometry remain available in `get_last_diagnostics()`.
+The meaning inferred from the source is heuristic. Text length, font size, z-order, shape type, position, opacity, group IDs, and geometry suggest roles such as headline, logo, badge, and hero image. Grouped labels are also checked for common action verbs to distinguish a CTA from an informational badge; location alone is not enough to call short copy a CTA. Asset dimensions and pixel summaries help distinguish image roles. Those signals can be wrong; confidence and source geometry remain available in `get_last_diagnostics()`.
 
 ## Design DNA and constraints
 
@@ -19,6 +19,8 @@ The final validator protects IDs and count, required fields, text, font families
 ## Candidate generation and scoring
 
 Depending on target aspect ratio, the planner emits 12 or 18 candidates from source-fit, stack, split, mirrored split, banner, and mirrored banner families. Each family places the inferred narrative roles differently while transforming grouped elements together and keeping image proportions.
+
+CTA and badge groups preserve their source proportions when the target has enough height, so rounded controls do not become vertically stretched. Short banners use a wider CTA lane and a modestly taller label box inside the button; this grows the text area without pushing the button into the legal-copy row.
 
 The local proxy reports canvas legality, image fidelity, measured text fit, collisions, group cohesion, target adaptation, canvas use, sampled contrast, and source-relative hierarchy. It is a ranking aid, not Adobe's score. Existing hierarchy ratios are treated as source constraints; candidates are penalized when they materially worsen them. Overlap already present in the source is not called new unless the output worsens it; documented corner bleed is treated similarly when its normalized amount does not increase. New or worsened violations remain penalized. Candidate score, family, variant, validity, and issues are available in diagnostics. The recurring failure classes and latest residual cases are tracked in [failure taxonomy](failure-taxonomy.md).
 

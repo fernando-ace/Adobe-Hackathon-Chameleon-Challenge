@@ -1,6 +1,6 @@
 # Offline Docker validation
 
-Revalidated 2026-10-15 with Docker Desktop engine 29.5.3.
+Revalidated 2026-10-16 with Docker Desktop 4.77.0 and engine 29.5.3.
 
 Build for the challenge architecture:
 
@@ -21,9 +21,9 @@ docker run --rm --network none `
 
 All three official samples completed with `OK`, and the repository validator reported zero issues for every output:
 
-- Level 1: 0.13 s; PNG 110,453 bytes
-- Level 2: 0.16 s; PNG 72,511 bytes
-- Level 3: 0.26 s; PNG 41,146 bytes
+- Level 1: 0.14–0.18 s; PNG 110,453 bytes
+- Level 2: 0.16–0.19 s; PNG 72,750 bytes
+- Level 3: 0.24–0.31 s; PNG 41,306 bytes
 
 Two consecutive `--network none` runs produced byte-identical JSON and PNG
 outputs for all three official samples.

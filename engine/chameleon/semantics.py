@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 
@@ -12,6 +13,12 @@ def infer_roles(elements: list[dict[str, Any]], canvas: dict[str, float]) -> dic
     texts = [e for e in elements if e.get("type") == "text"]
     sizes = sorted((float(e.get("font_size", 1)) for e in texts), reverse=True)
     largest = sizes[0] if sizes else 1.0
+    cta_verbs = {
+        "apply", "book", "browse", "buy", "call", "claim", "click", "contact",
+        "discover", "download", "explore", "find", "get", "join", "learn",
+        "order", "play", "register", "reserve", "save", "see", "shop", "sign",
+        "start", "subscribe", "try", "view", "visit", "watch",
+    }
 
     for element in elements:
         eid = str(element.get("id", ""))
@@ -32,6 +39,7 @@ def infer_roles(elements: list[dict[str, Any]], canvas: dict[str, float]) -> dic
             size = float(element.get("font_size", 1))
             content = str(element.get("content", "")).strip()
             length = len(content)
+            action_words = set(re.findall(r"[a-z]+", content.lower()))
             rel_size = size / max(1.0, largest)
             if size <= max(14.0, largest * 0.28) and (cy > 0.78 or length > 60):
                 role, confidence, importance = "legal", 0.66, 0.25
@@ -39,7 +47,7 @@ def infer_roles(elements: list[dict[str, Any]], canvas: dict[str, float]) -> dic
                 role, confidence, importance = "headline", 0.78, 1.0
             elif length <= 24 and element.get("font_weight") == "bold" and element.get("group_id"):
                 role, confidence, importance = "group_label", 0.68, 0.54
-            elif length <= 42 and (cy > 0.68 or element.get("font_weight") == "bold"):
+            elif length <= 42 and (element.get("font_weight") == "bold" or action_words & cta_verbs):
                 role, confidence, importance = "cta_text", 0.55, 0.72
             elif length > 44:
                 role, confidence, importance = "body_copy", 0.67, 0.48
@@ -58,6 +66,9 @@ def infer_roles(elements: list[dict[str, Any]], canvas: dict[str, float]) -> dic
         gid = element.get("group_id")
         if gid:
             groups.setdefault(str(gid), []).append(element)
+    # Imperative/action language is a general CTA cue. Tokenize into words so
+    # phrases such as "explore the collection" work without matching inside
+    # unrelated words or depending on a particular campaign's IDs.
     for members in groups.values():
         labels = [e for e in members if e.get("type") == "text"]
         shapes = [e for e in members if e.get("type") == "shape"]
@@ -65,7 +76,8 @@ def infer_roles(elements: list[dict[str, Any]], canvas: dict[str, float]) -> dic
             continue
         text = " ".join(str(e.get("content", "")) for e in labels).lower()
         is_rotated = any(abs(float(e.get("rotation", 0))) >= 5 for e in members)
-        group_role = ("cta" if any(token in text for token in ("shop", "buy", "learn", "visit", "discover", "get "))
+        group_words = set(re.findall(r"[a-z]+", text))
+        group_role = ("cta" if group_words & cta_verbs
                       else "ribbon" if is_rotated else "badge")
         for e in members:
             eid = str(e.get("id", ""))

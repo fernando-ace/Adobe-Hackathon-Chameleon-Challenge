@@ -79,6 +79,45 @@ class EngineContractTests(unittest.TestCase):
             report = score_design(dna, output, diagnostics["layout_family"])
             self.assertTrue(report.hard_valid, report.issues)
 
+    def test_action_language_identifies_cta_and_keeps_button_geometry(self):
+        fixture = json.loads((ROOT / "evidence" / "curated" / "source.json").read_text(encoding="utf-8"))
+        source = fixture["source"]
+        target = {"width": 1920, "height": 1080}
+        dna = analyze_design(source, target)
+        self.assertEqual(dna.by_id["cta_background"].role, "cta_container")
+
+        output = resize(source, target)
+        original = {element["id"]: element for element in source["elements"]}
+        current = {element["id"]: element for element in output["elements"]}
+        source_group = [original["cta_background"], original["cta_label"]]
+        output_group = [current["cta_background"], current["cta_label"]]
+
+        def bounds(elements):
+            x0 = min(element["x"] for element in elements)
+            y0 = min(element["y"] for element in elements)
+            x1 = max(element["x"] + element["width"] for element in elements)
+            y1 = max(element["y"] + element["height"] for element in elements)
+            return (x1 - x0) / (y1 - y0)
+
+        self.assertAlmostEqual(bounds(source_group), bounds(output_group), delta=0.02)
+
+    def test_lower_unbolded_supporting_line_is_not_a_cta(self):
+        from engine.chameleon.semantics import infer_roles
+
+        roles = infer_roles([
+            {"id": "headline", "type": "text", "x": 0, "y": 0, "width": 900, "height": 100,
+             "content": "A clear headline", "font_family": "Solstice Serif", "font_size": 48},
+            {"id": "support", "type": "text", "x": 20, "y": 800, "width": 700, "height": 60,
+             "content": "A short supporting message", "font_family": "Solstice Sans", "font_size": 16},
+        ], {"width": 1000, "height": 1000})
+        self.assertEqual(roles["support"][0], "subheadline")
+
+    def test_portrait_story_reserves_more_width_for_primary_action(self):
+        fixture = json.loads((ROOT / "evidence" / "curated" / "source.json").read_text(encoding="utf-8"))
+        output = resize(fixture["source"], {"width": 300, "height": 600})
+        label = next(element for element in output["elements"] if element["id"] == "cta_label")
+        self.assertGreaterEqual(label["font_size"], 8.0)
+
     def test_metamorphic_identity_and_small_aspect_change(self):
         for task in _official_tasks():
             source = task["source"]
