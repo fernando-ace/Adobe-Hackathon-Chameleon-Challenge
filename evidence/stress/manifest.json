@@ -2,39 +2,39 @@
   "title": "Representative synthetic stress cases",
   "source": "tools/stress_corpus.py, deterministic seed 20261014",
   "selection": {
-    "slowest": "synthetic_028",
+    "slowest": "synthetic_049",
     "densest": "synthetic_005",
     "narrowest_target_aspect": "synthetic_001"
   },
   "cases": [
     {
-      "name": "synthetic_028",
-      "seed": 20261042,
+      "name": "synthetic_049",
+      "seed": 20261063,
       "synthetic": true,
       "source_elements": 45,
       "source_canvas": {
-        "width": 1080,
-        "height": 1080
+        "width": 1200,
+        "height": 628
       },
       "target_canvas": {
-        "width": 2160,
-        "height": 3840
+        "width": 1200,
+        "height": 628
       },
-      "layout_family": "source_fit",
-      "candidate_count": 6,
+      "layout_family": "banner",
+      "candidate_count": 18,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
       "deterministic_json": true,
-      "benchmark_runtime_seconds": 1.27225,
+      "benchmark_runtime_seconds": 1.51266,
       "benchmark_runtime_note": "Observed in the full benchmark run; timing varies by host.",
       "artifacts": {
-        "source_json": "synthetic_028_source.json",
-        "source_png": "synthetic_028_source.png",
-        "output_json": "synthetic_028_output.json",
-        "output_png": "synthetic_028_output.png"
+        "source_json": "synthetic_049_source.json",
+        "source_png": "synthetic_049_source.png",
+        "output_json": "synthetic_049_output.json",
+        "output_png": "synthetic_049_output.png"
       }
     },
     {
@@ -58,7 +58,7 @@
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
       "deterministic_json": true,
-      "benchmark_runtime_seconds": 0.41514,
+      "benchmark_runtime_seconds": 0.48241,
       "benchmark_runtime_note": "Observed in the full benchmark run; timing varies by host.",
       "artifacts": {
         "source_json": "synthetic_005_source.json",
@@ -88,7 +88,7 @@
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
       "deterministic_json": true,
-      "benchmark_runtime_seconds": 0.10683,
+      "benchmark_runtime_seconds": 0.06862,
       "benchmark_runtime_note": "Observed in the full benchmark run; timing varies by host.",
       "artifacts": {
         "source_json": "synthetic_001_source.json",
