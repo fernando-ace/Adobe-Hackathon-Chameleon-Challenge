@@ -52,11 +52,11 @@
 
 ## Git and readiness
 
-37. **Local commits:** The 47 commits preceding this final report update are listed below; this final validation/report update is the 48th local commit.
+37. **Local commits:** The 48 commits preceding this final report update are listed below; this final validation/report update is the 49th local commit.
 38. **Working tree:** clean after the final local validation and this report update.
 39. **Push/deploy:** nothing pushed or deployed.
-40. **Stage 1 judgment:** Credible and materially stronger than the starter on available samples, but not proven submission-ready for hidden designs. Three official samples, a small hand-composed synthetic fixture, adversarial synthetic suites, visual inspection, and an internal proxy do not prove generalization; Level 3 readability and poor-source recovery remain weaknesses.
-41. **Highest-value next improvement:** Set the site-specific Chrome Local Network Access permission for Express to Allow, then verify Connect, generation, lock/regenerate, Apply, and the resulting editable Express page. In parallel, improve and inspect tall-format spacing, then add more independent brand/layout fixtures.
+40. **Stage 1 judgment:** Credible and materially stronger than the starter on available samples, but not proven submission-ready for hidden designs. Three official samples, two hand-composed synthetic sources, adversarial synthetic suites, visual inspection, and an internal proxy do not prove generalization; Level 3 readability and poor-source recovery remain weaknesses.
+41. **Highest-value next improvement:** Add independent, human-reviewed sources with varied composition and asset transparency, then improve absolute readability for poor source designs without disturbing intentional overlaps. The Adobe-hosted Express flow also remains gated on the site-specific Local Network Access setting and needs live Connect, generation, lock/regenerate, and Apply validation.
 
 ### Every local commit after the upstream base
 
@@ -108,4 +108,5 @@ c410ebd Add independent curated layout evaluation
 8b25fee Improve responsive CTA group layout
 498a009 Add independent sidecar layout fixture
 caba8c3 Cap tall-format button group scaling
+313caba Tighten tall story layout bands
 ```
