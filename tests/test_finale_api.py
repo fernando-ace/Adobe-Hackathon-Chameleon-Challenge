@@ -57,6 +57,13 @@ class FinaleApiIntegrationTests(unittest.TestCase):
         self.assertEqual(len(catalog["samples"]), 3)
         formats = [item["id"] for item in catalog["formats"]]
         self.assertEqual(len(formats), 6)
+        source_preview = self._get_json(
+            "/api/source-preview?id=chameleon_sample_level3_advanced"
+        )
+        self.assertEqual(
+            base64.b64decode(source_preview["preview"][:32])[:8],
+            b"\x89PNG\r\n\x1a\n",
+        )
 
         server.LOCKED_RECTS.clear()
         payload = {
