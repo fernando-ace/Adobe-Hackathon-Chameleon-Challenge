@@ -10,7 +10,7 @@ This score is an internal proxy, not Adobe's hidden evaluator.
 - Image-ratio failures: 0
 - Text-clipping cases: 0
 - Stress hierarchy regressions: 0 across 0 cases
-- Collision-free rate: 100.0%
+- No-new-collision rate (source-relative): 100.0%
 - Determinism rate: 100.0%
 - Stress runtime median / p95: 0.1508s / 0.9546s
 
@@ -19,8 +19,10 @@ This score is an internal proxy, not Adobe's hidden evaluator.
 - Mutation image-ratio failures: 0
 - Mutation text-clipping cases: 0
 - Mutation hierarchy regressions: 0 across 0 cases
-- Mutation collision-free rate: 100.0%
+- Mutation no-new-collision rate (source-relative): 100.0%
 - Mutation determinism rate: 100.0%
+
+- Collision metric: Counts only new or worsened intersections relative to the source; pre-existing overlap is not counted as a regression.
 
 | Official sample | Baseline proxy | Current proxy | Layout | Candidates | Repairs |
 |---|---:|---:|---|---:|---:|

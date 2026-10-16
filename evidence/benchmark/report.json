@@ -1538,5 +1538,6 @@
       "runtime_seconds": 0.2574,
       "issues": []
     }
-  ]
+  ],
+  "collision_metric_definition": "Counts only new or worsened intersections relative to the source; pre-existing overlap is not counted as a regression."
 }

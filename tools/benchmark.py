@@ -132,6 +132,9 @@ def main() -> int:
         "stress_median_runtime_seconds": statistics.median(runtimes) if runtimes else 0,
         "stress_p95_runtime_seconds": sorted_times[min(len(sorted_times) - 1, int(len(sorted_times) * 0.95))] if sorted_times else 0,
         "stress_determinism_rate": stress_deterministic / max(1, len(stress_rows)),
+        "collision_metric_definition": (
+            "Counts only new or worsened intersections relative to the source; pre-existing overlap is not counted as a regression."
+        ),
         "mutation_structural_validity_rate": sum(r["hard_valid"] for r in mutations) / max(1, len(mutations)),
         "mutation_off_canvas_cases": sum(r["off_canvas_count"] > 0 for r in mutations),
         "mutation_image_ratio_failures": sum(r["image_ratio_failures"] for r in mutations),
@@ -151,7 +154,7 @@ def main() -> int:
              f"- Stress off-canvas cases: {summary['stress_off_canvas_cases']}", f"- Image-ratio failures: {summary['stress_image_ratio_failures']}",
              f"- Text-clipping cases: {summary['stress_text_clipping_cases']}",
              f"- Stress hierarchy regressions: {summary['stress_hierarchy_regressions']} across {summary['stress_hierarchy_regression_cases']} cases",
-             f"- Collision-free rate: {summary['stress_collision_free_rate']:.1%}",
+             f"- No-new-collision rate (source-relative): {summary['stress_collision_free_rate']:.1%}",
              f"- Determinism rate: {summary['stress_determinism_rate']:.1%}",
              f"- Stress runtime median / p95: {summary['stress_median_runtime_seconds']:.4f}s / {summary['stress_p95_runtime_seconds']:.4f}s", "",
              f"- Mutation structural validity: {summary['mutation_structural_validity_rate']:.1%}",
@@ -159,8 +162,9 @@ def main() -> int:
              f"- Mutation image-ratio failures: {summary['mutation_image_ratio_failures']}",
              f"- Mutation text-clipping cases: {summary['mutation_text_clipping_cases']}",
              f"- Mutation hierarchy regressions: {summary['mutation_hierarchy_regressions']} across {summary['mutation_hierarchy_regression_cases']} cases",
-             f"- Mutation collision-free rate: {summary['mutation_collision_free_rate']:.1%}",
+             f"- Mutation no-new-collision rate (source-relative): {summary['mutation_collision_free_rate']:.1%}",
              f"- Mutation determinism rate: {summary['mutation_determinism_rate']:.1%}", "",
+              f"- Collision metric: {summary['collision_metric_definition']}", "",
              "| Official sample | Baseline proxy | Current proxy | Layout | Candidates | Repairs |", "|---|---:|---:|---|---:|---:|"]
     for row in official_rows:
         lines.append(f"| {row['input']} | {row['baseline']['score']:.2f} | {row['current']['score']:.2f} | {row['layout_family']} | {row['candidate_count']} | {row['repair_count']} |")

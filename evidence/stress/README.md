@@ -22,3 +22,5 @@ Rebuild this bundle from the repository root with:
 ```
 
 The reported quality checks are internal diagnostics, not Adobe's evaluator.
+Visual findings and source-relative collision limits are documented in
+`visual-review.md`.
