@@ -7,7 +7,7 @@ from math import cos, radians, sin
 from typing import Any
 
 from .model import DesignDNA, ElementFacts
-from .typography import fit_font_size
+from .typography import fit_font_size, measure_text
 
 
 def _clamp_rect(rect: tuple[float, float, float, float], canvas: dict[str, int]) -> tuple[float, float, float, float]:
@@ -533,10 +533,19 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
         copy_facts = sorted(subs + bodies, key=lambda f: (float(f.element.get("y", 0)), f.center[0]))
         if copy_facts:
             copy_start = ch * (0.49 if heroes else 0.31)
-            copy_band = min(ch * 0.18, max(ch * 0.08, ch * 0.14 * len(copy_facts))) / len(copy_facts)
-            for i, f in enumerate(copy_facts):
-                _apply_rect(dna, by_id, f.id, (mx, copy_start + i * copy_band, cw - 2 * mx, copy_band * 0.9), assigned)
-            badge_start = copy_start + len(copy_facts) * copy_band + ch * 0.02
+            copy_width = cw - 2 * mx
+            required = [
+                measure_text(f.element, copy_width, ch, fonts_dir="brand_kit/fonts").required_height * 1.3
+                for f in copy_facts
+            ]
+            total_copy_height = min(ch * 0.18, max(ch * 0.08, sum(required)))
+            total_required = max(1.0, sum(required))
+            cursor = copy_start
+            for f, needed_height in zip(copy_facts, required):
+                band_height = total_copy_height * needed_height / total_required
+                _apply_rect(dna, by_id, f.id, (mx, cursor, copy_width, band_height * 0.9), assigned)
+                cursor += band_height
+            badge_start = copy_start + total_copy_height + ch * 0.02
         else:
             badge_start = ch * (0.56 if heroes else 0.34)
         if badge_groups:

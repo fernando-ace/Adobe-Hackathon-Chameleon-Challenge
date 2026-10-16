@@ -140,6 +140,7 @@ class EngineContractTests(unittest.TestCase):
         hero = by_id["hero_product"]
         copy = by_id["supporting_copy"]
         self.assertLessEqual(float(hero["y"]) + float(hero["height"]), float(copy["y"]))
+        self.assertLessEqual(float(copy["height"]), 1920 * 0.09)
         self.assertLess(float(by_id["cta_background"]["y"]), 1920 * 0.84)
 
         badge = self._union_bounds([by_id["citrus_badge_background"], by_id["plant_badge_background"]])
