@@ -26,7 +26,7 @@
       "shape_type": "ellipse",
       "fill_color": "rgba(255,255,255,1)",
       "opacity": 0.15,
-      "_note": "Decorative, intentionally overlaps the product image — this is the 'intentional layering' case, not a collision to flag."
+      "_note": "Decorative, intentionally overlaps the product image \u2014 this is the 'intentional layering' case, not a collision to flag."
     },
     {
       "id": "deco_circle_2",

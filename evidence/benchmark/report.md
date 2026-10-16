@@ -12,7 +12,7 @@ This score is an internal proxy, not Adobe's hidden evaluator.
 - Stress hierarchy regressions: 0 across 0 cases
 - Collision-free rate: 100.0%
 - Determinism rate: 100.0%
-- Stress runtime median / p95: 0.1624s / 1.1137s
+- Stress runtime median / p95: 0.1508s / 0.9546s
 
 - Mutation structural validity: 100.0%
 - Mutation off-canvas cases: 0
