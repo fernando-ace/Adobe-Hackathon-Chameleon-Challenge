@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 from typing import Any
@@ -19,9 +20,18 @@ FONTS = ROOT / "brand_kit" / "fonts"
 
 
 def main() -> int:
-    fixture: dict[str, Any] = json.loads((EVIDENCE / "source.json").read_text(encoding="utf-8"))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--fixture", type=Path, default=EVIDENCE / "source.json",
+                        help="fixture JSON with source and targets")
+    parser.add_argument("--output-dir", type=Path,
+                        help="directory for source/output renders, JSON files, and report (defaults to the fixture directory)")
+    args = parser.parse_args()
+    fixture_path = args.fixture.resolve()
+    output_dir = (args.output_dir.resolve() if args.output_dir else fixture_path.parent)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    fixture: dict[str, Any] = json.loads(fixture_path.read_text(encoding="utf-8"))
     source = fixture["source"]
-    render_design_to_png(source, ASSETS, EVIDENCE / "source.png", FONTS)
+    render_design_to_png(source, ASSETS, output_dir / "source.png", FONTS)
     results = []
     for target in fixture["targets"]:
         target_size = {"width": target["width"], "height": target["height"]}
@@ -49,10 +59,10 @@ def main() -> int:
             if element.get("type") == "image"
         )
         output_stem = f"{target['id']}_output"
-        (EVIDENCE / f"{output_stem}.json").write_text(
+        (output_dir / f"{output_stem}.json").write_text(
             json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
         )
-        render_design_to_png(output, ASSETS, EVIDENCE / f"{output_stem}.png", FONTS)
+        render_design_to_png(output, ASSETS, output_dir / f"{output_stem}.png", FONTS)
         results.append({
             "id": target["id"],
             "target_canvas": target_size,
@@ -76,13 +86,13 @@ def main() -> int:
             "output_png": f"{output_stem}.png",
         })
     report = {
-        "fixture": "Golden Hour Seasonal Campaign",
-        "synthetic": True,
+        "fixture": fixture.get("name", fixture_path.stem),
+        "synthetic": bool(fixture.get("synthetic", False)),
         "source_elements": len(source["elements"]),
         "outputs": results,
         "score_note": "Internal source-relative proxy only; inspect the rendered PNGs.",
     }
-    (EVIDENCE / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    (output_dir / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     return 0
 
 

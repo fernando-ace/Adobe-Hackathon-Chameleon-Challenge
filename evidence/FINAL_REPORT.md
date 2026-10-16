@@ -38,8 +38,8 @@
 26. **Determinism:** 100% in stress/mutation reports. Two network-disabled Docker runs were byte-identical for all three samples and matched evidence/docker outputs.
 27. **Runtime:** the final network-disabled benchmark imported `/app/engine/resize.py` inside the Linux AMD64 image. Stress median/p95 were 0.63715/3.01647 s in that run. The offline sample runner took 0.14–0.18/0.16–0.19/0.24–0.31 s for Levels 1–3 across two runs.
 28. **Docker:** linux/amd64 build succeeded. All three official samples ran and rendered twice under --network none, returning OK with zero validator issues and byte-identical JSON/PNGs; only a nonfatal Fontconfig warning. The benchmark also ran offline in the rebuilt image. See evidence/docker/validation.md.
-29. **Visual inspection:** Level 1 preserves identity and uses more of the taller canvas. Level 2 changes the compressed starter into a horizontal hierarchy with proportional product imagery and a compact pill-shaped action. Level 3 becomes a deliberate row/banner rather than a crushed design, but its supporting/legal type remains minute. A hand-composed synthetic 9-element campaign produces a readable 300×600 stack and 728×90 banner; CTA and badge groups retain their proportions on taller canvases. Synthetic_001 makes a clear narrow portrait stack. Synthetic_005 and synthetic_028 are already cluttered at input and remain cluttered after resize; source-relative zero-new-collision metrics do not establish absolute legibility. See evidence/curated/visual-review.md, evidence/stress/visual-review.md, evidence/final, evidence/baseline, and evidence/gallery.
-30. **Weaknesses:** Only three official examples; role/contrast heuristics; missing optional asset placeholder; tiny Level 3 supporting copy; hidden-design quality and Adobe score unknown. See ../docs/failure-taxonomy.md.
+29. **Visual inspection:** Level 1 preserves identity and uses more of the taller canvas. Level 2 changes the compressed starter into a horizontal hierarchy with proportional product imagery and a compact pill-shaped action. Level 3 becomes a deliberate row/banner rather than a crushed design, but its supporting/legal type remains minute. Two hand-composed synthetic campaigns (9 and 11 elements) now cover nine target renders: the first produces a readable 300×600 stack and 728×90 banner; the second retains a clear 1600×900 copy/product split and a strong 300×600 story, while its 1080×1920 output has excessive vertical gaps. CTA and badge groups retain their proportions on taller canvases. Synthetic_001 makes a clear narrow portrait stack. Synthetic_005 and synthetic_028 are already cluttered at input and remain cluttered after resize; source-relative zero-new-collision metrics do not establish absolute legibility. See evidence/curated/visual-review.md, evidence/curated/sidecar/visual-review.md, evidence/stress/visual-review.md, evidence/final, evidence/baseline, and evidence/gallery.
+30. **Weaknesses:** Only three official examples; two synthetic human-reviewed sources remain a small sample; role/contrast heuristics; missing optional asset placeholder; tiny Level 3 supporting copy; excess vertical spacing in one tall synthetic adaptation; hidden-design quality and Adobe score unknown. See ../docs/failure-taxonomy.md.
 31. **Research:** ../docs/research-notes.md covers LayoutGAN, constrained layout, WCAG contrast and metamorphic checks. ../docs/finale-research.md links current Adobe documentation and distinguishes API capability from local evidence.
 
 ## Finale
@@ -52,11 +52,11 @@
 
 ## Git and readiness
 
-37. **Local commits:** The 44 commits preceding this final report update are listed below; this final validation/report update is the 45th local commit.
+37. **Local commits:** The 45 commits preceding this final report update are listed below; this final validation/report update is the 46th local commit.
 38. **Working tree:** clean after the final local validation and this report update.
 39. **Push/deploy:** nothing pushed or deployed.
 40. **Stage 1 judgment:** Credible and materially stronger than the starter on available samples, but not proven submission-ready for hidden designs. Three official samples, a small hand-composed synthetic fixture, adversarial synthetic suites, visual inspection, and an internal proxy do not prove generalization; Level 3 readability and poor-source recovery remain weaknesses.
-41. **Highest-value next improvement:** Set the site-specific Chrome Local Network Access permission for Express to Allow, then verify Connect, generation, lock/regenerate, Apply, and the resulting editable Express page. Then test more independent, human-inspected brand/banner fixtures.
+41. **Highest-value next improvement:** Set the site-specific Chrome Local Network Access permission for Express to Allow, then verify Connect, generation, lock/regenerate, Apply, and the resulting editable Express page. In parallel, improve and inspect tall-format spacing, then add more independent brand/layout fixtures.
 
 ### Every local commit after the upstream base
 
@@ -105,4 +105,5 @@ e5dc410 Clarify source-relative collision evidence
 c410ebd Add independent curated layout evaluation
 7f2bf86 Record Express editor startup failures
 2109fcb Record final Docker benchmark validation
+8b25fee Improve responsive CTA group layout
 ```

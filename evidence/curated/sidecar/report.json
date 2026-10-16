@@ -1,0 +1,133 @@
+{
+  "fixture": "Solstice Sidecar Product Campaign",
+  "synthetic": true,
+  "source_elements": 11,
+  "outputs": [
+    {
+      "id": "wide_landscape",
+      "target_canvas": {
+        "width": 1600,
+        "height": 900
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "banner",
+      "candidate_count": 18,
+      "repair_count": 0,
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "wide_landscape_output.json",
+      "output_png": "wide_landscape_output.png"
+    },
+    {
+      "id": "leaderboard",
+      "target_canvas": {
+        "width": 728,
+        "height": 90
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "banner",
+      "candidate_count": 18,
+      "repair_count": 0,
+      "proxy_score": 97.45,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "leaderboard_output.json",
+      "output_png": "leaderboard_output.png"
+    },
+    {
+      "id": "story",
+      "target_canvas": {
+        "width": 300,
+        "height": 600
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "stack",
+      "candidate_count": 6,
+      "repair_count": 0,
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "story_output.json",
+      "output_png": "story_output.png"
+    },
+    {
+      "id": "vertical_story",
+      "target_canvas": {
+        "width": 1080,
+        "height": 1920
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "stack",
+      "candidate_count": 6,
+      "repair_count": 0,
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "vertical_story_output.json",
+      "output_png": "vertical_story_output.png"
+    },
+    {
+      "id": "medium_rectangle",
+      "target_canvas": {
+        "width": 300,
+        "height": 250
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "banner",
+      "candidate_count": 18,
+      "repair_count": 0,
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "medium_rectangle_output.json",
+      "output_png": "medium_rectangle_output.png"
+    }
+  ],
+  "score_note": "Internal source-relative proxy only; inspect the rendered PNGs."
+}
