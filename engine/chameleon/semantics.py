@@ -58,7 +58,7 @@ def infer_roles(elements: list[dict[str, Any]], canvas: dict[str, float]) -> dic
             elif rel_size >= 0.72:
                 role, confidence, importance = "headline", 0.78, 1.0
             elif date_time:
-                role, confidence, importance = "subheadline", 0.72, 0.62
+                role, confidence, importance = "event_metadata", 0.72, 0.62
             elif length <= 24 and element.get("font_weight") == "bold" and element.get("group_id"):
                 role, confidence, importance = "group_label", 0.68, 0.54
             elif length <= 42 and (element.get("font_weight") == "bold" or action_words & cta_verbs):

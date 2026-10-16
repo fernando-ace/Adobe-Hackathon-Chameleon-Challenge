@@ -228,7 +228,7 @@ def _wide_banner(dna: DesignDNA, output: dict[str, Any], by_id: dict[str, dict[s
     logos = roles("logo")
     heroes = sorted(roles("hero_image", "supporting_image"), key=lambda fact: -fact.importance)
     headlines = sorted(roles("headline"), key=lambda fact: -float(fact.element.get("font_size", 1)))
-    narrative = sorted(roles("subheadline", "body_copy"), key=lambda fact: (fact.center[1], fact.center[0]))
+    narrative = sorted(roles("subheadline", "event_metadata", "body_copy"), key=lambda fact: (fact.center[1], fact.center[0]))
     legal = roles("legal")
     cta_groups = _group_ids(dna, "cta")
     badge_groups = _group_ids(dna, "badge")
@@ -316,6 +316,7 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
     heroes = [f for f in facts if f.role in {"hero_image", "supporting_image"}]
     heads = [f for f in facts if f.role == "headline"]
     subs = [f for f in facts if f.role == "subheadline"]
+    metadata = [f for f in facts if f.role == "event_metadata"]
     bodies = [f for f in facts if f.role == "body_copy"]
     legals = [f for f in facts if f.role == "legal"]
     standalone_ctas = [f for f in facts if f.role == "cta_text" and f.group_id is None]
@@ -421,7 +422,7 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             0.0 if compact_wide_copy else 0.14 if not compact else 0.07
         )
         ordered_heads = sorted(heads, key=lambda a: -float(a.element.get("font_size", 1)))
-        ordered_support = sorted(subs + bodies, key=lambda a: (a.center[1], a.center[0]))
+        ordered_support = sorted(subs + metadata + bodies, key=lambda a: (a.center[1], a.center[0]))
         many_narrative = compact and len(ordered_heads) + len(ordered_support) > 2
         if len(ordered_heads) + len(ordered_support) > 2:
             narrative = ordered_heads + ordered_support
@@ -510,8 +511,15 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             h = ch * 0.20
             _apply_rect(dna, by_id, f.id, (copy_x, cursor, copy_w, h), assigned)
             cursor += h * 1.12
-        for f in subs + bodies:
-            h = ch * (0.15 if len(bodies) + len(subs) > 1 else 0.20)
+        for f in subs + metadata + bodies:
+            # Event date/time is supporting metadata, so reserve a compact
+            # band for it instead of giving it headline-sized vertical space.
+            if f.role == "event_metadata":
+                h = ch * 0.065
+            elif metadata:
+                h = ch * (0.12 if len(bodies) + len(subs) > 1 else 0.16)
+            else:
+                h = ch * (0.15 if len(bodies) + len(subs) > 1 else 0.20)
             _apply_rect(dna, by_id, f.id, (copy_x, cursor, copy_w, h), assigned)
             cursor += h * 1.06
         for f in standalone_ctas:
@@ -529,12 +537,31 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
         for i, f in enumerate(heads):
             head_h = min(ch * 0.14, ch * 0.16 / head_n)
             _apply_rect(dna, by_id, f.id, (mx, ch * (0.12 + i * (0.16 / head_n)), cw - 2 * mx, head_h), assigned)
+        metadata_end = 0.0
+        if metadata:
+            metadata_start = ch * (0.27 if heads else 0.12)
+            metadata_width = cw - 2 * mx
+            required_metadata = [
+                measure_text(f.element, metadata_width, ch, fonts_dir="brand_kit/fonts").required_height * 1.05
+                for f in metadata
+            ]
+            metadata_height = min(ch * 0.12, max(ch * 0.06, sum(required_metadata)))
+            total_required = max(1.0, sum(required_metadata))
+            cursor = metadata_start
+            for fact, needed_height in zip(metadata, required_metadata):
+                band_height = metadata_height * needed_height / total_required
+                _apply_rect(dna, by_id, fact.id, (mx, cursor, metadata_width, band_height * 0.9), assigned)
+                cursor += band_height
+            metadata_end = metadata_start + metadata_height
         if heroes:
+            hero_y = max(ch * (0.29 if heads else 0.22), metadata_end + ch * 0.01)
+            hero_band_height = ch * (0.16 if metadata else 0.18)
             for i, f in enumerate(sorted(heroes, key=lambda a: -a.importance)):
-                _apply_rect(dna, by_id, f.id, (cw * (0.30 + 0.12 * i), ch * 0.29, cw * (0.40 if i == 0 else 0.24), ch * (0.18 if i == 0 else 0.12)), assigned)
+                _apply_rect(dna, by_id, f.id, (cw * (0.30 + 0.12 * i), hero_y + i * ch * 0.025, cw * (0.40 if i == 0 else 0.24), hero_band_height if i == 0 else ch * 0.12), assigned)
         copy_facts = sorted(subs + bodies, key=lambda f: (float(f.element.get("y", 0)), f.center[0]))
         if copy_facts:
-            copy_start = ch * (0.49 if heroes else 0.31)
+            hero_bottom = hero_y + hero_band_height if heroes else 0.0
+            copy_start = max(ch * (0.49 if heroes else 0.31), hero_bottom + ch * 0.02) if heroes else ch * 0.31
             copy_width = cw - 2 * mx
             required = [
                 measure_text(f.element, copy_width, ch, fonts_dir="brand_kit/fonts").required_height * 1.3
@@ -549,7 +576,8 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
                 cursor += band_height
             badge_start = copy_start + total_copy_height + ch * 0.02
         else:
-            badge_start = ch * (0.56 if heroes else 0.34)
+            hero_bottom = hero_y + hero_band_height if heroes else 0.0
+            badge_start = max(ch * (0.56 if heroes else 0.34), hero_bottom + ch * 0.03) if heroes else ch * 0.34
         if badge_groups:
             gap_x, gap_y = max(2.0, cw * 0.018), ch * 0.008
             available_w = cw - 2 * mx
@@ -582,7 +610,7 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             _apply_rect(dna, by_id, f.id, (mx, ch * (0.11 + i * 0.13), cw - 2 * mx, ch * 0.12), assigned)
         for i, f in enumerate(sorted(heroes, key=lambda a: -a.importance)):
             _apply_rect(dna, by_id, f.id, (cw * (0.40 + 0.12 * i), ch * 0.27, cw * 0.20, ch * 0.14), assigned)
-        copy_facts = sorted(subs + bodies + standalone_ctas, key=lambda f: (f.center[1], f.center[0]))
+        copy_facts = sorted(subs + metadata + bodies + standalone_ctas, key=lambda f: (f.center[1], f.center[0]))
         copy_start, copy_end = ch * 0.43, ch * (0.67 if legals else 0.70)
         copy_band = (copy_end - copy_start) / max(1, len(copy_facts))
         for i, fact in enumerate(copy_facts):
@@ -614,7 +642,7 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             for i, f in enumerate(sorted(heroes, key=lambda a: -a.importance)):
                 _apply_rect(dna, by_id, f.id, (cw * (0.30 + 0.08 * i), area_y + i * ch * 0.04, cw * (0.40 if i == 0 else 0.25), ch * (0.28 if i == 0 else 0.20)), assigned)
         cursor = ch * (0.66 if heroes else 0.40)
-        for f in subs + bodies:
+        for f in subs + metadata + bodies:
             box_h = ch * min(0.15, 0.19 / max(1, len(subs) + len(bodies)))
             _apply_rect(dna, by_id, f.id, (mx, cursor, cw - 2 * mx, box_h), assigned)
             cursor += box_h * 1.06

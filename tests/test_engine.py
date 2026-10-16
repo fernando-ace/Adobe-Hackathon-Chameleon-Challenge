@@ -150,7 +150,16 @@ class EngineContractTests(unittest.TestCase):
     def test_bold_event_date_is_informational_copy_not_a_standalone_cta(self):
         fixture = json.loads((ROOT / "evidence" / "curated" / "market" / "source.json").read_text(encoding="utf-8"))
         dna = analyze_design(fixture["source"], {"width": 300, "height": 600})
-        self.assertEqual(dna.by_id["event_eyebrow"].role, "subheadline")
+        self.assertEqual(dna.by_id["event_eyebrow"].role, "event_metadata")
+
+    def test_mobile_event_date_keeps_source_scale_before_product(self):
+        fixture = json.loads((ROOT / "evidence" / "curated" / "market" / "source.json").read_text(encoding="utf-8"))
+        output = resize(fixture["source"], {"width": 300, "height": 600})
+        by_id = {element["id"]: element for element in output["elements"]}
+        self.assertGreaterEqual(by_id["event_eyebrow"]["font_size"], 20.0)
+        self.assertLessEqual(float(by_id["event_eyebrow"]["y"]) + float(by_id["event_eyebrow"]["height"]),
+                             float(by_id["hero_product"]["y"]))
+        self.assertFalse(any("new overlap" in issue for issue in get_last_diagnostics()["issues"]))
 
     def test_wide_source_recomposes_for_square_target(self):
         fixture = json.loads((ROOT / "evidence" / "curated" / "market" / "source.json").read_text(encoding="utf-8"))

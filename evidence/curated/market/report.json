@@ -68,15 +68,13 @@
       "layout_family": "stack",
       "candidate_count": 6,
       "repair_count": 0,
-      "proxy_score": 97.98,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "clipped_text_count": 0,
       "image_ratio_failures": 0,
       "accidental_collision_count": 0,
-      "issues": [
-        "event_eyebrow/cta_label: type hierarchy regressed from source (0.96 to 0.64)"
-      ],
+      "issues": [],
       "output_json": "mobile_story_output.json",
       "output_png": "mobile_story_output.png"
     },

@@ -183,7 +183,7 @@ def score_design(dna: DesignDNA, design: dict[str, Any], family: str = "") -> Sc
             issues.append(f"group {gid}: members are widely separated")
 
     text_facts = [fact for fact in dna.facts if fact.type == "text" and fact.id in by_id]
-    hierarchy_rank = {"headline": 4, "subheadline": 3, "body_copy": 2, "cta_text": 2,
+    hierarchy_rank = {"headline": 4, "subheadline": 3, "event_metadata": 3, "body_copy": 2, "cta_text": 2,
                       "badge_text": 1, "ribbon_text": 1, "legal": 0}
     for i, a in enumerate(text_facts):
         for b in text_facts[i + 1:]:
