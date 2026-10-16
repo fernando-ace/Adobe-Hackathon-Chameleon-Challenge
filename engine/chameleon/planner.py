@@ -340,17 +340,19 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
         short_landscape = 360 <= ch < 500
         medium_rectangle = 200 <= ch <= 320 and 1.0 <= dna.target_aspect <= 1.5
         compact_wide_copy = False
-        if compact and len(heads) == 1:
+        if compact and len(heads) == 1 and len(subs) + len(metadata) + len(bodies) <= 1:
             headline = heads[0].element
             maximum = max(1.0, float(headline.get("font_size", 12)))
             base_size, base_measure = fit_font_size(
-                headline, cw * 0.74, ch * 0.40, maximum=maximum, minimum=8.0,
+                headline, cw * 0.74, ch * 0.45, maximum=maximum, minimum=8.0,
             )
-            if base_size <= 8.0 and not base_measure.fits:
-                expanded_size, expanded_measure = fit_font_size(
-                    headline, cw * 0.875, ch * 0.45, maximum=maximum, minimum=8.0,
-                )
-                compact_wide_copy = expanded_measure.fits and expanded_size >= 8.0
+            expanded_size, expanded_measure = fit_font_size(
+                headline, cw * 0.875, ch * 0.45, maximum=maximum, minimum=8.0,
+            )
+            gains_useful_headroom = expanded_size >= max(8.0, base_size * 1.10)
+            compact_wide_copy = expanded_measure.fits and (
+                gains_useful_headroom or (base_size <= 8.0 and not base_measure.fits)
+            )
         hero_x = cw * 0.91 if compact_wide_copy else mx if hero_left else cw * (
             0.88 if compact else 0.79
         )

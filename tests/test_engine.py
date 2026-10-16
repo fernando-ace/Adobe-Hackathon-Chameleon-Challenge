@@ -265,7 +265,7 @@ class EngineContractTests(unittest.TestCase):
         task = next(task for task in _official_tasks() if task["difficulty"] == "level_3_advanced")
         output = resize(task["source"], task["target_canvas"])
         elements = {element["id"]: element for element in output["elements"]}
-        self.assertGreaterEqual(elements["headline"]["font_size"], 13.0)
+        self.assertGreaterEqual(elements["headline"]["font_size"], 16.5)
         self.assertGreaterEqual(elements["legal_text"]["font_size"], 7.5)
         self.assertGreaterEqual(elements["cta_label"]["font_size"], 8.0)
         for element_id in ("badge1_label", "badge2_label", "badge3_label"):
@@ -274,6 +274,18 @@ class EngineContractTests(unittest.TestCase):
         target = task["target_canvas"]
         self.assertGreaterEqual(product["width"] * product["height"] / (target["width"] * target["height"]), 0.055)
         self.assertEqual(get_last_diagnostics()["issues"], [])
+
+    def test_compact_banner_extra_copy_does_not_expand_into_ribbon_lane(self):
+        name, source, target = next(
+            (name, source, target)
+            for name, source, target in make_mutations(_official_tasks())
+            if name == "advanced_01_add_copy"
+        )
+        output = resize(source, target)
+        diagnostics = get_last_diagnostics()
+        self.assertEqual(diagnostics["score_components"]["collision_avoidance"], 100.0)
+        self.assertFalse(any("new overlap" in issue for issue in diagnostics["issues"]))
+        self.assert_contract(source, target, output)
 
     def test_extreme_wide_banner_recomposes_without_new_collisions(self):
         task = next(task for task in _official_tasks() if task["difficulty"] == "level_3_advanced")
