@@ -7,7 +7,7 @@
 1. **Starting point:** The official starter was cloned into the supplied empty folder root; challenge materials were retained.
 2. **Upstream base:** a44a06046b0413f0785e7203955c3822e0acbc32 — Flatten repo to starter root, drop dummy-submission.
 3. **Branch and remote:** chameleon-2026-submission; origin remains https://github.com/jhaaj08/chameleon.git.
-4. **Environment:** Windows 11, project Python 3.11 venv, Node 22.17.1/npm 10.9.2, Docker Desktop 29.5.3, Linux AMD64.
+4. **Environment:** Windows 11, project Python 3.11 venv, Node 22.17.1/npm 10.9.2, Docker Desktop 4.77.0 with Engine 29.5.3, Linux AMD64.
 5. Original baseline findings and setup are in ../docs/baseline.md.
 
 ## Engine and design intelligence
@@ -29,14 +29,14 @@
 17. **Level 2:** 1080×1080 to 1600×400, 11 elements, banner, 18 candidates, 0 repairs, 0.08351 s. Internal proxy 0 to 100; starter distorted logo/product by 300%; current report has no issues.
 18. **Level 3:** 1080×1350 to 728×90, 17 elements, banner, 18 candidates, 0 repairs, 0.28358 s. Internal proxy 0 to 100; starter distorted three image ratios, had two out-of-bounds items, and reduced headline/subhead/legal text to 2.7/1.5/1.0 px. Current sizes are 15.09/8.45/7.91 px; supporting text is still too small. Renderer uses a placeholder for the missing optional badge; no replacement asset was made.
 19. Baseline JSON/PNGs remain under evidence/baseline. Baseline scores 68/0/0 and current scores 100/100/100 are internal proxy values on three supplied fixtures only.
-20. **Tests:** 19/19 passed with .venv Python unittest discovery (269.209 s). Coverage includes official contracts/rendering, metamorphic identity and small change, typography, hierarchy, banner regressions, grouping, repair/fallback, stress/mutations, and local Finale API integration.
+20. **Tests:** 19/19 passed with .venv Python unittest discovery (83.699 s). Coverage includes official contracts/rendering, metamorphic identity and small change, typography, hierarchy, banner regressions, grouping, repair/fallback, stress/mutations, and local Finale API integration.
 21. **Stress/mutations:** 64 generated stress cases (up to 45 elements) and 45 official-input mutations; three representative synthetic stress inputs and before/after renders are preserved in evidence/stress with a reproducible exporter. Synthetic fixtures do not prove hidden-brand generalization.
 22. **Structural validity:** 100% in both suites; all official outputs hard-valid under the internal validator. Tests cover IDs, counts, text, fonts, and image references.
 23. **Collisions:** 100% no-new-collision rate across both suites. The metric is source-relative: it detects new or worsened overlaps, so pre-existing clutter in the 45-element synthetic cases is not counted as a collision regression. See evidence/stress/visual-review.md.
 24. **Clipping:** zero clipping cases in official, stress, and mutation reports. This does not mean all text is comfortable to read.
 25. **Image fidelity:** zero current image-ratio failures in official/stress/mutation evidence. Baseline had 1, 2, and 3 failures respectively.
 26. **Determinism:** 100% in stress/mutation reports. Two network-disabled Docker runs were byte-identical for all three samples and matched evidence/docker outputs.
-27. **Runtime:** corrected benchmark imported /app/engine/resize.py inside the image. Stress median/p95 0.15081/0.95455 s. Offline runner timings were 0.13/0.17/0.26 s for Levels 1–3.
+27. **Runtime:** the final network-disabled benchmark imported `/app/engine/resize.py` inside the Linux AMD64 image. Stress median/p95 were 0.55034/2.71681 s in that run. The offline sample runner took 0.13/0.16/0.26 s for Levels 1–3.
 28. **Docker:** linux/amd64 build succeeded. All three official samples ran and rendered under --network none, returning OK with zero validator issues; only a nonfatal Fontconfig warning. See evidence/docker/validation.md.
 29. **Visual inspection:** Level 1 preserves identity and uses more of the taller canvas. Level 2 changes the compressed starter into a horizontal hierarchy with proportional product imagery. Level 3 becomes a deliberate row/banner rather than a crushed design, but its supporting/legal type remains minute. A hand-composed synthetic 9-element campaign produces a readable 300×600 stack and 728×90 banner, with oversized action backgrounds in its 1920×1080 output. Synthetic_001 makes a clear narrow portrait stack. Synthetic_005 and synthetic_028 are already cluttered at input and remain cluttered after resize; source-relative zero-new-collision metrics do not establish absolute legibility. See evidence/curated/visual-review.md, evidence/stress/visual-review.md, evidence/final, evidence/baseline, and evidence/gallery.
 30. **Weaknesses:** Only three official examples; role/contrast heuristics; missing optional asset placeholder; tiny Level 3 supporting copy; hidden-design quality and Adobe score unknown. See ../docs/failure-taxonomy.md.
@@ -52,8 +52,8 @@
 
 ## Git and readiness
 
-37. **Local commits:** The history below lists the 36 implementation/evidence commits through 4d5a47d. Later report-audit documentation commits are visible in the current git log.
-38. **Working tree:** clean when this report was authored at 4d5a47d; recheck git status before submission.
+37. **Local commits:** The 43 commits preceding this final report update are listed below; this final validation/report update is the 44th local commit.
+38. **Working tree:** clean after the final local validation and this report update.
 39. **Push/deploy:** nothing pushed or deployed.
 40. **Stage 1 judgment:** Credible and materially stronger than the starter on available samples, but not proven submission-ready for hidden designs. Three official samples, a small hand-composed synthetic fixture, adversarial synthetic suites, visual inspection, and an internal proxy do not prove generalization; Level 3 readability and poor-source recovery remain weaknesses.
 41. **Highest-value next improvement:** Finish the site-specific Chrome Local Network Access gate and verify Connect, generation, lock/regenerate, Apply, and the resulting editable Express page. Then test more independent, human-inspected brand/banner fixtures.
@@ -97,4 +97,11 @@ e2e57b8 Document Finale API integration coverage
 3c643bd Record Express browser verification blocker
 ee9c5a2 Record final Docker benchmark and Express status
 4d5a47d Document Chrome local access sideload blocker
+57fddd5 Add current Chameleon evidence audit report
+8e636e0 Record Chrome version in Express access audit
+902d881 Record representative synthetic stress evidence
+820005f Record current Express loading diagnostics
+e5dc410 Clarify source-relative collision evidence
+c410ebd Add independent curated layout evaluation
+7f2bf86 Record Express editor startup failures
 ```
