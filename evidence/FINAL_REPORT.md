@@ -30,7 +30,7 @@
 18. **Level 3:** 1080×1350 to 728×90, 17 elements, banner, 18 candidates, 0 repairs, 0.28358 s. Internal proxy 0 to 100; starter distorted three image ratios, had two out-of-bounds items, and reduced headline/subhead/legal text to 2.7/1.5/1.0 px. Current sizes are 15.09/8.45/7.91 px; supporting text is still too small. Renderer uses a placeholder for the missing optional badge; no replacement asset was made.
 19. Baseline JSON/PNGs remain under evidence/baseline. Baseline scores 68/0/0 and current scores 100/100/100 are internal proxy values on three supplied fixtures only.
 20. **Tests:** 19/19 passed with .venv Python unittest discovery (269.209 s). Coverage includes official contracts/rendering, metamorphic identity and small change, typography, hierarchy, banner regressions, grouping, repair/fallback, stress/mutations, and local Finale API integration.
-21. **Stress/mutations:** 64 generated stress cases (up to 45 elements) and 45 official-input mutations; synthetic fixtures do not prove hidden-brand generalization.
+21. **Stress/mutations:** 64 generated stress cases (up to 45 elements) and 45 official-input mutations; three representative synthetic stress inputs and before/after renders are preserved in evidence/stress with a reproducible exporter. Synthetic fixtures do not prove hidden-brand generalization.
 22. **Structural validity:** 100% in both suites; all official outputs hard-valid under the internal validator. Tests cover IDs, counts, text, fonts, and image references.
 23. **Collisions:** 100% collision-free; zero new-collision cases across both suites.
 24. **Clipping:** zero clipping cases in official, stress, and mutation reports. This does not mean all text is comfortable to read.
