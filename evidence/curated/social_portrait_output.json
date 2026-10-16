@@ -1,0 +1,128 @@
+{
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "elements": [
+    {
+      "id": "background",
+      "type": "image",
+      "x": 0.0,
+      "y": 0.0,
+      "width": 1080.0,
+      "height": 1350.0,
+      "z_index": 0,
+      "asset_id": "solstice_bg_gradient.png",
+      "fit": "cover"
+    },
+    {
+      "id": "logo",
+      "type": "image",
+      "x": 404.0,
+      "y": 179.0,
+      "width": 272.0,
+      "height": 84.0,
+      "z_index": 4,
+      "asset_id": "solstice_logo_lockup.png",
+      "fit": "contain"
+    },
+    {
+      "id": "headline",
+      "type": "text",
+      "x": 110.0,
+      "y": 310.0,
+      "width": 860.0,
+      "height": 108.0,
+      "z_index": 3,
+      "content": "Glow into Golden Hour",
+      "font_family": "Solstice Serif",
+      "font_size": 58.0,
+      "font_weight": "bold",
+      "color": "rgba(255,255,255,1)",
+      "text_align": "center"
+    },
+    {
+      "id": "supporting_copy",
+      "type": "text",
+      "x": 145.0,
+      "y": 430.0,
+      "width": 790.0,
+      "height": 76.0,
+      "z_index": 3,
+      "content": "Botanical hydration for the long days ahead.",
+      "font_family": "Solstice Sans",
+      "font_size": 25.0,
+      "color": "rgba(255,255,255,0.96)",
+      "text_align": "center"
+    },
+    {
+      "id": "hero_product",
+      "type": "image",
+      "x": 398.0,
+      "y": 515.0,
+      "width": 284.0,
+      "height": 330.0,
+      "z_index": 2,
+      "asset_id": "solstice_bottle.png",
+      "fit": "contain"
+    },
+    {
+      "id": "badge_background",
+      "type": "shape",
+      "x": 132.0,
+      "y": 890.0,
+      "width": 282.0,
+      "height": 66.0,
+      "shape_type": "rectangle",
+      "fill_color": "rgba(232,106,58,1)",
+      "corner_radius": 33,
+      "group_id": "badge",
+      "z_index": 2
+    },
+    {
+      "id": "badge_label",
+      "type": "text",
+      "x": 143.0,
+      "y": 903.0,
+      "width": 260.0,
+      "height": 40.0,
+      "content": "NEW SEASONAL BLEND",
+      "font_family": "Solstice Sans",
+      "font_size": 16.0,
+      "font_weight": "bold",
+      "color": "rgba(255,255,255,1)",
+      "text_align": "center",
+      "group_id": "badge",
+      "z_index": 3
+    },
+    {
+      "id": "cta_background",
+      "type": "shape",
+      "x": 480.0,
+      "y": 882.0,
+      "width": 414.0,
+      "height": 82.0,
+      "shape_type": "rectangle",
+      "fill_color": "rgba(232,106,58,1)",
+      "corner_radius": 24,
+      "group_id": "cta",
+      "z_index": 2
+    },
+    {
+      "id": "cta_label",
+      "type": "text",
+      "x": 500.0,
+      "y": 900.0,
+      "width": 374.0,
+      "height": 48.0,
+      "content": "Explore the collection",
+      "font_family": "Solstice Sans",
+      "font_size": 24.0,
+      "font_weight": "bold",
+      "color": "rgba(255,255,255,1)",
+      "text_align": "center",
+      "group_id": "cta",
+      "z_index": 3
+    }
+  ]
+}

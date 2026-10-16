@@ -1,0 +1,108 @@
+{
+  "fixture": "Golden Hour Seasonal Campaign",
+  "synthetic": true,
+  "source_elements": 9,
+  "outputs": [
+    {
+      "id": "social_portrait",
+      "target_canvas": {
+        "width": 1080,
+        "height": 1350
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "source_fit",
+      "candidate_count": 12,
+      "repair_count": 0,
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "social_portrait_output.json",
+      "output_png": "social_portrait_output.png"
+    },
+    {
+      "id": "campaign_landscape",
+      "target_canvas": {
+        "width": 1920,
+        "height": 1080
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "banner",
+      "candidate_count": 18,
+      "repair_count": 0,
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "campaign_landscape_output.json",
+      "output_png": "campaign_landscape_output.png"
+    },
+    {
+      "id": "ultrawide_banner",
+      "target_canvas": {
+        "width": 728,
+        "height": 90
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "banner",
+      "candidate_count": 18,
+      "repair_count": 0,
+      "proxy_score": 99.48,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "ultrawide_banner_output.json",
+      "output_png": "ultrawide_banner_output.png"
+    },
+    {
+      "id": "story",
+      "target_canvas": {
+        "width": 300,
+        "height": 600
+      },
+      "element_count_preserved": true,
+      "ids_preserved": true,
+      "text_preserved": true,
+      "font_families_preserved": true,
+      "image_asset_ids_preserved": true,
+      "deterministic_json": true,
+      "layout_family": "stack",
+      "candidate_count": 6,
+      "repair_count": 0,
+      "proxy_score": 100.0,
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "clipped_text_count": 0,
+      "image_ratio_failures": 0,
+      "accidental_collision_count": 0,
+      "issues": [],
+      "output_json": "story_output.json",
+      "output_png": "story_output.png"
+    }
+  ],
+  "score_note": "Internal source-relative proxy only; inspect the rendered PNGs."
+}
