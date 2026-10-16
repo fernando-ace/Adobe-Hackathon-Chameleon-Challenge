@@ -10,8 +10,8 @@
   "stress_hierarchy_regressions": 0,
   "stress_hierarchy_regression_cases": 0,
   "stress_collision_free_rate": 1.0,
-  "stress_median_runtime_seconds": 0.6371450000000001,
-  "stress_p95_runtime_seconds": 3.01647,
+  "stress_median_runtime_seconds": 0.158695,
+  "stress_p95_runtime_seconds": 1.04362,
   "stress_determinism_rate": 1.0,
   "collision_metric_definition": "Counts only new or worsened intersections relative to the source; pre-existing overlap is not counted as a regression.",
   "mutation_structural_validity_rate": 1.0,
@@ -80,7 +80,7 @@
       "layout_family": "stack",
       "candidate_count": 12,
       "repair_count": 0,
-      "runtime_seconds": 2.11538,
+      "runtime_seconds": 0.05813,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -142,7 +142,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "runtime_seconds": 0.95545,
+      "runtime_seconds": 0.09464,
       "renderer_warnings": [],
       "source_renderer_warnings": []
     },
@@ -215,7 +215,7 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "runtime_seconds": 3.24384,
+      "runtime_seconds": 0.29529,
       "renderer_warnings": [
         "Missing asset 'solstice_holiday_badge_2025.png' for element 'holiday_watermark' - rendered a placeholder."
       ],
@@ -234,7 +234,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.62838,
+      "runtime_seconds": 0.21284,
       "issues": []
     },
     {
@@ -246,7 +246,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 2.25538,
+      "runtime_seconds": 0.1033,
       "issues": []
     },
     {
@@ -258,7 +258,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 2.15135,
+      "runtime_seconds": 0.1505,
       "issues": []
     },
     {
@@ -270,7 +270,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 2.52081,
+      "runtime_seconds": 0.19353,
       "issues": []
     },
     {
@@ -282,7 +282,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.7549,
+      "runtime_seconds": 0.17455,
       "issues": []
     },
     {
@@ -294,7 +294,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.99196,
+      "runtime_seconds": 0.57372,
       "issues": []
     },
     {
@@ -306,7 +306,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.66266,
+      "runtime_seconds": 0.25908,
       "issues": []
     },
     {
@@ -318,7 +318,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.63939,
+      "runtime_seconds": 0.57427,
       "issues": []
     },
     {
@@ -330,7 +330,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.52229,
+      "runtime_seconds": 0.20298,
       "issues": []
     },
     {
@@ -342,7 +342,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.12104,
+      "runtime_seconds": 0.07342,
       "issues": []
     },
     {
@@ -354,7 +354,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.44404,
+      "runtime_seconds": 1.34316,
       "issues": []
     },
     {
@@ -366,7 +366,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.34331,
+      "runtime_seconds": 0.13304,
       "issues": []
     },
     {
@@ -378,7 +378,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.6477,
+      "runtime_seconds": 0.17302,
       "issues": []
     },
     {
@@ -390,7 +390,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.41128,
+      "runtime_seconds": 0.16689,
       "issues": []
     },
     {
@@ -402,7 +402,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 3.19941,
+      "runtime_seconds": 1.12932,
       "issues": []
     },
     {
@@ -414,7 +414,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 2.80053,
+      "runtime_seconds": 0.56348,
       "issues": []
     },
     {
@@ -426,7 +426,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.30679,
+      "runtime_seconds": 0.20411,
       "issues": []
     },
     {
@@ -438,7 +438,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.23056,
+      "runtime_seconds": 0.1113,
       "issues": []
     },
     {
@@ -450,7 +450,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.85009,
+      "runtime_seconds": 0.33599,
       "issues": []
     },
     {
@@ -462,7 +462,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.19247,
+      "runtime_seconds": 0.57818,
       "issues": []
     },
     {
@@ -474,7 +474,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.5329,
+      "runtime_seconds": 0.03871,
       "issues": []
     },
     {
@@ -486,7 +486,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.75359,
+      "runtime_seconds": 0.2036,
       "issues": []
     },
     {
@@ -498,7 +498,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.50355,
+      "runtime_seconds": 0.08796,
       "issues": []
     },
     {
@@ -510,7 +510,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.57675,
+      "runtime_seconds": 0.14885,
       "issues": []
     },
     {
@@ -522,7 +522,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.40167,
+      "runtime_seconds": 0.10861,
       "issues": []
     },
     {
@@ -534,7 +534,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.64729,
+      "runtime_seconds": 0.57513,
       "issues": []
     },
     {
@@ -546,7 +546,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.93413,
+      "runtime_seconds": 0.31346,
       "issues": []
     },
     {
@@ -558,7 +558,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.63079,
+      "runtime_seconds": 0.60902,
       "issues": []
     },
     {
@@ -570,7 +570,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 4.69553,
+      "runtime_seconds": 1.04362,
       "issues": []
     },
     {
@@ -582,7 +582,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 3.01647,
+      "runtime_seconds": 0.73506,
       "issues": []
     },
     {
@@ -594,7 +594,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.29558,
+      "runtime_seconds": 0.12954,
       "issues": []
     },
     {
@@ -606,7 +606,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.30794,
+      "runtime_seconds": 0.13852,
       "issues": []
     },
     {
@@ -618,7 +618,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.26468,
+      "runtime_seconds": 0.13165,
       "issues": []
     },
     {
@@ -630,7 +630,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.23175,
+      "runtime_seconds": 0.05784,
       "issues": []
     },
     {
@@ -642,7 +642,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.20797,
+      "runtime_seconds": 0.08206,
       "issues": []
     },
     {
@@ -654,7 +654,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.23286,
+      "runtime_seconds": 0.09973,
       "issues": []
     },
     {
@@ -666,7 +666,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.47023,
+      "runtime_seconds": 0.32526,
       "issues": []
     },
     {
@@ -678,7 +678,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.21515,
+      "runtime_seconds": 0.09156,
       "issues": []
     },
     {
@@ -690,7 +690,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.55072,
+      "runtime_seconds": 0.10729,
       "issues": []
     },
     {
@@ -702,7 +702,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.65998,
+      "runtime_seconds": 0.18543,
       "issues": []
     },
     {
@@ -714,7 +714,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.97654,
+      "runtime_seconds": 0.12965,
       "issues": []
     },
     {
@@ -726,7 +726,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.29315,
+      "runtime_seconds": 0.28554,
       "issues": []
     },
     {
@@ -738,7 +738,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.21103,
+      "runtime_seconds": 0.06183,
       "issues": []
     },
     {
@@ -750,7 +750,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.6349,
+      "runtime_seconds": 0.09179,
       "issues": []
     },
     {
@@ -762,7 +762,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.30746,
+      "runtime_seconds": 0.0828,
       "issues": []
     },
     {
@@ -774,7 +774,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.64919,
+      "runtime_seconds": 0.33144,
       "issues": []
     },
     {
@@ -786,7 +786,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.29661,
+      "runtime_seconds": 0.09848,
       "issues": []
     },
     {
@@ -798,7 +798,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.5162,
+      "runtime_seconds": 0.08112,
       "issues": []
     },
     {
@@ -810,7 +810,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.70552,
+      "runtime_seconds": 0.17415,
       "issues": []
     },
     {
@@ -822,7 +822,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 3.91654,
+      "runtime_seconds": 1.29366,
       "issues": []
     },
     {
@@ -834,7 +834,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.3728,
+      "runtime_seconds": 0.16978,
       "issues": []
     },
     {
@@ -846,7 +846,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.43461,
+      "runtime_seconds": 0.12222,
       "issues": []
     },
     {
@@ -858,7 +858,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.73284,
+      "runtime_seconds": 0.10152,
       "issues": []
     },
     {
@@ -870,7 +870,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.19847,
+      "runtime_seconds": 0.08403,
       "issues": []
     },
     {
@@ -882,7 +882,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.46059,
+      "runtime_seconds": 0.31571,
       "issues": []
     },
     {
@@ -894,7 +894,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.28163,
+      "runtime_seconds": 0.07205,
       "issues": []
     },
     {
@@ -906,7 +906,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.29619,
+      "runtime_seconds": 0.11193,
       "issues": []
     },
     {
@@ -918,7 +918,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.60905,
+      "runtime_seconds": 0.2283,
       "issues": []
     },
     {
@@ -930,7 +930,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 2.77479,
+      "runtime_seconds": 0.50349,
       "issues": []
     },
     {
@@ -942,7 +942,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.29944,
+      "runtime_seconds": 0.11881,
       "issues": []
     },
     {
@@ -954,7 +954,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.12351,
+      "runtime_seconds": 0.07047,
       "issues": []
     },
     {
@@ -966,7 +966,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.50566,
+      "runtime_seconds": 0.08342,
       "issues": []
     },
     {
@@ -978,7 +978,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.33326,
+      "runtime_seconds": 0.07368,
       "issues": []
     },
     {
@@ -990,7 +990,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.80017,
+      "runtime_seconds": 0.35977,
       "issues": []
     }
   ],
@@ -1004,7 +1004,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.10196,
+      "runtime_seconds": 0.12122,
       "issues": []
     },
     {
@@ -1016,7 +1016,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.45474,
+      "runtime_seconds": 0.04288,
       "issues": []
     },
     {
@@ -1028,7 +1028,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 4.84008,
+      "runtime_seconds": 0.03169,
       "issues": []
     },
     {
@@ -1040,7 +1040,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.78086,
+      "runtime_seconds": 0.03084,
       "issues": []
     },
     {
@@ -1052,7 +1052,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.41652,
+      "runtime_seconds": 0.04392,
       "issues": []
     },
     {
@@ -1064,7 +1064,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.41585,
+      "runtime_seconds": 0.03594,
       "issues": []
     },
     {
@@ -1076,7 +1076,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.51023,
+      "runtime_seconds": 0.04406,
       "issues": []
     },
     {
@@ -1088,7 +1088,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.31241,
+      "runtime_seconds": 0.02946,
       "issues": []
     },
     {
@@ -1100,7 +1100,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.63797,
+      "runtime_seconds": 0.02966,
       "issues": []
     },
     {
@@ -1112,7 +1112,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.44367,
+      "runtime_seconds": 0.03963,
       "issues": []
     },
     {
@@ -1124,7 +1124,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.91134,
+      "runtime_seconds": 0.16054,
       "issues": []
     },
     {
@@ -1136,7 +1136,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.38168,
+      "runtime_seconds": 0.07964,
       "issues": []
     },
     {
@@ -1148,7 +1148,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.28014,
+      "runtime_seconds": 0.11098,
       "issues": []
     },
     {
@@ -1160,7 +1160,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.84956,
+      "runtime_seconds": 0.07991,
       "issues": []
     },
     {
@@ -1172,7 +1172,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.71742,
+      "runtime_seconds": 0.11197,
       "issues": []
     },
     {
@@ -1184,7 +1184,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.67535,
+      "runtime_seconds": 0.16377,
       "issues": []
     },
     {
@@ -1196,7 +1196,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.66021,
+      "runtime_seconds": 0.08627,
       "issues": []
     },
     {
@@ -1208,7 +1208,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.26758,
+      "runtime_seconds": 0.07214,
       "issues": []
     },
     {
@@ -1220,7 +1220,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.80304,
+      "runtime_seconds": 0.07212,
       "issues": []
     },
     {
@@ -1232,7 +1232,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.36718,
+      "runtime_seconds": 0.09422,
       "issues": []
     },
     {
@@ -1244,7 +1244,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.36438,
+      "runtime_seconds": 0.07104,
       "issues": []
     },
     {
@@ -1256,7 +1256,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.77153,
+      "runtime_seconds": 0.0584,
       "issues": []
     },
     {
@@ -1268,7 +1268,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.41894,
+      "runtime_seconds": 0.07347,
       "issues": []
     },
     {
@@ -1280,7 +1280,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.69094,
+      "runtime_seconds": 0.06984,
       "issues": []
     },
     {
@@ -1292,7 +1292,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.74881,
+      "runtime_seconds": 0.071,
       "issues": []
     },
     {
@@ -1304,7 +1304,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.37569,
+      "runtime_seconds": 0.19065,
       "issues": []
     },
     {
@@ -1316,7 +1316,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.643,
+      "runtime_seconds": 0.09195,
       "issues": []
     },
     {
@@ -1328,7 +1328,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.54142,
+      "runtime_seconds": 0.14218,
       "issues": []
     },
     {
@@ -1340,7 +1340,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.99727,
+      "runtime_seconds": 0.11976,
       "issues": []
     },
     {
@@ -1352,7 +1352,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.95023,
+      "runtime_seconds": 0.1578,
       "issues": []
     },
     {
@@ -1364,21 +1364,21 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.91225,
+      "runtime_seconds": 0.36607,
       "issues": []
     },
     {
       "name": "advanced_01_headline_4x",
       "layout_family": "banner",
-      "proxy_score": 97.2,
+      "proxy_score": 97.86,
       "hard_valid": true,
       "off_canvas_count": 0,
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.80705,
+      "runtime_seconds": 0.2104,
       "issues": [
-        "headline: small type at 8.0px"
+        "headline: small type at 8.5px"
       ]
     },
     {
@@ -1390,7 +1390,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 2.99266,
+      "runtime_seconds": 0.22983,
       "issues": []
     },
     {
@@ -1402,7 +1402,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.48195,
+      "runtime_seconds": 0.22721,
       "issues": []
     },
     {
@@ -1414,7 +1414,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.39816,
+      "runtime_seconds": 0.23786,
       "issues": []
     },
     {
@@ -1426,7 +1426,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.85096,
+      "runtime_seconds": 0.24561,
       "issues": [
         "subhead: small type at 7.0px"
       ]
@@ -1440,7 +1440,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.99363,
+      "runtime_seconds": 0.20652,
       "issues": []
     },
     {
@@ -1452,7 +1452,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.66612,
+      "runtime_seconds": 0.23209,
       "issues": []
     },
     {
@@ -1464,7 +1464,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.23693,
+      "runtime_seconds": 0.23525,
       "issues": []
     },
     {
@@ -1476,7 +1476,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.32325,
+      "runtime_seconds": 0.22886,
       "issues": []
     },
     {
@@ -1488,7 +1488,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.9451,
+      "runtime_seconds": 0.28507,
       "issues": []
     },
     {
@@ -1500,7 +1500,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.45912,
+      "runtime_seconds": 0.13543,
       "issues": []
     },
     {
@@ -1512,7 +1512,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.68749,
+      "runtime_seconds": 0.14418,
       "issues": []
     },
     {
@@ -1524,7 +1524,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 0.86865,
+      "runtime_seconds": 0.1714,
       "issues": []
     },
     {
@@ -1536,7 +1536,7 @@
       "image_ratio_failures": 0,
       "clipped_text_count": 0,
       "accidental_collision_count": 0,
-      "runtime_seconds": 1.25447,
+      "runtime_seconds": 0.26398,
       "issues": []
     }
   ]

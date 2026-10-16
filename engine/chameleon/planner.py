@@ -77,6 +77,14 @@ def _apply_rect(
             x += (w - fitted_w) / 2
             y += (h - fitted_h) / 2
             w, h = fitted_w, fitted_h
+            group_scale = min(w / gw, h / gh)
+            if group_scale > 1.25:
+                # Text fitting caps a group's font at the source size. Beyond
+                # modest growth, enlargeable boxes become empty color slabs.
+                fitted_w, fitted_h = gw * 1.25, gh * 1.25
+                x += (w - fitted_w) / 2
+                y += (h - fitted_h) / 2
+                w, h = fitted_w, fitted_h
         sx, sy = w / gw, h / gh
         for member_id in members:
             original = dna.by_id[member_id].element

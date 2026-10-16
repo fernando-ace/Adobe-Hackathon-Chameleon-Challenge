@@ -118,6 +118,29 @@ class EngineContractTests(unittest.TestCase):
         label = next(element for element in output["elements"] if element["id"] == "cta_label")
         self.assertGreaterEqual(label["font_size"], 8.0)
 
+    def test_extreme_tall_target_caps_button_and_badge_background_growth(self):
+        fixture = json.loads((ROOT / "evidence" / "curated" / "sidecar" / "source.json").read_text(encoding="utf-8"))
+        source = fixture["source"]
+        output = resize(source, {"width": 1080, "height": 1920})
+        original = {element["id"]: element for element in source["elements"]}
+        current = {element["id"]: element for element in output["elements"]}
+
+        for group_ids in (("cta_background", "cta_label"),
+                          ("citrus_badge_background", "citrus_badge_label")):
+            source_bounds = self._union_size([original[element_id] for element_id in group_ids])
+            output_bounds = self._union_size([current[element_id] for element_id in group_ids])
+            scale = output_bounds[0] / source_bounds[0]
+            self.assertAlmostEqual(output_bounds[1] / source_bounds[1], scale, delta=0.01)
+            self.assertLessEqual(scale, 1.25 + 1e-6)
+
+    @staticmethod
+    def _union_size(elements):
+        x0 = min(float(element["x"]) for element in elements)
+        y0 = min(float(element["y"]) for element in elements)
+        x1 = max(float(element["x"]) + float(element["width"]) for element in elements)
+        y1 = max(float(element["y"]) + float(element["height"]) for element in elements)
+        return x1 - x0, y1 - y0
+
     def test_metamorphic_identity_and_small_aspect_change(self):
         for task in _official_tasks():
             source = task["source"]

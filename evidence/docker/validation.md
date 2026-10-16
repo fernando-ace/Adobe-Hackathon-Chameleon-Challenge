@@ -1,6 +1,6 @@
 # Offline Docker validation
 
-Revalidated 2026-10-16 with Docker Desktop 4.77.0 and engine 29.5.3.
+Revalidated after the tall-format CTA/badge scale cap on 2026-10-16 with Docker Desktop 4.77.0 and engine 29.5.3.
 
 Build for the challenge architecture:
 
@@ -19,14 +19,17 @@ docker run --rm --network none `
   chameleon-engine
 ```
 
-All three official samples completed with `OK`, and the repository validator reported zero issues for every output:
+Two consecutive runs completed with `OK`, and the repository validator reported zero issues for every output:
 
-- Level 1: 0.14–0.18 s; PNG 110,453 bytes
-- Level 2: 0.16–0.19 s; PNG 72,750 bytes
-- Level 3: 0.24–0.31 s; PNG 41,306 bytes
+- Level 1: 0.16–0.18 s; PNG 107,497 bytes
+- Level 2: 0.19–0.25 s; PNG 69,531 bytes
+- Level 3: 0.30 s both runs; PNG 43,235 bytes
 
 Two consecutive `--network none` runs produced byte-identical JSON and PNG
-outputs for all three official samples.
+outputs for all three official samples. PNG SHA-256 values: Level 1
+`a1a27605f6fbf2a771896e0ff24179040a3d676796c7daf68cdd99edc0a6b095`, Level 2
+`871654b7992f5d38acca64e8481ac52da6dad0900f8922d9dac359c65d81cf54`, Level 3
+`820ffb3ae06d4d1ab59bb70a7b1feafb4d03544d7922d8299ef15d95798bf129`.
 
 The generated JSON retained source element IDs and counts, text content, and font families. Output geometry stayed within each target canvas. Contain-fit images retained their source frame ratios; cover-fit backgrounds use a target-sized frame by design. The only warning on the offline run was Fontconfig's non-fatal `05-reset-dirs-sample.conf` warning.
 
