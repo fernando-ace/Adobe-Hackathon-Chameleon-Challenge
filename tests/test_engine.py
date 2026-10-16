@@ -161,6 +161,14 @@ class EngineContractTests(unittest.TestCase):
         self.assertNotEqual(diagnostics["layout_family"], "source_fit")
         self.assert_contract(source, target, output)
 
+    def test_medium_rectangle_keeps_action_labels_above_legal_copy(self):
+        fixture = json.loads((ROOT / "evidence" / "curated" / "market" / "source.json").read_text(encoding="utf-8"))
+        output = resize(fixture["source"], {"width": 300, "height": 250})
+        by_id = {element["id"]: element for element in output["elements"]}
+        self.assertGreaterEqual(by_id["cta_label"]["font_size"] / by_id["legal_copy"]["font_size"], 0.82)
+        self.assertGreaterEqual(by_id["time_badge_label"]["font_size"] / by_id["legal_copy"]["font_size"], 0.82)
+        self.assertFalse(any("type hierarchy regressed" in issue for issue in get_last_diagnostics()["issues"]))
+
     @staticmethod
     def _union_size(elements):
         x0 = min(float(element["x"]) for element in elements)

@@ -120,16 +120,13 @@
       "layout_family": "banner",
       "candidate_count": 18,
       "repair_count": 0,
-      "proxy_score": 96.43,
+      "proxy_score": 100.0,
       "hard_valid": true,
       "off_canvas_count": 0,
       "clipped_text_count": 0,
       "image_ratio_failures": 0,
       "accidental_collision_count": 0,
-      "issues": [
-        "time_badge_label/legal_copy: type hierarchy regressed from source (1.20 to 0.61)",
-        "cta_label/legal_copy: type hierarchy regressed from source (1.67 to 0.72)"
-      ],
+      "issues": [],
       "output_json": "medium_rectangle_output.json",
       "output_png": "medium_rectangle_output.png"
     }

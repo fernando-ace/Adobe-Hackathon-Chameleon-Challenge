@@ -337,6 +337,7 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
         hero_left = family == "banner_mirror"
         compact = ch < 150
         short_landscape = 360 <= ch < 500
+        medium_rectangle = 200 <= ch <= 320 and 1.0 <= dna.target_aspect <= 1.5
         compact_wide_copy = False
         if compact and len(heads) == 1:
             headline = heads[0].element
@@ -453,7 +454,8 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
         if badge_groups:
             gap = max(2.0, cw * 0.012)
             available = cw * (0.50 if compact else 0.52)
-            cell_w = max(1.0, min(cw * (0.16 if compact else 0.19), (available - gap * (len(badge_groups) - 1)) / len(badge_groups)))
+            badge_width_cap = 0.27 if medium_rectangle else 0.16 if compact else 0.19
+            cell_w = max(1.0, min(cw * badge_width_cap, (available - gap * (len(badge_groups) - 1)) / len(badge_groups)))
             for i, gid in enumerate(badge_groups):
                 x = mx + i * (cell_w + gap)
                 badge_h = ch * (0.21 if compact else 0.08 if short_landscape else 0.13)
@@ -464,7 +466,7 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
         )
         for gid in cta_groups:
             x = cw * (0.57 if compact else 0.07)
-            w = cw * 0.27
+            w = cw * (0.34 if medium_rectangle else 0.27)
             y = ch * 0.79 if compact else min(ch - ch * 0.24, cta_y)
             h = max(1.0, ch * (0.21 if compact else 0.18 if short_landscape else 0.13))
             _apply_rect(dna, by_id, dna.groups[gid][0], (x, y, w, h), assigned)
