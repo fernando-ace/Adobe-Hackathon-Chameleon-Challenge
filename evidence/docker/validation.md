@@ -22,8 +22,8 @@ docker run --rm --network none `
 All three official samples completed with `OK`, and the repository validator reported zero issues for every output:
 
 - Level 1: 0.13 s; PNG 110,453 bytes
-- Level 2: 0.23 s; PNG 72,503 bytes
-- Level 3: 0.25 s; PNG 41,146 bytes
+- Level 2: 0.17 s; PNG 72,511 bytes
+- Level 3: 0.26 s; PNG 41,146 bytes
 
 The generated JSON retained source element IDs and counts, text content, and font families. Output geometry stayed within each target canvas. Contain-fit images retained their source frame ratios; cover-fit backgrounds use a target-sized frame by design. The only warning on the offline run was Fontconfig's non-fatal `05-reset-dirs-sample.conf` warning.
 
