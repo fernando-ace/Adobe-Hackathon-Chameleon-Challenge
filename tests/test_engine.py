@@ -173,6 +173,51 @@ class EngineContractTests(unittest.TestCase):
         self.assertLess(by_id["headline"]["x"], by_id["product"]["x"])
         self.assertGreater(by_id["product"]["height"], target["height"] * 0.60)
 
+    def test_dense_wide_banner_keeps_brand_mark_out_of_copy_column(self):
+        name, source, target = make_stress_corpus()[39]
+        self.assertEqual(name, "synthetic_039")
+        output = resize(source, target)
+        diagnostics = get_last_diagnostics()
+        self.assertIn(diagnostics["layout_family"], {"banner", "banner_mirror"})
+        self.assertEqual(diagnostics["score_components"]["collision_avoidance"], 100.0)
+        self.assertEqual(diagnostics["score_components"]["target_adaptation"], 100.0)
+        self.assertGreaterEqual(diagnostics["proxy_score"], 98.0)
+        self.assertFalse(any("headline/logo" in issue for issue in diagnostics["issues"]))
+        self.assert_contract(source, target, output)
+
+    def test_wide_campaign_keeps_secondary_art_out_of_narrative_column(self):
+        wide_cases = [
+            (name, source, target)
+            for name, source, target in make_mutations(_official_tasks())
+            if name.endswith("_wide") and sum(element.get("type") == "image" for element in source["elements"]) > 3
+        ]
+        self.assertTrue(wide_cases)
+        for name, source, target in wide_cases:
+            with self.subTest(name=name):
+                output = resize(source, target)
+                diagnostics = get_last_diagnostics()
+                self.assertEqual(diagnostics["score_components"]["collision_avoidance"], 100.0)
+                self.assertGreaterEqual(diagnostics["proxy_score"], 98.0)
+                self.assertFalse(any("new overlap" in issue for issue in diagnostics["issues"]))
+                self.assert_contract(source, target, output)
+
+    def test_long_compact_headline_preserves_type_hierarchy(self):
+        cases = [
+            (name, source, target)
+            for name, source, target in make_mutations(_official_tasks())
+            if name.endswith("_headline_4x") and target["width"] <= 800 and target["height"] <= 150
+        ]
+        self.assertTrue(cases)
+        for name, source, target in cases:
+            with self.subTest(name=name):
+                output = resize(source, target)
+                diagnostics = get_last_diagnostics()
+                headline = next(e for e in output["elements"] if e["id"] == "headline")
+                self.assertGreaterEqual(headline["font_size"], 8.0)
+                self.assertFalse(any("type hierarchy regressed" in issue for issue in diagnostics["issues"]))
+                self.assertEqual(diagnostics["score_components"]["collision_avoidance"], 100.0)
+                self.assert_contract(source, target, output)
+
     def test_sparse_portrait_stack_uses_lower_action_band(self):
         task = next(task for task in _official_tasks() if task["difficulty"] == "level_1_warmup")
         output = resize(task["source"], task["target_canvas"])
