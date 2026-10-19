@@ -1,6 +1,6 @@
 # Offline Docker validation
 
-Revalidated after event-metadata inference and dedicated portrait/split metadata bands on 2026-10-16 with Docker Desktop 4.77.0 and engine 29.5.3.
+Revalidated after compact-banner supporting-copy band adjustment on 2026-10-18 with Docker Desktop 4.77.0 and engine 29.5.3.
 
 Build for the challenge architecture:
 
@@ -29,7 +29,9 @@ Two consecutive `--network none` runs produced byte-identical JSON and PNG
 outputs for all three official samples. PNG SHA-256 values: Level 1
 `a1a27605f6fbf2a771896e0ff24179040a3d676796c7daf68cdd99edc0a6b095`, Level 2
 `871654b7992f5d38acca64e8481ac52da6dad0900f8922d9dac359c65d81cf54`, Level 3
-`01916ded4fc3ec56329ffcb62f107862e0ece4ae2fa503657600237f401d5c0e`.
+`bc53e1e14b868e78f276a5c208779699bdd7d3ce4a8c93560eae16a472537a9c`.
+
+For this 2026-10-18 milestone, rebuilt `chameleon-engine` for linux/amd64 and ran the three official samples twice with `--network none`. Both runs printed `OK`, had only the known non-fatal Fontconfig warning, and produced identical JSON and PNG hashes. Level 3 JSON SHA-256: `b84791835f2d45bba74575afc39c08c6d6b2c58c0df42c8582025ee06256a847`. The rendered Level 3 support line increased from 8.45 px to 9.20 px; IDs, copy, and font family remain preserved. This was an incremental rebuild; the separately documented clean-image rebuild predates this code change.
 
 The generated JSON retained source element IDs and counts, text content, and font families. Output geometry stayed within each target canvas. Contain-fit images retained their source frame ratios; cover-fit backgrounds use a target-sized frame by design. The only warning on the offline run was Fontconfig's non-fatal `05-reset-dirs-sample.conf` warning.
 

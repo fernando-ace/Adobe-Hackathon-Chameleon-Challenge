@@ -266,6 +266,7 @@ class EngineContractTests(unittest.TestCase):
         output = resize(task["source"], task["target_canvas"])
         elements = {element["id"]: element for element in output["elements"]}
         self.assertGreaterEqual(elements["headline"]["font_size"], 16.5)
+        self.assertGreaterEqual(elements["subhead"]["font_size"], 8.8)
         self.assertGreaterEqual(elements["legal_text"]["font_size"], 7.5)
         self.assertGreaterEqual(elements["cta_label"]["font_size"], 8.0)
         for element_id in ("badge1_label", "badge2_label", "badge3_label"):

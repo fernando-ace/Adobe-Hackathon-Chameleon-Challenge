@@ -446,7 +446,7 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
                 _apply_rect(dna, by_id, f.id, (copy_x, head_y, copy_w, current_head_h), assigned)
                 head_y += current_head_h * (1.0 if compact else 1.04)
             for f in ordered_support:
-                h = ch * (0.16 if ch > 140 else 0.22)
+                h = ch * (0.16 if ch > 140 else 0.24 if compact_wide_copy else 0.22)
                 support_w = copy_w * 0.82 if compact_wide_copy else copy_w
                 _apply_rect(dna, by_id, f.id, (copy_x, head_y, support_w, h), assigned)
                 head_y += h * 1.02
