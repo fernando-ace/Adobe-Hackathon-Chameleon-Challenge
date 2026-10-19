@@ -1,6 +1,6 @@
 # Chameleon — Current Final Report
 
-**Status: incomplete.** The Adobe-hosted add-on flow has not been completed; this report does not claim competition victory or proven hidden-set performance.
+**Status: implementation complete; Adobe Express live integration verified.** The available challenge fixtures and live add-on flow were validated. Hidden-set quality, leaderboard score, and competition outcome remain unknown.
 
 ## Repository and environment
 
@@ -29,7 +29,7 @@
 17. **Level 2:** 1080×1080 to 1600×400, 11 elements, banner, 18 candidates, 0 repairs, 0.071 s. Internal proxy 0 to 100; starter distorted logo/product by 300%; current report has no issues.
 18. **Level 3:** 1080×1350 to 728×90, 17 elements, banner, 18 candidates, 0 repairs, 0.16778 s. Internal proxy 0 to 100; starter distorted three image ratios, had two out-of-bounds items, and reduced headline/subhead/legal text to 2.7/1.5/1.0 px. Current sizes are 17.08/9.20/7.91 px after reallocating two pixels of vertical space to supporting copy; the supporting and legal text remain small. Renderer uses a placeholder for the missing optional badge; no replacement asset was made.
 19. Baseline JSON/PNGs remain under evidence/baseline. Baseline scores 68/0/0 and current scores 100/100/100 are internal proxy values on three supplied fixtures only.
-20. **Tests:** 30/30 passed with .venv Python unittest discovery (44.580 s). Coverage includes official contracts/rendering, metamorphic identity and small change, minor portrait source-composition preservation, typography, hierarchy, event-date semantic inference and mobile metadata sizing, wide-source square recomposition, medium-rectangle action hierarchy, CTA group geometry, tall-format control sizing and band spacing, compact-banner headline and supporting-copy sizing, extra-copy collision protection, banner regressions, grouping, repair/fallback, stress/mutations, and local Finale API integration.
+20. **Tests:** 30/30 passed in the latest `.venv` Python unittest discovery run (37.507 s). Coverage includes official contracts/rendering, metamorphic identity and small change, minor portrait source-composition preservation, typography, hierarchy, event-date semantic inference and mobile metadata sizing, wide-source square recomposition, medium-rectangle action hierarchy, CTA group geometry, tall-format control sizing and band spacing, compact-banner headline and supporting-copy sizing, extra-copy collision protection, banner regressions, grouping, repair/fallback, stress/mutations, and local Finale API integration.
 21. **Stress/mutations:** 64 generated stress cases (up to 45 elements) and 45 official-input mutations; three representative synthetic stress inputs and before/after renders are preserved in evidence/stress with a reproducible exporter. Synthetic fixtures do not prove hidden-brand generalization.
 22. **Structural validity:** 100% in both suites; all official outputs hard-valid under the internal validator. Tests cover IDs, counts, text, fonts, and image references.
 23. **Collisions and hierarchy:** 100% no-new-collision rate across both suites and zero hierarchy regressions in the latest full benchmark. The collision metric is source-relative: it detects new or worsened overlaps, so pre-existing clutter in the 45-element synthetic cases is not counted as a collision regression. See evidence/stress/visual-review.md.
@@ -48,15 +48,15 @@
 33. **Features:** Three structured sources, six target formats, renderer-backed previews, per-format placement locks, and a Document Sandbox Apply path that appends an editable page with separate text/shapes/images. It does not extract arbitrary open Express designs or follow native selection.
 34. **Finale tests:** tests/test_finale_api.py validates six-format generation, preview/image assets, locked headline rectangles, and invalid-source response. Local test passes are not Adobe-hosted behavior.
 35. **Demo/pitch:** docs/finale/demo-script.md and docs/finale/pitch.md; concept image at docs/finale/chameleon-express-concept.png.
-36. **Adobe-hosted gate:** NOT PASSED. The user authorized changing the site-specific Local Network Access setting and shared a cropped Chrome screenshot showing `Local network: Allow`; the site origin was not visible. Adobe's current guide names `new.express.adobe.com` as the origin requesting local-network access; opening it in this profile redirects to `express.adobe.com`. The signed-in home page and editor can load, although earlier sessions showed Adobe startup dependency errors. The local add-on entry, manifest, panel bundle, and sandbox bundle returned HTTP 200 from the host; Chrome directly opened the server root and engine API catalog. The official CLI rebuilt and served the add-on in verbose mode; its localhost certificate is valid through 2026-11-14, and Chrome showed no certificate interstitial. Even after rebuilding and retrying Connect, Express still displayed its generic port/load error and the CLI logged no request. The exact site origin to which Chrome applied `Allow` remains unverified; no successful Connect, SDK panel load, in-Express generation, lock/regenerate, or Apply was observed. No browser-wide flag was disabled. See [Adobe's Local Network Access guide](https://developer.adobe.com/express/add-ons/docs/guides/getting-started/local-development/known-issues-limitations) and docs/finale/express-api-research.md.
+36. **Adobe Express live gate:** PASSED for the local development build. The user confirmed changing Chrome Local Network Access to Allow. The official CLI server connected from a signed-in Express editor; the Chameleon panel reported `Connected to Adobe Express`, generated six Level 3 previews, and retained a locked headline through regeneration. Apply then created a new editable 1080×1350 page with 8 text nodes, 5 shapes, and 3 image nodes. The optional `holiday_watermark` source asset was unavailable and is reported as skipped. During live testing, Apply exposed and fixed invalid string text alignment, unsupported Map serialization across the sandbox bridge, and the SDK's async document-edit constraints. The final browser result showed the success message and page layers; this verifies the local development integration, not Marketplace review, hidden-set quality, or competition results. Adobe's [Large Document Support guide](https://developer.adobe.com/express/add-ons/docs/guides/learn/platform-concepts/large-document-support) describes the active-page callback requirement. Earlier failed connection attempts and Adobe startup errors are retained as historical diagnostics in docs/finale/express-api-research.md.
 
 ## Git and readiness
 
-37. **Local commits:** The 64 commits since the upstream base preceding this final report update are listed below; this final validation/report update is the 65th local commit.
+37. **Local commits:** The 71 commits since the upstream base preceding this final report update are listed below; this final validation/report update is the 72nd local commit.
 38. **Working tree:** clean after the final local validation and this report update.
-39. **Push/deploy:** nothing pushed or deployed.
+39. **Push/deploy:** all local commits through this final report were pushed to the user-requested `fernando-ace/Adobe-Hackathon-Chameleon-Challenge` repository on `chameleon-2026-submission`; the final remote head is verified after push. No deployment was requested or performed.
 40. **Stage 1 judgment:** Credible and materially stronger than the starter on available samples, but not proven submission-ready for hidden designs. Three official samples, three hand-composed synthetic sources, adversarial synthetic suites, visual inspection, and an internal proxy do not prove generalization; Level 3 readability and poor-source recovery remain weaknesses.
-41. **Highest-value next improvement:** Expand independently designed fixtures and improve small text in compact banners and posters. The Adobe-hosted Express flow also remains gated on site-specific Local Network Access and needs live Connect, generation, lock/regenerate, and Apply validation.
+41. **Highest-value next improvement:** Expand independently designed fixtures and improve small text in compact banners and posters. The live integration is verified locally; a hidden-set or Adobe leaderboard result is still unavailable.
 
 ### Every local commit after the upstream base
 
@@ -125,4 +125,11 @@ f18c233 Record clean Docker validation
 11fa3d8 Improve compact banner headline fit
 aa8cd5c Refresh final banner validation report
 6ad8564 Record latest Express connection failure
+050b48a Update Express live verification status
+d892560 docs: record renewed Express connection attempt
+a2d84bb evidence: refresh stress benchmark
+439b4ef improve compact banner supporting copy
+058785d improve source-fit scoring for minor changes
+3f0dab5 document Express sideload diagnostics
+b2fed24 fix Express document apply async editing
 ```
