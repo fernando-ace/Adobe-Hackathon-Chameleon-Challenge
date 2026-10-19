@@ -34,6 +34,11 @@ function fontNames(element: LayoutElement): string[] {
     return [bold ? "SourceSans3-Bold" : "SourceSans3-Regular", "SourceSansPro-Regular"];
 }
 
+function textAlignment(value: unknown): number {
+    const alignments: Record<string, number> = { left: 1, right: 2, center: 3, justify: 4, justifyLeft: 4 };
+    return alignments[String(value ?? "left")] ?? alignments.left;
+}
+
 async function findAvailableFont(element: LayoutElement) {
     for (const postscriptName of fontNames(element)) {
         const font = await fonts.fromPostscriptName(postscriptName);
@@ -51,35 +56,54 @@ async function applyLayout(payload: ApplyLayoutPayload): Promise<string> {
     const { layout, elementAssets } = payload;
     if (!layout?.canvas?.width || !layout?.canvas?.height || !Array.isArray(layout.elements)) throw new Error("The selected layout is missing canvas geometry or elements.");
 
-    const textElements = layout.elements.filter((element) => element.type === "text");
-    const availableFonts = new Map<string, Awaited<ReturnType<typeof findAvailableFont>>>();
-    for (const element of textElements) availableFonts.set(element.id, await findAvailableFont(element));
-
-    const page = editor.documentRoot.pages.addPage({ width: layout.canvas.width, height: layout.canvas.height });
-    const artboard = page.artboards.first;
     const ordered = [...layout.elements].sort((left, right) => Number(left.z_index ?? 0) - Number(right.z_index ?? 0));
-    const imageBitmaps = new Map<string, Awaited<ReturnType<typeof editor.loadBitmapImage>>>();
     const warnings: string[] = [];
+    let appliedImageCount = 0;
 
+    // These resource loaders are asynchronous document operations themselves,
+    // so finish them before capturing any page or node references.
+    // Start each mutating image-resource load before the first await. Express
+    // rejects starting a document mutation after an unrelated async boundary.
+    const imageLoads: Array<[string, Promise<Awaited<ReturnType<typeof editor.loadBitmapImage>>>]> = [];
     for (const element of ordered.filter((item) => item.type === "image")) {
         const data = elementAssets[element.id];
         if (!data) {
             warnings.push(`Skipped image “${element.id}”: image data was unavailable.`);
             continue;
         }
-        try { imageBitmaps.set(element.id, await editor.loadBitmapImage(decodePng(data))); }
-        catch { warnings.push(`Skipped image “${element.id}”: Adobe Express could not load this asset.`); }
+        imageLoads.push([element.id, editor.loadBitmapImage(decodePng(data))]);
+    }
+    const imageBitmaps: Array<[string, Awaited<ReturnType<typeof editor.loadBitmapImage>>]> = [];
+    const imageResults = await Promise.allSettled(imageLoads.map(([, promise]) => promise));
+    for (let index = 0; index < imageResults.length; index++) {
+        const result = imageResults[index];
+        if (result.status === "fulfilled") {
+            imageBitmaps.push([imageLoads[index][0], result.value]);
+        } else {
+            const caught = result.reason;
+            const detail = caught instanceof Error ? ` ${caught.message}` : "";
+            warnings.push(`Skipped image “${imageLoads[index][0]}”: Adobe Express could not load this asset.${detail}`);
+        }
     }
 
-    // Document changes happen in the active-page callback after all asynchronous image/font work.
-    await editor.keepContentActiveDuringAsync(page, async () => imageBitmaps, (bitmaps) => {
+    const textElements = layout.elements.filter((element) => element.type === "text");
+    const availableFonts: Array<[string, Awaited<ReturnType<typeof findAvailableFont>>]> = [];
+    for (const element of textElements) availableFonts.push([element.id, await findAvailableFont(element)]);
+
+    // No document or node work happens between capturing the active page and
+    // entering the guarded callback. All edits happen synchronously there.
+    const targetPage = editor.context.currentPage;
+    await editor.keepContentActiveDuringAsync(targetPage, async () => ({ availableFonts, imageBitmaps }), ({ availableFonts, imageBitmaps }) => {
+        const page = editor.documentRoot.pages.addPage({ width: layout.canvas.width, height: layout.canvas.height });
+        const artboard = page.artboards.first;
         for (const element of ordered) {
             if (element.type === "image") {
-                const bitmap = bitmaps.get(element.id);
+                const bitmap = imageBitmaps.find(([id]) => id === element.id)?.[1];
                 if (!bitmap) continue;
                 const node = editor.createImageContainer(bitmap, { initialSize: { width: element.width, height: element.height } });
                 setNodePosition(node, element);
                 artboard.children.append(node);
+                appliedImageCount++;
                 continue;
             }
 
@@ -96,11 +120,11 @@ async function applyLayout(payload: ApplyLayoutPayload): Promise<string> {
             if (element.type === "text") {
                 const text = editor.createText(String(element.content ?? ""));
                 text.layout = { type: constants.TextLayout.autoHeight, width: element.width };
-                text.textAlignment = (element.text_align ?? "left") as unknown as typeof text.textAlignment;
+                text.textAlignment = textAlignment(element.text_align) as unknown as typeof text.textAlignment;
                 const style = {
                     fontSize: Math.max(1, Number(element.font_size ?? 16) * 0.75),
                     color: parseColor(element.color),
-                    ...(availableFonts.get(element.id) ? { font: availableFonts.get(element.id) } : {}),
+                    ...(availableFonts.find(([id]) => id === element.id)?.[1] ? { font: availableFonts.find(([id]) => id === element.id)?.[1] } : {}),
                 };
                 text.fullContent.applyCharacterStyles(style, { start: 0, length: String(element.content ?? "").length });
                 setNodePosition(text, element);
@@ -110,9 +134,8 @@ async function applyLayout(payload: ApplyLayoutPayload): Promise<string> {
     });
 
     const textCount = ordered.filter((element) => element.type === "text").length;
-    const imageCount = ordered.filter((element) => element.type === "image" && imageBitmaps.has(element.id)).length;
     const shapeCount = ordered.filter((element) => element.type === "shape").length;
-    const summary = `Added ${payload.title} as a new ${layout.canvas.width} × ${layout.canvas.height} page with ${textCount} text, ${shapeCount} shape, and ${imageCount} image elements.`;
+    const summary = `Added ${payload.title} as a new ${layout.canvas.width} × ${layout.canvas.height} page with ${textCount} text, ${shapeCount} shape, and ${appliedImageCount} image elements.`;
     return warnings.length ? `${summary} ${warnings.join(" ")}` : summary;
 }
 
