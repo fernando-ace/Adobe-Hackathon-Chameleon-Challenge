@@ -12,7 +12,7 @@ This score is an internal proxy, not Adobe's hidden evaluator.
 - Stress hierarchy regressions: 0 across 0 cases
 - No-new-collision rate (source-relative): 100.0%
 - Determinism rate: 100.0%
-- Stress runtime median / p95: 0.1557s / 0.7963s
+- Stress runtime median / p95: 0.1649s / 0.9659s
 
 - Mutation structural validity: 100.0%
 - Mutation off-canvas cases: 0
@@ -26,7 +26,7 @@ This score is an internal proxy, not Adobe's hidden evaluator.
 
 | Official sample | Baseline proxy | Current proxy | Layout | Candidates | Repairs |
 |---|---:|---:|---|---:|---:|
-| chameleon_sample_level1_warmup | 65.52 | 100.00 | stack | 12 | 0 |
+| chameleon_sample_level1_warmup | 68.00 | 100.00 | stack | 12 | 0 |
 | chameleon_sample_level2_core | 0.00 | 100.00 | banner | 18 | 0 |
 | chameleon_sample_level3_advanced | 0.00 | 100.00 | banner | 18 | 0 |
 

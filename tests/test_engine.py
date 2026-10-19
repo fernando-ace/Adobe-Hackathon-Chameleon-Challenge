@@ -212,6 +212,19 @@ class EngineContractTests(unittest.TestCase):
                     normalized_delta.append(abs(element[field] - before[field]) / canvas_size)
             self.assertLess(sum(normalized_delta) / max(1, len(normalized_delta)), 0.04)
 
+    def test_minor_portrait_expansion_preserves_centered_campaign_composition(self):
+        fixture = json.loads((ROOT / "evidence" / "curated" / "source.json").read_text(encoding="utf-8"))
+        source = fixture["source"]
+        target = {"width": 1080, "height": 1350}
+        dna = analyze_design(source, target, ROOT / "brand_kit" / "assets")
+        self.assertEqual(dna.transformation, "minor_change")
+
+        output = resize(source, target)
+        diagnostics = get_last_diagnostics()
+        self.assertEqual(diagnostics["layout_family"], "source_fit")
+        self.assertEqual(diagnostics["proxy_score"], 100.0)
+        self.assert_contract(source, target, output)
+
     def test_larger_canvas_preserves_primary_type_and_does_not_add_clipping(self):
         for task in _official_tasks():
             source, target = task["source"], task["target_canvas"]

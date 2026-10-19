@@ -31,20 +31,22 @@ outputs for all three official samples. PNG SHA-256 values: Level 1
 `871654b7992f5d38acca64e8481ac52da6dad0900f8922d9dac359c65d81cf54`, Level 3
 `bc53e1e14b868e78f276a5c208779699bdd7d3ce4a8c93560eae16a472537a9c`.
 
-For this 2026-10-18 milestone, rebuilt `chameleon-engine` for linux/amd64 and ran the three official samples twice with `--network none`. Both runs printed `OK`, had only the known non-fatal Fontconfig warning, and produced identical JSON and PNG hashes. Level 3 JSON SHA-256: `b84791835f2d45bba74575afc39c08c6d6b2c58c0df42c8582025ee06256a847`. The rendered Level 3 support line increased from 8.45 px to 9.20 px; IDs, copy, and font family remain preserved. This was an incremental rebuild; the separately documented clean-image rebuild predates this code change.
+For this 2026-10-18 milestone, rebuilt `chameleon-engine` for linux/amd64 and ran the three official samples twice with `--network none`. Both runs printed `OK`, had only the known non-fatal Fontconfig warning, and produced identical JSON and PNG hashes. Level 3 JSON SHA-256: `b84791835f2d45bba74575afc39c08c6d6b2c58c0df42c8582025ee06256a847`. The rendered Level 3 support line increased from 8.45 px to 9.20 px; IDs, copy, and font family remain preserved.
+
+After aligning source-fit scoring with the analyzer's near-identical/minor transformation classes, the image was rebuilt again and all three official samples ran twice offline. All six JSON/PNG hashes matched across the two runs and remained unchanged from the previous build. The change affects candidate ranking for minor portrait adaptations; the official sample outputs did not change. The clean-image verification below was then repeated on this code.
 
 The generated JSON retained source element IDs and counts, text content, and font families. Output geometry stayed within each target canvas. Contain-fit images retained their source frame ratios; cover-fit backgrounds use a target-sized frame by design. The only warning on the offline run was Fontconfig's non-fatal `05-reset-dirs-sample.conf` warning.
 
 ## Clean-build check
 
-Also rebuilt with `docker build --no-cache --platform linux/amd64 -t
-chameleon-engine-clean .`. This re-resolved the `python:3.11-slim` base (digest
+Rebuilt with `docker build --no-cache --platform linux/amd64 -t
+chameleon-engine-clean .` after both 2026-10-18 code changes. This re-resolved
+the `python:3.11-slim` base (digest
 `e88e9763f943ec1834f992a4b51e0f24500486803e8bc534e5767af9ea65f6ce`) and
 reinstalled OS/Python dependencies. Two runs of this clean image under
-`--network none` returned `OK`; all six JSON/PNG SHA-256 values were identical
-between runs and matched the output artifacts recorded here. In the latest
-two runs, times ranged from 0.15–0.17 s (Level 1), 0.17–0.21 s (Level 2),
-and 0.18–0.23 s (Level 3).
-Only the same non-fatal Fontconfig warning appeared.
+`--network none` returned `OK`; all six JSON/PNG SHA-256 values matched between
+runs and the current output artifacts. Latest runtimes were 0.15–0.18 s (Level
+1), 0.18 s (Level 2), and 0.19–0.21 s (Level 3). Only the same non-fatal
+Fontconfig warning appeared.
 
 To recover Docker Desktop after an unclean shutdown, this host had orphaned Windows socket reparse points in both `%LOCALAPPDATA%\Docker\run` and `%LOCALAPPDATA%\docker-secrets-engine`. Direct socket deletion failed with Windows error 1920. Renaming the socket-only runtime directories aside let Docker recreate them; Docker then answered `docker info` and ran the offline image. The preserved directories are outside the repository.

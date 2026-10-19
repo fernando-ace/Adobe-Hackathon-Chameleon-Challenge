@@ -222,7 +222,9 @@ def score_design(dna: DesignDNA, design: dict[str, Any], family: str = "") -> Sc
                     adaptation_penalty += min(8.0, (0.055 - area_share) * 120)
     elif dna.target_aspect < 0.72 and family.startswith("banner"):
         adaptation_penalty += 14.0
-    if family == "source_fit":
+    # Keep the source composition intact for near-identical and minor changes;
+    # charge the source-fit family only when a real aspect-ratio reflow is due.
+    if family == "source_fit" and dna.transformation not in {"near_identical", "minor_change"}:
         aspect_shift = abs(log(max(1e-6, dna.target_aspect) / max(1e-6, dna.source_aspect)))
         if aspect_shift > 0.12:
             adaptation_penalty += min(18.0, (aspect_shift - 0.12) * 24.0)
