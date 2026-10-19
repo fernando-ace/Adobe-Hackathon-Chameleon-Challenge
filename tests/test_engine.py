@@ -289,6 +289,19 @@ class EngineContractTests(unittest.TestCase):
         self.assertGreaterEqual(product["width"] * product["height"] / (target["width"] * target["height"]), 0.055)
         self.assertEqual(get_last_diagnostics()["issues"], [])
 
+    def test_compact_headline_uses_gutter_without_touching_hero(self):
+        task = next(task for task in _official_tasks() if task["difficulty"] == "level_3_advanced")
+        source = deepcopy(task["source"])
+        target = {"width": 640, "height": 80}
+        output = resize(source, target)
+        elements = {element["id"]: element for element in output["elements"]}
+        self.assertGreater(elements["headline"]["font_size"], 14.0)
+        self.assertLessEqual(
+            elements["headline"]["x"] + elements["headline"]["width"],
+            elements["product"]["x"],
+        )
+        self.assertEqual(get_last_diagnostics()["issues"], [])
+
     def test_compact_banner_extra_copy_does_not_expand_into_ribbon_lane(self):
         name, source, target = next(
             (name, source, target)

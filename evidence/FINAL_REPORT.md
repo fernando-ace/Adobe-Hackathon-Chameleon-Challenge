@@ -1,8 +1,44 @@
-# Chameleon — Current Final Report
+# Chameleon — Final Report
 
-**Status: implementation complete; Adobe Express live integration verified.** The available challenge fixtures and live add-on flow were validated. Hidden-set quality, leaderboard score, and competition outcome remain unknown.
+**Current status (2026-10-18 client date):** the compact-banner headline fix is implemented and committed locally on `chameleon-2026-submission`; the working tree began clean at baseline `47f805b31d5dd107b74bce43f132dd697715adca`. The full Python suite, official renders, synthetic benchmark, API integration tests, and Adobe Express production build passed in this Linux environment. This follow-up has not been pushed. Hidden-set quality, leaderboard score, and competition outcome remain unknown.
 
-## Repository and environment
+## Current follow-up: reproducibility and compact-banner result
+
+The checkout's active branch initially appeared as `work`; the remote tracking branch `origin/chameleon-2026-submission` pointed to the reported baseline commit. Work continued on a local `chameleon-2026-submission` branch. No `AGENTS.md` files were present. The baseline working tree was clean.
+
+The initial Linux run reproduced the reported 29/30 test result. `test_compact_banner_reserves_readable_action_row` received a 16.296875 px headline against its 16.5 px threshold. The planner had capped the compact headline at 87.5% of canvas width despite available room before the hero rail. Increasing that lane to 88% leaves the headline's right edge at 90% of canvas width and the hero rail starts at 91%. The renderer-compatible size is now 16.578125 px on the 728×90 official sample. The supporting line remains 9.203125 px and legal copy 7.9140625 px. No dependencies were changed. The historical Windows pass is not independently reproduced here, so platform differences cannot be ruled out as a contributor; the observed Linux failure itself was caused by the planner geometry and now passes on Linux.
+
+### Synthetic holdout and regression evidence
+
+`tools/evaluate_compact_headlines.py` compares baseline commit `47f805b` with the current planner over 42 deterministic synthetic cases: six compact target sizes, seven headline lengths, optional grouped ribbon/badge elements, rotated translucent decorations, and varied hero-image proportions. This is a synthetic robustness check, not evidence about the hidden set. The measured summary is in `evidence/benchmark/compact-headline-holdout.json`.
+
+| Measure | Before | After |
+|---|---:|---:|
+| Mean headline size | 16.0107 px | 16.0390 px |
+| Minimum headline size | 6.1372 px | 6.1372 px |
+| Cases with a larger headline | — | 10 / 42 |
+| Invalid outputs | 0 | 0 |
+| Clipped text / new collisions / image-ratio failures | 0 / 0 / 0 | 0 / 0 / 0 |
+| Fallback cases | 0 | 0 |
+| Median / p95 runtime | 0.1551 / 0.2459 s | 0.1595 / 0.2429 s |
+
+The 640×80 heldout headline grows from 13.578125 px to 14.078125 px. The smallest synthetic banner remains difficult; this targeted change does not improve the set's minimum typography. Official samples retained their 100/100 internal proxy scores. Across the 64 stress cases and 45 input mutations, the benchmark reports 100% validity and determinism, with zero clipping, off-canvas elements, image-ratio failures, hierarchy regressions, or new/worsened collisions before and after. Stress median/p95 runtime in this Linux run was 0.13472/0.58742 s; the previous report's different environment recorded 0.16486/0.96593 s, so that timing difference is not attributed to this change.
+
+Representative official Level 3 renders were visually reviewed. The 728×90 hierarchy and asset placements remain the same; the headline uses the previously unused gutter without touching the product rail. Images: [before](benchmark/compact_headline_before.png) and [after](benchmark/compact_headline_after.png). These are rendered examples, not an independent visual-quality score.
+
+### Commands and environment
+
+Environment: Python 3.12.14, Linux 6.18.55 x86_64, Pillow 13.0.0, skia-python 144.0.post2, `cr-renderer` 0.1.0 at the existing pinned commit `a17e1fb9a732959dd6c21ae168d5ee09d74bd64f`, Node 24.19.0, and npm 11.9.0.
+
+- `.venv/bin/python -m unittest discover -s tests -v` — 31/31 passed; none skipped. This includes official renderer execution and the Finale API tests for six-format generation, previews/assets, locking, and invalid input.
+- `.venv/bin/python -m engine.main` — rendered all three official samples successfully.
+- `PYTHONPATH=. .venv/bin/python tools/benchmark.py` — 64 stress cases and 45 mutations passed the reported checks.
+- `PYTHONPATH=. .venv/bin/python tools/evaluate_compact_headlines.py` — generated the 42-case before/after holdout report.
+- `npm run build` from `chameleon-express/` — webpack production build passed.
+
+The API tests and add-on build ran locally. An authenticated Adobe Express browser session was not available in this execution, so live generation, lock regeneration, and editable page application were not rerun. The live result recorded below is historical evidence from the prior report, not a current confirmation.
+
+## Prior validation context (historical)
 
 1. **Starting point:** The official starter was cloned into the supplied empty folder root; challenge materials were retained.
 2. **Upstream base:** a44a06046b0413f0785e7203955c3822e0acbc32 — Flatten repo to starter root, drop dummy-submission.
@@ -10,7 +46,7 @@
 4. **Environment:** Windows 11, project Python 3.11 venv, Node 22.17.1/npm 10.9.2, Docker Desktop 4.77.0 with Engine 29.5.3, Linux AMD64.
 5. Original baseline findings and setup are in ../docs/baseline.md.
 
-## Engine and design intelligence
+### Engine and design intelligence
 
 6. **Engine/API:** engine/resize.py preserves resize(source, target_canvas) -> dict and delegates to deterministic modules under engine/chameleon/.
 7. **Design DNA:** analyzer.py records normalized geometry, asset metadata/visible bounds, role confidence, source composition, groups, anchors, reading order, spacing/alignment, transformation severity, and relationships.
@@ -23,7 +59,7 @@
 14. **Scoring:** legality, image fidelity, typography, collisions, group cohesion, canvas use, target adaptation, sampled contrast, and source-relative hierarchy. This is an internal proxy, not Adobe's score.
 15. **Repair/fallback:** repair.py applies deterministic score-improving moves for diagnosed overlaps/rotated overflow. resize.py provides bounded fallback; the injected-failure test checks preservation of IDs and target canvas.
 
-## Stage 1 results
+### Stage 1 results
 
 16. **Level 1:** 1080×1080 to 1080×1350, 4 elements, stack, 12 candidates, 0 repairs, 0.03285 s in the latest local benchmark. Internal proxy 68 to 100; starter distorted logo aspect by 20%; current report has no issues.
 17. **Level 2:** 1080×1080 to 1600×400, 11 elements, banner, 18 candidates, 0 repairs, 0.071 s. Internal proxy 0 to 100; starter distorted logo/product by 300%; current report has no issues.
@@ -42,19 +78,19 @@
 30. **Weaknesses:** Only three official examples; three synthetic human-reviewed sources remain a small sample; role/contrast heuristics; small 728×90 copy; missing optional asset placeholder; tiny Level 3 supporting/legal copy; transparent product art appears small; hidden-design quality and Adobe score unknown. See ../docs/failure-taxonomy.md.
 31. **Research:** ../docs/research-notes.md covers LayoutGAN, constrained layout, WCAG contrast and metamorphic checks. ../docs/finale-research.md links current Adobe documentation and distinguishes API capability from local evidence.
 
-## Finale
+### Finale
 
 32. **Prototype:** React/TypeScript Adobe add-on scaffold calls the real local Python engine through chameleon-express/server.py. Production webpack build and local package build succeeded. The ZIP in evidence/finale is a local test package, not an Adobe-reviewed listing.
 33. **Features:** Three structured sources, six target formats, renderer-backed previews, per-format placement locks, and a Document Sandbox Apply path that appends an editable page with separate text/shapes/images. It does not extract arbitrary open Express designs or follow native selection.
 34. **Finale tests:** tests/test_finale_api.py validates six-format generation, preview/image assets, locked headline rectangles, and invalid-source response. Local test passes are not Adobe-hosted behavior.
 35. **Demo/pitch:** docs/finale/demo-script.md and docs/finale/pitch.md; concept image at docs/finale/chameleon-express-concept.png.
-36. **Adobe Express live gate:** PASSED for the local development build. The user confirmed changing Chrome Local Network Access to Allow. The official CLI server connected from a signed-in Express editor; the Chameleon panel reported `Connected to Adobe Express`, generated six Level 3 previews, and retained a locked headline through regeneration. Apply then created a new editable 1080×1350 page with 8 text nodes, 5 shapes, and 3 image nodes. The optional `holiday_watermark` source asset was unavailable and is reported as skipped. During live testing, Apply exposed and fixed invalid string text alignment, unsupported Map serialization across the sandbox bridge, and the SDK's async document-edit constraints. The final browser result showed the success message and page layers; this verifies the local development integration, not Marketplace review, hidden-set quality, or competition results. Adobe's [Large Document Support guide](https://developer.adobe.com/express/add-ons/docs/guides/learn/platform-concepts/large-document-support) describes the active-page callback requirement. Earlier failed connection attempts and Adobe startup errors are retained as historical diagnostics in docs/finale/express-api-research.md.
+36. **Adobe Express live gate (historical):** The prior report recorded a successful local development build in a signed-in Express editor: six Level 3 previews, headline locking through regeneration, and Apply creating an editable 1080×1350 page with 8 text nodes, 5 shapes, and 3 image nodes. The optional `holiday_watermark` source asset was skipped. This live check was not rerun in the current Linux execution; see the current validation section above. It does not verify Marketplace review, hidden-set quality, or competition results. Adobe's [Large Document Support guide](https://developer.adobe.com/express/add-ons/docs/guides/learn/platform-concepts/large-document-support) describes the active-page callback requirement. Earlier failed connection attempts and Adobe startup errors are retained in docs/finale/express-api-research.md.
 
-## Git and readiness
+### Git and readiness at the prior checkpoint
 
-37. **Local commits:** The 71 commits since the upstream base preceding this final report update are listed below; this final validation/report update is the 72nd local commit.
-38. **Working tree:** clean after the final local validation and this report update.
-39. **Push/deploy:** all local commits through this final report were pushed to the user-requested `fernando-ace/Adobe-Hackathon-Chameleon-Challenge` repository on `chameleon-2026-submission`; the final remote head is verified after push. No deployment was requested or performed.
+37. **Local commits:** The 71 commits since the upstream base preceding that report update are listed below; its final validation/report update was the 72nd local commit.
+38. **Working tree:** clean at that prior checkpoint.
+39. **Push/deploy:** commits through that prior report were pushed to `fernando-ace/Adobe-Hackathon-Chameleon-Challenge` on `chameleon-2026-submission`. The current follow-up has not been pushed. No deployment was requested or performed.
 40. **Stage 1 judgment:** Credible and materially stronger than the starter on available samples, but not proven submission-ready for hidden designs. Three official samples, three hand-composed synthetic sources, adversarial synthetic suites, visual inspection, and an internal proxy do not prove generalization; Level 3 readability and poor-source recovery remain weaknesses.
 41. **Highest-value next improvement:** Expand independently designed fixtures and improve small text in compact banners and posters. The live integration is verified locally; a hidden-set or Adobe leaderboard result is still unavailable.
 

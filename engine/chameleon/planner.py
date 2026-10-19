@@ -347,7 +347,11 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
                 headline, cw * 0.74, ch * 0.45, maximum=maximum, minimum=8.0,
             )
             expanded_size, expanded_measure = fit_font_size(
-                headline, cw * 0.875, ch * 0.45, maximum=maximum, minimum=8.0,
+                # Reserve the full headline lane up to the hero gutter. The
+                # previous 87.5% cap left a narrow dead strip before the hero
+                # and forced some two-line headlines below a comfortable size.
+                # copy_x is at 2% and hero_x at 91%, so 88% keeps a small gap.
+                headline, cw * 0.88, ch * 0.45, maximum=maximum, minimum=8.0,
             )
             gains_useful_headroom = expanded_size >= max(8.0, base_size * 1.10)
             compact_wide_copy = expanded_measure.fits and (
@@ -399,7 +403,7 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
             # product in a narrow right rail lets long source copy fit at a
             # useful size while preserving the same elements and wording.
             if compact_wide_copy:
-                copy_x, copy_w = cw * 0.02, cw * 0.875
+                copy_x, copy_w = cw * 0.02, cw * 0.88
             else:
                 copy_x, copy_w = mx, cw * 0.74
         if logos:
