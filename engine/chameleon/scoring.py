@@ -6,7 +6,7 @@ from dataclasses import dataclass, asdict
 from math import cos, log, radians, sin
 from typing import Any
 
-from .model import DesignDNA
+from .model import DesignDNA, typography_growth
 from .typography import measure_text
 from .visual_analysis import background_for_design, minimum_local_contrast
 
@@ -122,6 +122,8 @@ def score_design(dna: DesignDNA, design: dict[str, Any], family: str = "") -> Sc
                      "cta_text": 7.0, "badge_text": 5.0}.get(fact.role, 6.0)
             if size < floor:
                 text_penalty += (floor - size) * (0.8 if fact.role == "legal" else 1.4)
+                if fact.role in {"headline", "cta_text"}:
+                    text_penalty += (floor - size) ** 2 * (2.0 if fact.role == "headline" else .6)
                 issues.append(f"{fact.id}: small type at {size:.1f}px")
             if background is not None:
                 ratio = minimum_local_contrast(e, background)
@@ -249,8 +251,23 @@ def score_design(dna: DesignDNA, design: dict[str, Any], family: str = "") -> Sc
             underuse_penalty += max(0.0, 0.62 - horizontal_fill) * 12.0
     else:
         underuse_penalty = 20.0
-    score = max(0.0, 100.0 - overflow_penalty - distortion_penalty - text_penalty - collision_penalty - group_penalty - underuse_penalty - adaptation_penalty - contrast_penalty - hierarchy_penalty)
+    # Reward retention above the old tiny-font thresholds. Allocation and wrap
+    # choices should compete before primary content is compressed. Source
+    # hierarchy supplies a scale; this introduces no global minimum font size.
+    heads = [f for f in text_facts if f.role == "headline"]
+    retention = sum(min(1.0, float(by_id[f.id].get("font_size", 1)) /
+                        max(1.0, float(f.element.get("font_size", 1)) * typography_growth(dna))) for f in heads) / max(1, len(heads))
+    readability_penalty = 18.0 * max(0.0, 1.0 - retention) if heads else 0.0
+    for roles, weight in (({"cta_text"}, 10.0), ({"subheadline", "event_metadata"}, 6.0)):
+        role_facts = [f for f in text_facts if f.role in roles]
+        if role_facts:
+            retained = [min(1.0, float(by_id[f.id].get("font_size", 1)) /
+                            max(1.0, float(f.element.get("font_size", 1)) * typography_growth(dna))) for f in role_facts]
+            role_retention = (sum(retained) / len(retained) + min(retained)) / 2
+            readability_penalty += weight * (1.0 - role_retention)
+    score = max(0.0, 100.0 - overflow_penalty - distortion_penalty - text_penalty - collision_penalty - group_penalty - underuse_penalty - adaptation_penalty - contrast_penalty - hierarchy_penalty - readability_penalty)
     components = {
+        "headline_readability": round(retention * 100.0, 4),
         "canvas_legality": round(max(0.0, 100.0 - overflow_penalty), 2),
         "image_fidelity": round(max(0.0, 100.0 - distortion_penalty), 2),
         "typography": round(max(0.0, 100.0 - text_penalty), 2),

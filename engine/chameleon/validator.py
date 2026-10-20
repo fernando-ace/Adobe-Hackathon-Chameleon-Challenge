@@ -45,7 +45,7 @@ def validate_output(source: dict[str, Any], target: dict[str, Any], output: dict
         if not all(isinstance(element.get(k), (int, float)) and math.isfinite(float(element[k])) for k in ("x", "y", "width", "height")):
             continue
         x, y, w, h = (float(element[k]) for k in ("x", "y", "width", "height"))
-        if w < 0 or h < 0 or x < -0.5 or y < -0.5 or x + w > width + 0.5 or y + h > height + 0.5:
+        if w <= 0 or h <= 0 or x < -0.5 or y < -0.5 or x + w > width + 0.5 or y + h > height + 0.5:
             original = src_by_id.get(eid)
             source_canvas = source.get("canvas", {})
             inherited_bleed = False
@@ -71,6 +71,12 @@ def validate_output(source: dict[str, Any], target: dict[str, Any], output: dict
         original = src_by_id.get(eid)
         if original is None:
             continue
+        editable = {"x", "y", "width", "height"}
+        if original.get("type") == "text":
+            editable.add("font_size")
+        for key, value in original.items():
+            if key not in editable and element.get(key) != value:
+                issues.append(f"{eid}: non-layout property changed: {key}")
         if element.get("type") != original.get("type"):
             issues.append(f"{eid}: element type changed")
         if original.get("type") == "text":

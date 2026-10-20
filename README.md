@@ -14,7 +14,7 @@ The public Stage 1 entry point remains `resize(source, target_canvas) -> dict` i
 6. **Candidate judge:** `scoring.py` separates canvas legality, image fidelity, typography, collisions, group cohesion, canvas use, target adaptation, and sampled contrast. The score is an internal heuristic and is not Adobe's hidden score.
 7. **Repair and validation:** `repair.py` moves lower-priority units in response to diagnosed overlaps or rotated overflow and keeps only score improvements. `validator.py` checks the final output contract. `resize.py` falls back to a contained, bounded transformation if analysis or planning fails. Diagnostics include per-element source/output rectangles, inferred roles, placement reasons, and candidate rankings.
 
-Depending on target aspect ratio, the engine generates 12 or 18 deterministic candidates and repairs the two highest-ranked. Candidate count and diagnostics are available through `get_last_diagnostics()` for local evaluation; the challenge entry-point return value remains the design JSON.
+The rebuild adds content-measured semantic lanes, dense secondary grids, bounded type growth, source-aware hierarchy compaction, and rotation-aware unit cells. Search adapts to resize difficulty and deduplicates identical outputs. The two highest-ranked candidates receive repair; all originals remain available, and final selection prioritizes structural/text/image/collision feasibility before aesthetic score. A rare emergency grid is explicitly diagnosed. Candidate count and diagnostics are available through `get_last_diagnostics()` for local evaluation; the challenge entry-point return value remains the design JSON.
 
 ## Setup
 
@@ -34,6 +34,10 @@ The renderer dependency is pinned to the commit captured in [`docs/baseline.md`]
 ```
 
 The three tasks in `input/` produce JSON and renderer-backed PNG previews in `output/`. The upstream, untouched output is preserved in `evidence/baseline/`; current visual evidence and benchmark results are under `evidence/`.
+
+## Rebuild hardening evidence
+
+Fresh baseline, split definitions, remote recovery and validation results are under [`evidence/rebuild/`](evidence/rebuild/). The rebuild preserves the existing source-relative collision metric; zero measured new overlaps does not certify every rendered composition. The three fixed-seed splits use 300 development, 300 holdout and 1000 blind synthetic designs. See the final report there for measured limits.
 
 ## Tests and benchmarks
 

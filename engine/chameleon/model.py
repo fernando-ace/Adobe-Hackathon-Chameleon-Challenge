@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from functools import cached_property
 from typing import Any
 
 
@@ -59,6 +60,13 @@ class DesignDNA:
     repeated_groups: list[list[str]] = field(default_factory=list)
     diagnostics: list[str] = field(default_factory=list)
 
-    @property
+    @cached_property
     def by_id(self) -> dict[str, ElementFacts]:
         return {fact.id: fact for fact in self.facts}
+
+
+def typography_growth(dna: DesignDNA) -> float:
+    """Allow bounded type growth when both usable canvas dimensions increase."""
+    return max(1.0, min(2.0,
+        float(dna.target_canvas["width"]) / max(1.0, float(dna.source["canvas"]["width"])),
+        float(dna.target_canvas["height"]) / max(1.0, float(dna.source["canvas"]["height"]))))

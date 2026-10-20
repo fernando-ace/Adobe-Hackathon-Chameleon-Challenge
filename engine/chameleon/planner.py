@@ -7,6 +7,7 @@ from math import cos, radians, sin
 from typing import Any
 
 from .model import DesignDNA, ElementFacts
+from .allocation import allocated_layout
 from .typography import fit_font_size, measure_text
 
 
@@ -686,17 +687,53 @@ def _layout(dna: DesignDNA, family: str, variant: int = 0) -> dict[str, Any]:
     return output
 
 
+def _protect_hierarchy(dna: DesignDNA, design: dict[str, Any]) -> None:
+    """Compact lower-ranked type before letting fitted primary type lose rank."""
+    ranks = {"headline": 4, "subheadline": 3, "event_metadata": 3,
+             "body_copy": 2, "cta_text": 2, "badge_text": 1, "ribbon_text": 1, "legal": 0}
+    by_id = {str(e["id"]): e for e in design["elements"]}
+    text = sorted((f for f in dna.facts if f.type == "text"),
+                  key=lambda f: -ranks.get(f.role, 1))
+    for high in text:
+        for low in text:
+            if ranks.get(high.role, 1) <= ranks.get(low.role, 1):
+                continue
+            source_ratio = float(high.element.get("font_size", 1)) / max(1., float(low.element.get("font_size", 1)))
+            floor = max(0., min(.820001, source_ratio))
+            if floor > 0:
+                ceiling = max(1., float(by_id[high.id]["font_size"]) / floor)
+                by_id[low.id]["font_size"] = min(float(by_id[low.id]["font_size"]), ceiling)
+
+
 def generate_candidates(dna: DesignDNA) -> list[dict[str, Any]]:
-    families: list[str] = ["source_fit", "stack"]
+    """Spend extra search on meaningful geometry changes; deduplicate outputs."""
+    import json
+    from math import log
+    shift = abs(log(max(1e-6, dna.target_aspect / dna.source_aspect)))
+    difficult = shift > 0.6 or len(dna.facts) > 25 or any(
+        abs(float(f.element.get("rotation", 0))) > 5 for f in dna.facts)
+    families = ["source_fit", "stack"]
     if dna.target_aspect >= 0.72:
         families.extend(["split", "split_mirror"])
     if dna.target_aspect >= 1.2:
         families.extend(["banner", "banner_mirror"])
     candidates = []
-    for family in families:
-        variants = range(3)
-        for variant in variants:
-            design = _layout(dna, family, variant)
-            _legalize_units(dna, design)
+    seen = set()
+
+    def add(family, variant, design):
+        _legalize_units(dna, design)
+        _protect_hierarchy(dna, design)
+        signature = json.dumps(design, sort_keys=True, separators=(",", ":"))
+        if signature not in seen:
+            seen.add(signature)
             candidates.append({"family": family, "variant": variant, "design": design})
+
+    nearby = dna.transformation == "near_identical"
+    for family in families:
+        for variant in range(3 if difficult or not nearby or family == "source_fit" else 1):
+            add(family, variant, _layout(dna, family, variant))
+    budget = 12 if difficult and dna.target_aspect >= 1.6 else 3
+    for variant in range(budget):
+        add("allocated_lanes" if dna.target_aspect >= 1.6 else "allocated_stack",
+            variant, allocated_layout(dna, variant))
     return candidates

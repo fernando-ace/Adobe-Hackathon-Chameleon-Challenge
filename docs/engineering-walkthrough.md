@@ -43,3 +43,40 @@ For each chosen element, `get_last_diagnostics()` reports its inferred role, con
 Layout generation research motivated an explicit relationship graph and multiple candidates; constraint-based design work motivated separate legality, fidelity, and aesthetic signals. Renderer-backed font measurement and image-background sampling address fit and contrast without introducing remote dependencies. See [research notes](research-notes.md) for sources and the distinction between findings, hypotheses, implementation, and measurements.
 
 The deterministic system is explainable, portable, and compliant with offline execution. Its limitations are heuristic role inference, simplified image/background analysis, a small official sample set, and limited ability to make a crowded 728×90 creative readable while preserving every text string. The internal proxy can also reward legal geometry that still looks weak. The Level 3 result and its tiny supporting type remain a known quality gap.
+
+## Stage-1 rebuild hardening
+
+The rebuild adds `allocation.py`: content-measured semantic lanes, alternate
+headline/support/action columns, and dense secondary grids for square and tall
+outputs. Text height is measured with the existing renderer-compatible font and
+wrap helper. Rotated text evaluates several widths and one/two/three or more line
+tradeoffs; complete groups fit uniformly inside disjoint cells. Secondary content
+compacts before primary type. Bounded font growth is allowed when both usable
+canvas dimensions increase. Source-aware hierarchy compaction caps lower-ranked
+text after fitting; it never shrinks the headline to repair a collision.
+
+Search uses aspect change, element count and rotation to allocate a small or
+larger candidate budget. Exact duplicate output geometries are removed. The
+scorer now rewards role-aware font retention above the old small-type threshold,
+and strongly penalizes severely compressed headlines. Sampled background contrast
+and font measurement remain the render-compatible checks; no remote models or
+full-composite candidate rendering have been added.
+
+Selection ranks the output contract, geometry/text/image feasibility and new
+collision count before aesthetics. All original candidates remain eligible after
+the two-candidate repair pass. This prevents repair or shortlist truncation from
+losing a feasible alternative. A separate emergency unit grid is available when
+normal candidates fail. Final diagnostics explicitly report feasibility and
+fallback use; impossible text is not silently labeled valid.
+
+Exact-size requests now check rotation, clipping and source-relative collisions.
+The original samples contain a ribbon with about 0.6 px of inherited rotated
+bleed: exact-size identity retains source bleed of at most one pixel, reports the
+scorer's invalidity honestly, and introduces no resize exemption. Larger rotated
+overflow enters planning. This keeps the existing identity invariant without
+weakening the scorer or hiding invalid geometry in benchmark statistics.
+
+The contract validator additionally rejects zero-sized elements and edits to any
+original non-layout property. See `evidence/rebuild/` for fresh baseline, fixed
+split definitions and final validation. These are synthetic source-relative
+proxies from one brand kit; they do not establish Adobe hidden-set performance.

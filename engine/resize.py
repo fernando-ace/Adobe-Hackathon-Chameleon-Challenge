@@ -7,9 +7,10 @@ from math import cos, radians, sin
 from typing import Any
 
 from engine.chameleon.analyzer import analyze_design
+from engine.chameleon.allocation import emergency_grid
 from engine.chameleon.planner import generate_candidates
 from engine.chameleon.repair import repair_candidate
-from engine.chameleon.scoring import score_design
+from engine.chameleon.scoring import score_design, _rotated_bounds
 from engine.chameleon.validator import validate_output
 
 
@@ -132,10 +133,8 @@ def resize(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, A
     source_canvas = source.get("canvas", {})
     if (source_canvas.get("width") == target_canvas.get("width") and
             source_canvas.get("height") == target_canvas.get("height")):
-        identity = {
-            "canvas": deepcopy(target_canvas),
-            "elements": deepcopy(source.get("elements", [])),
-        }
+        identity = deepcopy(source)
+        identity["canvas"] = deepcopy(target_canvas)
         issues = validate_output(source, target_canvas, identity)
         documented_bleed_ids = {
             str(element.get("id", ""))
@@ -147,13 +146,30 @@ def resize(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, A
             issue.split(":", 1)[0] in documented_bleed_ids and "off-canvas geometry" in issue
             for issue in issues
         )
-        if not issues or only_documented_bleed:
+        # Axis-aligned contract checks alone miss rotated overflow and source
+        # text clipping. Identity is safe only when the visual checks agree.
+        try:
+            identity_report = score_design(analyze_design(source, target_canvas), identity, "identity")
+        except Exception:
+            identity_report = None
+        # Preserve subpixel rotation bleed already present in an exact-size
+        # source. Still report its measured invalidity; never exempt it when
+        # resizing, or exempt clipping/new overlap here.
+        subpixel_source_bleed = all(
+            x >= -1.0 and y >= -1.0 and x + w <= target_canvas["width"] + 1.0
+            and y + h <= target_canvas["height"] + 1.0
+            for x, y, w, h in map(_rotated_bounds, source.get("elements", []))
+        )
+        if ((not issues or only_documented_bleed) and identity_report is not None
+                and (identity_report.hard_valid or subpixel_source_bleed)
+                and not identity_report.clipped_text_count and not identity_report.image_ratio_failures
+                and identity_report.accidental_collision_count == 0):
             _LAST_DIAGNOSTICS = {
                 "layout_family": "identity",
                 "candidate_count": 1,
                 "repair_count": 0,
-                "issues": issues,
-                "hard_valid": not issues,
+                "issues": issues + identity_report.issues,
+                "hard_valid": not issues and identity_report.hard_valid,
                 "fallback_used": False,
             }
             return identity
@@ -166,14 +182,17 @@ def resize(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, A
             for index, item in enumerate(candidates)
         ]
 
-        def rank_key(report: Any, design: dict[str, Any], index: int) -> tuple[Any, ...]:
+        def rank_key(report: Any, design: dict[str, Any], index: int, family: str | None = None) -> tuple[Any, ...]:
             legal_contract = not validate_output(source, target_canvas, design)
             return (
-                legal_contract, report.hard_valid, report.clipped_text_count == 0,
+                legal_contract, report.hard_valid,
+                report.accidental_collision_count == 0,
                 -report.image_ratio_failures, -report.off_canvas_count,
-                -report.clipped_text_count, report.components.get("typography", 0.0),
-                -report.accidental_collision_count,
-                report.score, -index,
+                -report.clipped_text_count, -report.accidental_collision_count,
+                # Preserve composition for a nearby resize once feasible.
+                dna.transformation == "near_identical"
+                and (family or candidates[index]["family"]) == "source_fit",
+                report.score, report.components.get("headline_readability", 0.0), -index,
             )
 
         shortlist = sorted(
@@ -184,7 +203,9 @@ def resize(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, A
             fallback = _safe_fallback(source, target_canvas)
             _LAST_DIAGNOSTICS = {"fallback_used": True, "fallback_reason": "no candidate satisfied the output contract"}
             return fallback
-        refined = []
+        # Retain every original candidate: repair must never remove a feasible
+        # alternative or make final selection depend on shortlist truncation.
+        refined = [(r, {**item, "repairs": 0}, i) for r, item, i, valid in reports if valid]
         for initial_report, item, index, _contract_valid in shortlist:
             design, repaired_report, repairs = repair_candidate(dna, item["design"], item["family"])
             refined.append((repaired_report, {**item, "design": design, "repairs": repairs}, index))
@@ -192,6 +213,14 @@ def resize(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, A
         report, selected, _ = max(
             refined, key=lambda row: rank_key(row[0], row[1]["design"], row[2])
         )
+        feasible = report.hard_valid and report.accidental_collision_count == 0
+        if not feasible:
+            emergency = emergency_grid(dna)
+            emergency_report = score_design(dna, emergency, "emergency_grid")
+            if (not validate_output(source, target_canvas, emergency)
+                    and rank_key(emergency_report, emergency, 0, "emergency_grid") > rank_key(report, selected["design"], 0, selected["family"])):
+                selected = {"family": "emergency_grid", "design": emergency, "repairs": 0}
+                report = emergency_report
         contract_issues = validate_output(source, target_canvas, selected["design"])
         if contract_issues:
             fallback = _safe_fallback(source, target_canvas)
@@ -224,7 +253,10 @@ def resize(source: dict[str, Any], target_canvas: dict[str, Any]) -> dict[str, A
             ],
             "issues": report.issues,
             "hard_valid": report.hard_valid,
-            "fallback_used": False,
+            "feasible": report.hard_valid and report.accidental_collision_count == 0,
+            "feasibility_issues": [i for i in report.issues if "new overlap" in i or "exceeds measured" in i or "rotated bounds" in i],
+            "fallback_used": selected["family"] == "emergency_grid" or not (report.hard_valid and report.accidental_collision_count == 0),
+            "feasibility_gate_passed": report.hard_valid and report.accidental_collision_count == 0,
             "placements": _placement_trace(dna, selected["design"], selected["family"]),
             "analysis": {
                 "composition": dna.composition,

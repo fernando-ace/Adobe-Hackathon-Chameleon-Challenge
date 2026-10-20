@@ -57,8 +57,8 @@ def repair_candidate(
             -candidate_report.image_ratio_failures,
             -candidate_report.off_canvas_count,
             -candidate_report.clipped_text_count,
-            candidate_report.components.get("typography", 0.0),
             -candidate_report.accidental_collision_count,
+            candidate_report.components.get("typography", 0.0),
             candidate_report.score,
         )
 
