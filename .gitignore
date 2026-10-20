@@ -20,3 +20,13 @@ venv/
 # Generated run artifacts
 output/*
 !output/.gitkeep
+
+# Local hardening work and dependency/build caches
+/work/
+node_modules/
+.next/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
