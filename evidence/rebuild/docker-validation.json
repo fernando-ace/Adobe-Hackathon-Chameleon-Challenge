@@ -1,0 +1,105 @@
+{
+  "platform": "linux/amd64",
+  "network": "none",
+  "cases": [
+    {
+      "case": "chameleon_sample_level1_warmup",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    },
+    {
+      "case": "chameleon_sample_level2_core",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    },
+    {
+      "case": "chameleon_sample_level3_advanced",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    },
+    {
+      "case": "development_0005",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    },
+    {
+      "case": "development_0031",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    },
+    {
+      "case": "development_0106",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    },
+    {
+      "case": "development_0112",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    },
+    {
+      "case": "development_0122",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    },
+    {
+      "case": "development_0159",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    },
+    {
+      "case": "development_0229",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    },
+    {
+      "case": "development_0292",
+      "issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "image_ratios": 0,
+      "png": true
+    }
+  ]
+}

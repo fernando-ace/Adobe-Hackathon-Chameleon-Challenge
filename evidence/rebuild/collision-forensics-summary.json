@@ -1,0 +1,11 @@
+{
+  "categories": {
+    "ROTATION_BOUNDS": 2249,
+    "INSUFFICIENT_LANE": 224,
+    "TEXT_TEXT": 826,
+    "GROUP_GROUP": 8
+  },
+  "pairs": 3307,
+  "cases": 35,
+  "area_recorded": 3307
+}

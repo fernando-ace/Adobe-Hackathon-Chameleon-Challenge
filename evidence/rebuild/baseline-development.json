@@ -77,7 +77,8 @@
       "banner_mirror": 3,
       "split_mirror": 3,
       "identity": 6
-    }
+    },
+    "determinism_checked": 300
   },
   "buckets": {
     "BACKGROUND_HEAVY": {

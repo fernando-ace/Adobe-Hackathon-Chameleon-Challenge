@@ -1,0 +1,14 @@
+[
+  {
+    "sample": "chameleon_sample_level1_warmup",
+    "identical": true
+  },
+  {
+    "sample": "chameleon_sample_level2_core",
+    "identical": true
+  },
+  {
+    "sample": "chameleon_sample_level3_advanced",
+    "identical": true
+  }
+]

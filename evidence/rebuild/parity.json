@@ -1,0 +1,22 @@
+{
+  "label": "Serial versus independent process-worker outputs; no internal parallel-candidate mode",
+  "checked": 300,
+  "failures": 0,
+  "splits": [
+    {
+      "split": "development",
+      "checked": 100,
+      "mismatches": []
+    },
+    {
+      "split": "holdout",
+      "checked": 100,
+      "mismatches": []
+    },
+    {
+      "split": "blind",
+      "checked": 100,
+      "mismatches": []
+    }
+  ]
+}

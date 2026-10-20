@@ -1,0 +1,280 @@
+{
+  "cases": [
+    {
+      "case": "UNBREAKABLE_120",
+      "bucket": "RED_TEAM",
+      "source_canvas": {
+        "width": 800,
+        "height": 1200
+      },
+      "target": {
+        "width": 320,
+        "height": 50
+      },
+      "elements": 5,
+      "family": "stack",
+      "candidates": 30,
+      "repairs": 0,
+      "structural_issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": false,
+      "headline": 2.45263671875,
+      "important": 2.45263671875,
+      "proxy": 0.0,
+      "runtime": 0.5778810309998335,
+      "occupancy": 0.32406666666666667,
+      "issues": [
+        "headline: small type at 2.5px",
+        "body: small type at 3.0px",
+        "cta_label: small type at 3.0px"
+      ],
+      "digest": "9c8d0856d8463beb0d28025c6dd1a157acc8d8c9a44684bbb61749cdebf556b9",
+      "deterministic": true
+    },
+    {
+      "case": "UNBREAKABLE_400",
+      "bucket": "RED_TEAM",
+      "source_canvas": {
+        "width": 800,
+        "height": 1200
+      },
+      "target": {
+        "width": 320,
+        "height": 50
+      },
+      "elements": 5,
+      "family": "source_fit",
+      "candidates": 30,
+      "repairs": 0,
+      "structural_issues": [],
+      "hard_valid": false,
+      "collisions": 0,
+      "clipping": 1,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": true,
+      "headline": 1.1666666666666665,
+      "important": 1.0,
+      "proxy": 0.0,
+      "runtime": 0.33018571700017674,
+      "occupancy": 0.029520833333333336,
+      "issues": [
+        "headline: text exceeds measured box (1 lines, needs 1.4px high)",
+        "headline: small type at 1.2px",
+        "body: small type at 1.0px",
+        "cta_label: small type at 1.0px"
+      ],
+      "digest": "71715c0e4dfd01239261b46e5c7ac838a74267800a12c5b970f7a8e5c601bc9d",
+      "deterministic": true
+    },
+    {
+      "case": "EXPLICIT_NEWLINES",
+      "bucket": "RED_TEAM",
+      "source_canvas": {
+        "width": 800,
+        "height": 1200
+      },
+      "target": {
+        "width": 728,
+        "height": 90
+      },
+      "elements": 8,
+      "family": "allocated_lanes",
+      "candidates": 30,
+      "repairs": 0,
+      "structural_issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": false,
+      "headline": 5.9501953125,
+      "important": 5.9501953125,
+      "proxy": 31.62,
+      "runtime": 0.3164400839998507,
+      "occupancy": 0.8392640474492264,
+      "issues": [
+        "headline: small type at 6.0px",
+        "copy_7: small type at 7.3px"
+      ],
+      "digest": "f014d2cbc0520fe16e6ea244faaf53f28fdb1eb600db2e98a944dae44798de70",
+      "deterministic": true
+    },
+    {
+      "case": "MANY_HEROES_35",
+      "bucket": "RED_TEAM",
+      "source_canvas": {
+        "width": 1200,
+        "height": 628
+      },
+      "target": {
+        "width": 728,
+        "height": 90
+      },
+      "elements": 35,
+      "family": "allocated_lanes",
+      "candidates": 30,
+      "repairs": 0,
+      "structural_issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": false,
+      "headline": 27.98681640625,
+      "important": 9.031405591698967,
+      "proxy": 87.71,
+      "runtime": 0.6350918759999331,
+      "occupancy": 0.5369060995962507,
+      "issues": [],
+      "digest": "d78cd295be07431d0e204fcfbf5c311a6d4a756440a551be8ec04483d808c463",
+      "deterministic": true
+    },
+    {
+      "case": "MULTIPLE_ACTIONS",
+      "bucket": "RED_TEAM",
+      "source_canvas": {
+        "width": 1200,
+        "height": 628
+      },
+      "target": {
+        "width": 480,
+        "height": 1920
+      },
+      "elements": 16,
+      "family": "allocated_stack",
+      "candidates": 9,
+      "repairs": 0,
+      "structural_issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": false,
+      "headline": 27.98681640625,
+      "important": 15.99267578125,
+      "proxy": 95.83,
+      "runtime": 0.5068410640001275,
+      "occupancy": 0.3236125455372912,
+      "issues": [],
+      "digest": "1027df4deae10e3f4798d732fda6952b25dc28df33cca4a6a71bd6b0b86c3c92",
+      "deterministic": true
+    },
+    {
+      "case": "UNICODE_COPY",
+      "bucket": "RED_TEAM",
+      "source_canvas": {
+        "width": 1080,
+        "height": 1350
+      },
+      "target": {
+        "width": 320,
+        "height": 50
+      },
+      "elements": 8,
+      "family": "banner",
+      "candidates": 30,
+      "repairs": 0,
+      "structural_issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": false,
+      "headline": 11.10546875,
+      "important": 5.66552734375,
+      "proxy": 74.53,
+      "runtime": 0.5001816100000269,
+      "occupancy": 0.6894997727272727,
+      "issues": [
+        "cta_label: small type at 5.7px"
+      ],
+      "digest": "e75548e9045c357a305ac6c5bb316f3308d512103f455124b0a805198ea949e8",
+      "deterministic": true
+    },
+    {
+      "case": "SOURCE_WHITESPACE",
+      "bucket": "RED_TEAM",
+      "source_canvas": {
+        "width": 800,
+        "height": 1200
+      },
+      "target": {
+        "width": 1080,
+        "height": 1920
+      },
+      "elements": 15,
+      "family": "allocated_stack",
+      "candidates": 9,
+      "repairs": 0,
+      "structural_issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": false,
+      "headline": 37.78203125,
+      "important": 17.99169921875,
+      "proxy": 95.59,
+      "runtime": 0.507804207999925,
+      "occupancy": 0.15449573301411607,
+      "issues": [],
+      "digest": "fd1c2212700638b5eeed06b803c7a27293922c6b24c2a9036ff0cdd4a88c22b7",
+      "deterministic": true
+    },
+    {
+      "case": "DENSE_WIDE_TO_TALL",
+      "bucket": "RED_TEAM",
+      "source_canvas": {
+        "width": 2400,
+        "height": 400
+      },
+      "target": {
+        "width": 180,
+        "height": 1600
+      },
+      "elements": 30,
+      "family": "stack",
+      "candidates": 9,
+      "repairs": 0,
+      "structural_issues": [],
+      "hard_valid": true,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": false,
+      "headline": 30.6630859375,
+      "important": 2.91650390625,
+      "proxy": 52.15,
+      "runtime": 0.6001597730000867,
+      "occupancy": 0.25305069866458985,
+      "issues": [
+        "cta_label: small type at 2.9px",
+        "badge_9_text: small type at 2.0px",
+        "badge_12_text: small type at 2.0px",
+        "badge_15_text: small type at 2.5px",
+        "badge_18_text: small type at 2.2px"
+      ],
+      "digest": "72324c30cef33900db3e36db9dd0869a6a682c7f9c64f5abbe4e0837b45a7fba",
+      "deterministic": true
+    }
+  ]
+}

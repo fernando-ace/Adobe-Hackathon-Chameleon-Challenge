@@ -1,0 +1,1053 @@
+{
+  "label": "Synthetic source-relative internal proxies; not Adobe hidden performance",
+  "split": "holdout",
+  "seed": 730100,
+  "summary": {
+    "count": 300,
+    "structural_failures": 0,
+    "hard_invalid": 0,
+    "collisions": 0,
+    "clipping": 0,
+    "off_canvas": 0,
+    "image_ratios": 0,
+    "hierarchy": 0,
+    "fallback": 0,
+    "collision_cases": 0,
+    "clipping_cases": 0,
+    "determinism_failures": 0,
+    "headline": {
+      "min": 5.697266,
+      "p5": 22.077148,
+      "p10": 27.986816,
+      "median": 37.985352,
+      "p90": 54.0,
+      "p95": 68.36709,
+      "max": 108.0
+    },
+    "important": {
+      "min": 5.387207,
+      "p5": 9.031406,
+      "p10": 9.861328,
+      "median": 15.995605,
+      "p90": 28.0,
+      "p95": 38.0,
+      "max": 107.973877
+    },
+    "proxy": {
+      "min": 7.95,
+      "p5": 85.386,
+      "p10": 89.302,
+      "median": 99.98,
+      "p90": 100.0,
+      "p95": 100.0,
+      "max": 100.0
+    },
+    "runtime": {
+      "min": 0.158054,
+      "p5": 0.292099,
+      "p10": 0.375014,
+      "median": 0.893719,
+      "p90": 2.312606,
+      "p95": 2.847762,
+      "max": 5.018056
+    },
+    "occupancy": {
+      "min": 0.051839,
+      "p5": 0.149222,
+      "p10": 0.189323,
+      "median": 0.335952,
+      "p90": 0.607808,
+      "p95": 0.747809,
+      "max": 0.94057
+    },
+    "candidates": {
+      "min": 1,
+      "p5": 9.0,
+      "p10": 9.0,
+      "median": 9.0,
+      "p90": 30.0,
+      "p95": 30.0,
+      "max": 30
+    },
+    "families": {
+      "source_fit": 53,
+      "identity": 11,
+      "banner": 53,
+      "stack": 75,
+      "allocated_stack": 69,
+      "allocated_lanes": 38,
+      "split": 1
+    },
+    "determinism_checked": 300
+  },
+  "buckets": {
+    "BACKGROUND_HEAVY": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 25.947266,
+        "p5": 27.990234,
+        "p10": 27.990234,
+        "median": 37.985352,
+        "p90": 65.48918,
+        "p95": 75.236709,
+        "max": 76.0
+      },
+      "important": {
+        "min": 9.031406,
+        "p5": 9.861328,
+        "p10": 10.852025,
+        "median": 15.995605,
+        "p90": 35.837037,
+        "p95": 36.0,
+        "max": 37.985352
+      },
+      "proxy": {
+        "min": 84.55,
+        "p5": 86.255,
+        "p10": 87.634,
+        "median": 98.67,
+        "p90": 99.99,
+        "p95": 99.99,
+        "max": 100.0
+      },
+      "runtime": {
+        "min": 0.280484,
+        "p5": 0.317506,
+        "p10": 0.405322,
+        "median": 0.690594,
+        "p90": 2.058753,
+        "p95": 2.193335,
+        "max": 2.281616
+      },
+      "occupancy": {
+        "min": 0.05718,
+        "p5": 0.17968,
+        "p10": 0.191373,
+        "median": 0.323602,
+        "p90": 0.573983,
+        "p95": 0.655142,
+        "max": 0.790633
+      },
+      "candidates": {
+        "min": 1,
+        "p5": 9.0,
+        "p10": 9.0,
+        "median": 9.0,
+        "p90": 30.0,
+        "p95": 30.0,
+        "max": 30
+      },
+      "families": {
+        "stack": 8,
+        "source_fit": 4,
+        "banner": 7,
+        "allocated_stack": 2,
+        "allocated_lanes": 1,
+        "identity": 1
+      }
+    },
+    "CROSS_ORIENTATION": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 27.990234,
+        "p5": 27.991211,
+        "p10": 28.0,
+        "median": 37.985352,
+        "p90": 54.0,
+        "p95": 54.0,
+        "max": 54
+      },
+      "important": {
+        "min": 15.995605,
+        "p5": 15.995605,
+        "p10": 15.995605,
+        "median": 16.0,
+        "p90": 50.8,
+        "p95": 54.0,
+        "max": 54
+      },
+      "proxy": {
+        "min": 99.99,
+        "p5": 99.99,
+        "p10": 99.99,
+        "median": 99.99,
+        "p90": 100.0,
+        "p95": 100.0,
+        "max": 100.0
+      },
+      "runtime": {
+        "min": 0.274549,
+        "p5": 0.401161,
+        "p10": 0.420125,
+        "median": 0.681882,
+        "p90": 1.420229,
+        "p95": 1.439669,
+        "max": 1.82665
+      },
+      "occupancy": {
+        "min": 0.2076,
+        "p5": 0.2076,
+        "p10": 0.2076,
+        "median": 0.36236,
+        "p90": 0.489295,
+        "p95": 0.49048,
+        "max": 0.497612
+      },
+      "candidates": {
+        "min": 1,
+        "p5": 1.0,
+        "p10": 1.0,
+        "median": 15.0,
+        "p90": 21.0,
+        "p95": 21.0,
+        "max": 21
+      },
+      "families": {
+        "identity": 6,
+        "banner": 5,
+        "stack": 6,
+        "source_fit": 5,
+        "split": 1
+      }
+    },
+    "DENSE": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 23.253906,
+        "p5": 26.132357,
+        "p10": 27.990234,
+        "median": 37.985352,
+        "p90": 53.977539,
+        "p95": 53.997754,
+        "max": 55.973145
+      },
+      "important": {
+        "min": 6.789359,
+        "p5": 7.659903,
+        "p10": 8.459891,
+        "median": 15.995605,
+        "p90": 15.999121,
+        "p95": 16.0,
+        "max": 17.991699
+      },
+      "proxy": {
+        "min": 83.9,
+        "p5": 86.747,
+        "p10": 91.13,
+        "median": 99.91,
+        "p90": 99.99,
+        "p95": 99.999,
+        "max": 100.0
+      },
+      "runtime": {
+        "min": 0.315254,
+        "p5": 0.508395,
+        "p10": 0.590873,
+        "median": 1.055204,
+        "p90": 2.303025,
+        "p95": 2.370527,
+        "max": 2.38685
+      },
+      "occupancy": {
+        "min": 0.095847,
+        "p5": 0.19307,
+        "p10": 0.233385,
+        "median": 0.383189,
+        "p90": 0.552956,
+        "p95": 0.675216,
+        "max": 0.74348
+      },
+      "candidates": {
+        "min": 9,
+        "p5": 9.0,
+        "p10": 9.0,
+        "median": 15.0,
+        "p90": 30.0,
+        "p95": 30.0,
+        "max": 30
+      },
+      "families": {
+        "allocated_stack": 5,
+        "allocated_lanes": 3,
+        "stack": 5,
+        "source_fit": 4,
+        "banner": 6
+      }
+    },
+    "GROUP_HEAVY": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 22.077148,
+        "p5": 27.987158,
+        "p10": 27.990234,
+        "median": 37.985352,
+        "p90": 70.441914,
+        "p95": 75.65353,
+        "max": 90.288
+      },
+      "important": {
+        "min": 7.543678,
+        "p5": 9.861328,
+        "p10": 9.925821,
+        "median": 15.995605,
+        "p90": 17.99834,
+        "p95": 30.6,
+        "max": 38.016
+      },
+      "proxy": {
+        "min": 86.32,
+        "p5": 92.633,
+        "p10": 93.126,
+        "median": 99.98,
+        "p90": 99.998,
+        "p95": 100.0,
+        "max": 100.0
+      },
+      "runtime": {
+        "min": 0.235639,
+        "p5": 0.43229,
+        "p10": 0.586024,
+        "median": 1.262816,
+        "p90": 2.5562,
+        "p95": 2.829889,
+        "max": 2.990828
+      },
+      "occupancy": {
+        "min": 0.062941,
+        "p5": 0.114602,
+        "p10": 0.216551,
+        "median": 0.411176,
+        "p90": 0.551224,
+        "p95": 0.720915,
+        "max": 0.769499
+      },
+      "candidates": {
+        "min": 9,
+        "p5": 9.0,
+        "p10": 9.0,
+        "median": 15.0,
+        "p90": 30.0,
+        "p95": 30.0,
+        "max": 30
+      },
+      "families": {
+        "allocated_stack": 5,
+        "banner": 6,
+        "source_fit": 4,
+        "stack": 8
+      }
+    },
+    "INTENTIONAL_OVERLAP": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 23.46875,
+        "p5": 25.925926,
+        "p10": 26.338104,
+        "median": 37.985352,
+        "p90": 53.974121,
+        "p95": 53.974121,
+        "max": 108.0
+      },
+      "important": {
+        "min": 9.861328,
+        "p5": 15.992676,
+        "p10": 15.992676,
+        "median": 15.995605,
+        "p90": 36.788281,
+        "p95": 52.375244,
+        "max": 53.974121
+      },
+      "proxy": {
+        "min": 86.11,
+        "p5": 89.699,
+        "p10": 93.374,
+        "median": 99.99,
+        "p90": 99.99,
+        "p95": 99.99,
+        "max": 100.0
+      },
+      "runtime": {
+        "min": 0.249835,
+        "p5": 0.272347,
+        "p10": 0.356223,
+        "median": 0.780865,
+        "p90": 1.693025,
+        "p95": 1.95336,
+        "max": 2.765001
+      },
+      "occupancy": {
+        "min": 0.051839,
+        "p5": 0.1836,
+        "p10": 0.185707,
+        "median": 0.297062,
+        "p90": 0.714626,
+        "p95": 0.771702,
+        "max": 0.871098
+      },
+      "candidates": {
+        "min": 1,
+        "p5": 9.0,
+        "p10": 9.0,
+        "median": 9.0,
+        "p90": 30.0,
+        "p95": 30.0,
+        "max": 30
+      },
+      "families": {
+        "banner": 5,
+        "allocated_stack": 6,
+        "stack": 5,
+        "source_fit": 3,
+        "allocated_lanes": 3,
+        "identity": 1
+      }
+    },
+    "LONG_COPY": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 11.076172,
+        "p5": 14.289062,
+        "p10": 15.013281,
+        "median": 27.990234,
+        "p90": 60.807988,
+        "p95": 74.568711,
+        "max": 76.0
+      },
+      "important": {
+        "min": 9.031406,
+        "p5": 11.397461,
+        "p10": 14.289062,
+        "median": 17.910156,
+        "p90": 25.991016,
+        "p95": 35.183643,
+        "max": 36.0
+      },
+      "proxy": {
+        "min": 83.82,
+        "p5": 86.543,
+        "p10": 87.748,
+        "median": 94.66,
+        "p90": 99.99,
+        "p95": 99.99,
+        "max": 99.99
+      },
+      "runtime": {
+        "min": 0.352225,
+        "p5": 0.424139,
+        "p10": 0.489371,
+        "median": 1.006574,
+        "p90": 2.116818,
+        "p95": 2.820558,
+        "max": 3.199237
+      },
+      "occupancy": {
+        "min": 0.113815,
+        "p5": 0.182237,
+        "p10": 0.185912,
+        "median": 0.384795,
+        "p90": 0.777737,
+        "p95": 0.804154,
+        "max": 0.94057
+      },
+      "candidates": {
+        "min": 9,
+        "p5": 9.0,
+        "p10": 9.0,
+        "median": 9.0,
+        "p90": 30.0,
+        "p95": 30.0,
+        "max": 30
+      },
+      "families": {
+        "stack": 7,
+        "allocated_stack": 8,
+        "allocated_lanes": 5,
+        "banner": 2,
+        "source_fit": 1
+      }
+    },
+    "MISSING_ASSET": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 22.060547,
+        "p5": 26.132015,
+        "p10": 27.986816,
+        "median": 37.985352,
+        "p90": 53.995508,
+        "p95": 65.2752,
+        "max": 68.36709
+      },
+      "important": {
+        "min": 9.031406,
+        "p5": 10.02407,
+        "p10": 12.15396,
+        "median": 17.991699,
+        "p90": 38.00987,
+        "p95": 52.378309,
+        "max": 53.977539
+      },
+      "proxy": {
+        "min": 82.33,
+        "p5": 86.91,
+        "p10": 93.058,
+        "median": 99.99,
+        "p90": 100.0,
+        "p95": 100.0,
+        "max": 100.0
+      },
+      "runtime": {
+        "min": 0.181163,
+        "p5": 0.241586,
+        "p10": 0.270371,
+        "median": 0.63912,
+        "p90": 1.442953,
+        "p95": 2.227434,
+        "max": 2.347924
+      },
+      "occupancy": {
+        "min": 0.05718,
+        "p5": 0.176054,
+        "p10": 0.20882,
+        "median": 0.33076,
+        "p90": 0.588828,
+        "p95": 0.656116,
+        "max": 0.830978
+      },
+      "candidates": {
+        "min": 1,
+        "p5": 9.0,
+        "p10": 9.0,
+        "median": 9.0,
+        "p90": 30.0,
+        "p95": 30.0,
+        "max": 30
+      },
+      "families": {
+        "allocated_stack": 7,
+        "identity": 1,
+        "stack": 4,
+        "source_fit": 5,
+        "allocated_lanes": 1,
+        "banner": 5
+      }
+    },
+    "NORMAL": {
+      "count": 24,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 28.0,
+        "p5": 28.0,
+        "p10": 28.0,
+        "median": 38.0,
+        "p90": 54.0,
+        "p95": 54.0,
+        "max": 54.0
+      },
+      "important": {
+        "min": 15.992676,
+        "p5": 15.993774,
+        "p10": 16.0,
+        "median": 16.0,
+        "p90": 28.0,
+        "p95": 28.0,
+        "max": 38.0
+      },
+      "proxy": {
+        "min": 82.0,
+        "p5": 82.0,
+        "p10": 87.394,
+        "median": 100.0,
+        "p90": 100.0,
+        "p95": 100.0,
+        "max": 100.0
+      },
+      "runtime": {
+        "min": 0.188713,
+        "p5": 0.315877,
+        "p10": 0.407001,
+        "median": 0.641816,
+        "p90": 1.402076,
+        "p95": 1.426146,
+        "max": 2.203856
+      },
+      "occupancy": {
+        "min": 0.201626,
+        "p5": 0.201626,
+        "p10": 0.201626,
+        "median": 0.30774,
+        "p90": 0.348505,
+        "p95": 0.358454,
+        "max": 0.368358
+      },
+      "candidates": {
+        "min": 7,
+        "p5": 7.3,
+        "p10": 9.0,
+        "median": 9.0,
+        "p90": 15.0,
+        "p95": 15.0,
+        "max": 30
+      },
+      "families": {
+        "source_fit": 22,
+        "allocated_lanes": 1,
+        "allocated_stack": 1
+      }
+    },
+    "ROTATION_HEAVY": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 5.697266,
+        "p5": 9.280835,
+        "p10": 23.049023,
+        "median": 31.492554,
+        "p90": 67.376084,
+        "p95": 104.225312,
+        "max": 107.973877
+      },
+      "important": {
+        "min": 5.387207,
+        "p5": 7.266235,
+        "p10": 9.01709,
+        "median": 17.532293,
+        "p90": 50.787842,
+        "p95": 53.987061,
+        "max": 107.973877
+      },
+      "proxy": {
+        "min": 7.95,
+        "p5": 46.394,
+        "p10": 88.616,
+        "median": 95.9,
+        "p90": 99.99,
+        "p95": 99.999,
+        "max": 100.0
+      },
+      "runtime": {
+        "min": 0.326301,
+        "p5": 0.465169,
+        "p10": 0.520489,
+        "median": 1.602857,
+        "p90": 3.520568,
+        "p95": 4.153278,
+        "max": 4.849508
+      },
+      "occupancy": {
+        "min": 0.098215,
+        "p5": 0.134959,
+        "p10": 0.141795,
+        "median": 0.358641,
+        "p90": 0.490641,
+        "p95": 0.561447,
+        "max": 0.570852
+      },
+      "candidates": {
+        "min": 9,
+        "p5": 9.0,
+        "p10": 9.0,
+        "median": 15.0,
+        "p90": 30.0,
+        "p95": 30.0,
+        "max": 30
+      },
+      "families": {
+        "allocated_lanes": 8,
+        "allocated_stack": 15
+      }
+    },
+    "TEXT_HEAVY": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 25.925926,
+        "p5": 27.986816,
+        "p10": 27.9875,
+        "median": 50.375879,
+        "p90": 59.734717,
+        "p95": 67.602463,
+        "max": 75.963379
+      },
+      "important": {
+        "min": 6.28648,
+        "p5": 6.418498,
+        "p10": 7.971224,
+        "median": 14.814815,
+        "p90": 17.991699,
+        "p95": 17.991699,
+        "max": 17.991699
+      },
+      "proxy": {
+        "min": 89.14,
+        "p5": 90.385,
+        "p10": 90.958,
+        "median": 95.54,
+        "p90": 99.988,
+        "p95": 99.99,
+        "max": 99.99
+      },
+      "runtime": {
+        "min": 0.284379,
+        "p5": 0.311181,
+        "p10": 0.590967,
+        "median": 1.267715,
+        "p90": 4.147709,
+        "p95": 4.554485,
+        "max": 5.018056
+      },
+      "occupancy": {
+        "min": 0.073379,
+        "p5": 0.074868,
+        "p10": 0.094697,
+        "median": 0.28858,
+        "p90": 0.473297,
+        "p95": 0.613244,
+        "max": 0.737973
+      },
+      "candidates": {
+        "min": 9,
+        "p5": 9.0,
+        "p10": 9.0,
+        "median": 9.0,
+        "p90": 30.0,
+        "p95": 30.0,
+        "max": 30
+      },
+      "families": {
+        "allocated_stack": 16,
+        "allocated_lanes": 3,
+        "stack": 2,
+        "source_fit": 1,
+        "banner": 1
+      }
+    },
+    "TRANSPARENT_IMAGES": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 22.077148,
+        "p5": 23.700405,
+        "p10": 26.338104,
+        "median": 37.985352,
+        "p90": 55.578516,
+        "p95": 65.472514,
+        "max": 97.153027
+      },
+      "important": {
+        "min": 9.031406,
+        "p5": 9.861328,
+        "p10": 10.589063,
+        "median": 15.995605,
+        "p90": 27.990234,
+        "p95": 37.013423,
+        "max": 53.974121
+      },
+      "proxy": {
+        "min": 82.0,
+        "p5": 84.512,
+        "p10": 86.306,
+        "median": 99.98,
+        "p90": 100.0,
+        "p95": 100.0,
+        "max": 100.0
+      },
+      "runtime": {
+        "min": 0.287612,
+        "p5": 0.293764,
+        "p10": 0.310325,
+        "median": 0.946531,
+        "p90": 2.081739,
+        "p95": 2.148324,
+        "max": 3.494948
+      },
+      "occupancy": {
+        "min": 0.075089,
+        "p5": 0.109707,
+        "p10": 0.17932,
+        "median": 0.3028,
+        "p90": 0.58758,
+        "p95": 0.656776,
+        "max": 0.662793
+      },
+      "candidates": {
+        "min": 1,
+        "p5": 1.8,
+        "p10": 9.0,
+        "median": 9.0,
+        "p90": 30.0,
+        "p95": 30.0,
+        "max": 30
+      },
+      "families": {
+        "identity": 2,
+        "stack": 8,
+        "source_fit": 4,
+        "banner": 4,
+        "allocated_stack": 3,
+        "allocated_lanes": 2
+      }
+    },
+    "ULTRA_TALL": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 27.990234,
+        "p5": 27.990234,
+        "p10": 27.990234,
+        "median": 36.39209,
+        "p90": 53.977539,
+        "p95": 53.977539,
+        "max": 53.977539
+      },
+      "important": {
+        "min": 8.261719,
+        "p5": 8.540039,
+        "p10": 11.044922,
+        "median": 15.995605,
+        "p90": 27.990234,
+        "p95": 27.990234,
+        "max": 36.39209
+      },
+      "proxy": {
+        "min": 89.12,
+        "p5": 91.25,
+        "p10": 91.926,
+        "median": 96.13,
+        "p90": 99.99,
+        "p95": 99.99,
+        "max": 99.99
+      },
+      "runtime": {
+        "min": 0.364847,
+        "p5": 0.398546,
+        "p10": 0.499257,
+        "median": 1.321547,
+        "p90": 2.27688,
+        "p95": 2.743969,
+        "max": 4.286597
+      },
+      "occupancy": {
+        "min": 0.1696,
+        "p5": 0.1696,
+        "p10": 0.180616,
+        "median": 0.299019,
+        "p90": 0.336188,
+        "p95": 0.340519,
+        "max": 0.34093
+      },
+      "candidates": {
+        "min": 9,
+        "p5": 9.0,
+        "p10": 9.0,
+        "median": 9.0,
+        "p90": 9.0,
+        "p95": 9.0,
+        "max": 9
+      },
+      "families": {
+        "stack": 22,
+        "allocated_stack": 1
+      }
+    },
+    "ULTRA_WIDE": {
+      "count": 23,
+      "structural_failures": 0,
+      "hard_invalid": 0,
+      "collisions": 0,
+      "clipping": 0,
+      "off_canvas": 0,
+      "image_ratios": 0,
+      "hierarchy": 0,
+      "fallback": 0,
+      "collision_cases": 0,
+      "clipping_cases": 0,
+      "determinism_failures": 0,
+      "headline": {
+        "min": 9.572266,
+        "p5": 14.116211,
+        "p10": 14.475,
+        "median": 27.990234,
+        "p90": 37.985352,
+        "p95": 52.375244,
+        "max": 53.977539
+      },
+      "important": {
+        "min": 5.665527,
+        "p5": 6.002115,
+        "p10": 9.19739,
+        "median": 15.992676,
+        "p90": 17.993652,
+        "p95": 26.990625,
+        "max": 37.985352
+      },
+      "proxy": {
+        "min": 70.85,
+        "p5": 77.576,
+        "p10": 84.47,
+        "median": 94.86,
+        "p90": 99.99,
+        "p95": 99.99,
+        "max": 99.99
+      },
+      "runtime": {
+        "min": 0.158054,
+        "p5": 0.270054,
+        "p10": 0.323472,
+        "median": 1.224902,
+        "p90": 2.745423,
+        "p95": 2.879609,
+        "max": 3.975146
+      },
+      "occupancy": {
+        "min": 0.250385,
+        "p5": 0.262274,
+        "p10": 0.303355,
+        "median": 0.54835,
+        "p90": 0.78065,
+        "p95": 0.828901,
+        "max": 0.833612
+      },
+      "candidates": {
+        "min": 21,
+        "p5": 21.4,
+        "p10": 25.0,
+        "median": 30.0,
+        "p90": 30.0,
+        "p95": 30.0,
+        "max": 30
+      },
+      "families": {
+        "banner": 12,
+        "allocated_lanes": 11
+      }
+    }
+  },
+  "engine_commit": "ff3bdae7595b6d4c1c06cfed05c6f4207a49eb22"
+}

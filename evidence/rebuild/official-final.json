@@ -1,0 +1,114 @@
+[
+  {
+    "sample": "chameleon_sample_level1_warmup",
+    "difficulty": "level_1_warmup",
+    "family": "stack",
+    "candidates": 15,
+    "report": {
+      "score": 99.99,
+      "components": {
+        "headline_readability": 99.9577,
+        "canvas_legality": 100.0,
+        "image_fidelity": 100.0,
+        "typography": 100.0,
+        "collision_avoidance": 100.0,
+        "group_coherence": 100.0,
+        "canvas_use": 100.0,
+        "target_adaptation": 100.0,
+        "sampled_contrast": 100.0,
+        "visual_hierarchy": 100.0
+      },
+      "issues": [],
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0
+    },
+    "contract": [],
+    "renderer_warnings": [],
+    "runtime": 1.4508191630000056,
+    "fonts": {
+      "headline": 59.974609375,
+      "cta": 29.98828125
+    }
+  },
+  {
+    "sample": "chameleon_sample_level2_core",
+    "difficulty": "level_2_core",
+    "family": "banner",
+    "candidates": 30,
+    "report": {
+      "score": 99.99,
+      "components": {
+        "headline_readability": 99.9581,
+        "canvas_legality": 100.0,
+        "image_fidelity": 100.0,
+        "typography": 100.0,
+        "collision_avoidance": 100.0,
+        "group_coherence": 100.0,
+        "canvas_use": 100.0,
+        "target_adaptation": 100.0,
+        "sampled_contrast": 100.0,
+        "visual_hierarchy": 100.0
+      },
+      "issues": [],
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0
+    },
+    "contract": [],
+    "renderer_warnings": [],
+    "runtime": 1.8394848460000048,
+    "fonts": {
+      "headline": 55.9765625,
+      "subhead": 23.9912109375,
+      "badge_label": 15.6513671875,
+      "cta_label": 21.9921875
+    }
+  },
+  {
+    "sample": "chameleon_sample_level3_advanced",
+    "difficulty": "level_3_advanced",
+    "family": "banner",
+    "candidates": 27,
+    "report": {
+      "score": 83.85,
+      "components": {
+        "headline_readability": 41.4453,
+        "canvas_legality": 100.0,
+        "image_fidelity": 100.0,
+        "typography": 100.0,
+        "collision_avoidance": 100.0,
+        "group_coherence": 100.0,
+        "canvas_use": 100.0,
+        "target_adaptation": 100.0,
+        "sampled_contrast": 100.0,
+        "visual_hierarchy": 100.0
+      },
+      "issues": [],
+      "hard_valid": true,
+      "off_canvas_count": 0,
+      "image_ratio_failures": 0,
+      "clipped_text_count": 0,
+      "accidental_collision_count": 0
+    },
+    "contract": [],
+    "renderer_warnings": [
+      "Missing asset 'solstice_holiday_badge_2025.png' for element 'holiday_watermark' - rendered a placeholder."
+    ],
+    "runtime": 2.957413181999982,
+    "fonts": {
+      "headline": 16.578125,
+      "subhead": 9.203125,
+      "badge1_label": 8.603515625,
+      "badge2_label": 8.603515625,
+      "badge3_label": 8.603515625,
+      "cta_label": 9.65625,
+      "ribbon_label": 7.021484375,
+      "legal_text": 7.9140625
+    }
+  }
+]

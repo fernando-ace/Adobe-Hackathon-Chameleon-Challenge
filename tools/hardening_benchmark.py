@@ -124,6 +124,7 @@ def summarize(rows):
                 hard_invalid=sum(not r["hard_valid"] for r in rows),
                 **{k:sum(r[k] for r in rows) for k in ("collisions","clipping","off_canvas","image_ratios","hierarchy","fallback")},
                 collision_cases=sum(r["collisions"]>0 for r in rows),clipping_cases=sum(r["clipping"]>0 for r in rows),
+                determinism_checked=sum("deterministic" in r for r in rows),
                 determinism_failures=sum(not r.get("deterministic",True) for r in rows),
                 **{k:quantiles(r[k] for r in rows) for k in ("headline","important","proxy","runtime","occupancy","candidates")},
                 families=dict(Counter(r["family"] for r in rows)))

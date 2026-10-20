@@ -76,7 +76,8 @@
       "split": 15,
       "source_fit": 54,
       "banner_mirror": 3
-    }
+    },
+    "determinism_checked": 0
   },
   "buckets": {
     "BACKGROUND_HEAVY": {

@@ -74,7 +74,8 @@
       "banner": 49,
       "source_fit": 19,
       "split": 1
-    }
+    },
+    "determinism_checked": 112
   },
   "buckets": {
     "MUTATION": {

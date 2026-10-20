@@ -1,0 +1,49 @@
+test_action_language_identifies_cta_and_keeps_button_geometry (test_engine.EngineContractTests.test_action_language_identifies_cta_and_keeps_button_geometry) ... Fontconfig warning: "/usr/share/fontconfig/conf.avail/05-reset-dirs-sample.conf", line 6: unknown element "reset-dirs"
+ok
+test_bold_event_date_is_informational_copy_not_a_standalone_cta (test_engine.EngineContractTests.test_bold_event_date_is_informational_copy_not_a_standalone_cta) ... ok
+test_compact_banner_extra_copy_does_not_expand_into_ribbon_lane (test_engine.EngineContractTests.test_compact_banner_extra_copy_does_not_expand_into_ribbon_lane) ... ok
+test_compact_banner_reserves_readable_action_row (test_engine.EngineContractTests.test_compact_banner_reserves_readable_action_row) ... ok
+test_compact_headline_uses_gutter_without_touching_hero (test_engine.EngineContractTests.test_compact_headline_uses_gutter_without_touching_hero) ... ok
+test_dense_wide_banner_keeps_brand_mark_out_of_copy_column (test_engine.EngineContractTests.test_dense_wide_banner_keeps_brand_mark_out_of_copy_column) ... ok
+test_extreme_tall_target_caps_button_and_badge_background_growth (test_engine.EngineContractTests.test_extreme_tall_target_caps_button_and_badge_background_growth) ... ok
+test_extreme_wide_banner_recomposes_without_new_collisions (test_engine.EngineContractTests.test_extreme_wide_banner_recomposes_without_new_collisions) ... ok
+test_hierarchy_scoring_respects_source_and_catches_regressions (test_engine.EngineContractTests.test_hierarchy_scoring_respects_source_and_catches_regressions) ... ok
+test_larger_canvas_preserves_primary_type_and_does_not_add_clipping (test_engine.EngineContractTests.test_larger_canvas_preserves_primary_type_and_does_not_add_clipping) ... ok
+test_long_compact_headline_preserves_type_hierarchy (test_engine.EngineContractTests.test_long_compact_headline_preserves_type_hierarchy) ... ok
+test_lower_unbolded_supporting_line_is_not_a_cta (test_engine.EngineContractTests.test_lower_unbolded_supporting_line_is_not_a_cta) ... ok
+test_medium_rectangle_keeps_action_labels_above_legal_copy (test_engine.EngineContractTests.test_medium_rectangle_keeps_action_labels_above_legal_copy) ... ok
+test_metamorphic_identity_and_small_aspect_change (test_engine.EngineContractTests.test_metamorphic_identity_and_small_aspect_change) ... ok
+test_minor_portrait_expansion_preserves_centered_campaign_composition (test_engine.EngineContractTests.test_minor_portrait_expansion_preserves_centered_campaign_composition) ... ok
+test_mobile_event_date_keeps_source_scale_before_product (test_engine.EngineContractTests.test_mobile_event_date_keeps_source_scale_before_product) ... ok
+test_mutations_preserve_contract_without_fallback (test_engine.EngineContractTests.test_mutations_preserve_contract_without_fallback) ... ok
+test_official_outputs_render (test_engine.EngineContractTests.test_official_outputs_render) ... ok
+test_official_samples_contract_determinism_and_score (test_engine.EngineContractTests.test_official_samples_contract_determinism_and_score) ... ok
+test_portrait_story_reserves_more_width_for_primary_action (test_engine.EngineContractTests.test_portrait_story_reserves_more_width_for_primary_action) ... ok
+test_repair_moves_a_lower_priority_colliding_element (test_engine.EngineContractTests.test_repair_moves_a_lower_priority_colliding_element) ... ok
+test_safe_fallback_preserves_ids_when_analysis_fails (test_engine.EngineContractTests.test_safe_fallback_preserves_ids_when_analysis_fails) ... ok
+test_semantics_detect_background_and_group_pair (test_engine.EngineContractTests.test_semantics_detect_background_and_group_pair) ... ok
+test_sparse_portrait_stack_uses_lower_action_band (test_engine.EngineContractTests.test_sparse_portrait_stack_uses_lower_action_band) ... ok
+test_stress_corpus_is_schema_shaped_and_survives (test_engine.EngineContractTests.test_stress_corpus_is_schema_shaped_and_survives) ... ok
+test_stress_generator_handles_small_and_large_counts (test_engine.EngineContractTests.test_stress_generator_handles_small_and_large_counts) ... ok
+test_tall_story_bands_close_hero_copy_and_action_gaps (test_engine.EngineContractTests.test_tall_story_bands_close_hero_copy_and_action_gaps) ... ok
+test_wide_campaign_keeps_secondary_art_out_of_narrative_column (test_engine.EngineContractTests.test_wide_campaign_keeps_secondary_art_out_of_narrative_column) ... ok
+test_wide_source_recomposes_for_square_target (test_engine.EngineContractTests.test_wide_source_recomposes_for_square_target) ... ok
+test_campaign_generation_previews_assets_and_locking (test_finale_api.FinaleApiIntegrationTests.test_campaign_generation_previews_assets_and_locking) ... "GET /api/catalog HTTP/1.1" 200 -
+"GET /api/source-preview?id=chameleon_sample_level3_advanced HTTP/1.1" 200 -
+"POST /api/generate HTTP/1.1" 200 -
+"POST /api/generate HTTP/1.1" 200 -
+ok
+test_unknown_source_returns_a_clear_client_error (test_finale_api.FinaleApiIntegrationTests.test_unknown_source_returns_a_clear_client_error) ... "POST /api/generate HTTP/1.1" 400 -
+ok
+test_all_unit_members_move_together_with_rotation (test_hardening.HardeningTests.test_all_unit_members_move_together_with_rotation) ... ok
+test_hierarchy_compaction_keeps_primary_size_and_removes_inversion (test_hardening.HardeningTests.test_hierarchy_compaction_keeps_primary_size_and_removes_inversion) ... ok
+test_identity_shortcut_reflows_substantial_rotated_overflow (test_hardening.HardeningTests.test_identity_shortcut_reflows_substantial_rotated_overflow) ... ok
+test_measured_lanes_preserve_contract_and_avoid_dense_collisions (test_hardening.HardeningTests.test_measured_lanes_preserve_contract_and_avoid_dense_collisions) ... ok
+test_nearby_resize_retains_source_when_source_is_feasible (test_hardening.HardeningTests.test_nearby_resize_retains_source_when_source_is_feasible) ... ok
+test_rotated_text_cells_fit_complete_visual_bounds (test_hardening.HardeningTests.test_rotated_text_cells_fit_complete_visual_bounds) ... ok
+test_validator_rejects_zero_size_and_illegal_style_change (test_hardening.HardeningTests.test_validator_rejects_zero_size_and_illegal_style_change) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 231.297s
+
+OK
